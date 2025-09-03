@@ -1,0 +1,10 @@
+﻿# Steam Dataset 2025 - Conda Environment Specification
+name: steam-dataset-2025
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+    - -r requirements.txt

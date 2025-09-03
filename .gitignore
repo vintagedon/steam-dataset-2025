@@ -1,0 +1,385 @@
+﻿# Steam Dataset 2025 - .gitignore
+# Comprehensive gitignore for data science and ML project
+
+# ====================
+# Python
+# ====================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+.idea/
+
+# ====================
+# Data Files
+# ====================
+# Raw data files (keep examples, exclude large datasets)
+data/00_raw/*.json
+data/00_raw/*.csv
+data/00_raw/*.xlsx
+data/00_raw/*.parquet
+data/01_interim/*.json
+data/01_interim/*.csv
+data/01_interim/*.xlsx
+data/01_interim/*.parquet
+data/02_processed/*.json
+data/02_processed/*.csv
+data/02_processed/*.xlsx
+data/02_processed/*.parquet
+
+# Keep small sample files for testing
+!data/**/*sample*
+!data/**/*test*
+!data/**/*example*
+
+# Vector embeddings and large model files
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+
+# Database dumps and backups
+*.sql.gz
+*.sql.bz2
+*.dump
+*.backup
+
+# ====================
+# Logs and Output
+# ====================
+logs/
+*.log
+*.out
+*.err
+
+# Script outputs and reports
+*_report_*.md
+*_output_*.txt
+validation_report_*.md
+initial_analysis_report_*.md
+
+# ====================
+# API Keys and Secrets
+# ====================
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# API keys and credentials
+api_keys.txt
+credentials.json
+secrets/
+keys/
+
+# ====================
+# Database
+# ====================
+# PostgreSQL
+*.sql
+!schema.sql
+!**/schema/*.sql
+
+# SQLite
+*.sqlite
+*.sqlite3
+*.db
+
+# Database state and temporary files
+state/
+tmp/
+temp/
+
+# ====================
+# Machine Learning
+# ====================
+# Model files
+models/
+*.model
+*.pt
+*.pth
+*.ckpt
+checkpoints/
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Weights & Biases
+wandb/
+
+# TensorBoard
+runs/
+tb_logs/
+
+# ====================
+# Jupyter and Analysis
+# ====================
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Jupyter output (keep clean notebooks in repo)
+*-checkpoint.ipynb
+
+# ====================
+# System Files
+# ====================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ====================
+# IDEs and Editors
+# ====================
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+[._]*.s[a-v][a-z]
+!*.svg
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Session.vim
+Temporary Items
+.netrwhist
+*~
+tags
+[._]*.un~
+
+# ====================
+# Documentation
+# ====================
+# Sphinx build
+_build/
+_static/
+_templates/
+
+# ====================
+# Docker
+# ====================
+# Docker compose override
+docker-compose.override.yml
+
+# ====================
+# Miscellaneous
+# ====================
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.tar.bz2
+*.7z
+
+# Large binary files
+*.bin
+*.exe
+*.dll
+
+# ====================
+# Project Specific
+# ====================
+# Steam API specific temporary files
+steam_*.json
+!steam_data_sample.json
+
+# Collection state files
+processed_*.txt
+collected_*.txt
+
+# Batch files and temporary scripts  
+batch_*.json
+reviews_batch_*.json
+
+# Performance benchmarks
+benchmark_*.txt
+performance_*.log
