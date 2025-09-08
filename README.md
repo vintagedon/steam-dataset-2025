@@ -150,7 +150,7 @@ graph TD
 
 ## 📁 Repository Structure
 
-```
+```markdown
 steam-dataset-2025/
 ├── 📊 data/                    # Dataset files and access documentation
 │   ├── 01_raw/                # Original API responses (sample available)
@@ -202,33 +202,6 @@ steam-dataset-2025/
 - 📜 [Scripts Documentation](scripts/README.md) - Collection and processing pipeline guide  
 - 📚 [Technical Documentation](docs/README.md) - Architecture and methodology details
 - 🗄️ [Database Schema](docs/postgresql-database-schema.md) - PostgreSQL implementation guide
-
----
-
-## 💼 Industry Support & Sponsorship
-
-Steam Dataset 2025 is proudly supported by industry partners who recognize the value of open research and advanced data engineering methodologies.
-
-### Platinum Sponsor
-
-<div align="center">
-  <a href="https://msp4.com/" target="_blank">
-    <img src="assets/sponsors/msp4-logo.png" alt="MSP4 LLC" width="300" style="margin: 20px 0;" />
-  </a>
-</div>
-
-[MSP4 LLC](https://msp4.com/) - Leading managed IT services provider supporting innovative data science and research initiatives. MSP4's enterprise infrastructure expertise enables the robust technical foundation that makes large-scale projects like Steam Dataset 2025 possible.
-
-### Become a Sponsor
-
-Interested in supporting open data science research and gaining visibility in the analytics community? Contact us about sponsorship opportunities that align with your organization's commitment to data innovation and academic research.
-
-Sponsorship Benefits:
-
-- Community Recognition: Logo placement and acknowledgment in project documentation
-- Research Access: Early access to analytical findings and market intelligence reports  
-- Technical Collaboration: Opportunities for joint research and methodology development
-- Industry Leadership: Association with cutting-edge data engineering and analytics innovation
 
 ---
 
@@ -454,6 +427,33 @@ Requirements:
 - 📋 Acknowledge original dataset source
 
 Data Usage: All data collected through official Steam Web APIs in compliance with Valve's terms of service. This dataset is intended for academic research and educational purposes.
+
+---
+
+## 💼 Industry Support & Sponsorship
+
+Steam Dataset 2025 is proudly supported by industry partners who recognize the value of open research and advanced data engineering methodologies.
+
+### Platinum Sponsor
+
+<div align="center">
+  <a href="https://msp4.com/" target="_blank">
+    <img src="assets/sponsors/msp4-logo.png" alt="MSP4 LLC" width="300" style="margin: 20px 0;" />
+  </a>
+</div>
+
+[MSP4 LLC](https://msp4.com/) - Leading managed IT services provider supporting innovative data science and research initiatives. MSP4's enterprise infrastructure expertise enables the robust technical foundation that makes large-scale projects like Steam Dataset 2025 possible.
+
+### Become a Sponsor
+
+Interested in supporting open data science research and gaining visibility in the analytics community? Contact us about sponsorship opportunities that align with your organization's commitment to data innovation and academic research.
+
+Sponsorship Benefits:
+
+- Community Recognition: Logo placement and acknowledgment in project documentation
+- Research Access: Early access to analytical findings and market intelligence reports  
+- Technical Collaboration: Opportunities for joint research and methodology development
+- Industry Leadership: Association with cutting-edge data engineering and analytics innovation
 
 ---
 
