@@ -4,15 +4,15 @@
 
 | Metric                 | Value                                     |
 | :--------------------- | :---------------------------------------- |
-| **Generating Script** | `get_steam_data_sample.py` (v1.1)         |
-| **Repository** | `https://github.com/vintagedon/steam-dataset-2025` |
-| **Start Timestamp** | `2025-08-31 14:00:12`                     |
-| **End Timestamp** | `2025-08-31 14:05:24`                     |
-| **Duration** | 5 minutes, 12 seconds                     |
-| **Parameters** |                                           |
+| Generating Script | `get_steam_data_sample.py` (v1.1)         |
+| Repository | `https://github.com/vintagedon/steam-dataset-2025` |
+| Start Timestamp | `2025-08-31 14:00:12`                     |
+| End Timestamp | `2025-08-31 14:05:24`                     |
+| Duration | 5 minutes, 12 seconds                     |
+| Parameters |                                           |
 | _Target Game Count_    | `100`                                     |
 | _Output File_          | `steam_data_sample.json`                  |
-| **Results** |                                           |
+| Results |                                           |
 | _Final Status_         | Success                                   |
 | _Games Found_          | `100`                                     |
 | _Total Apps Processed_ | `193`                                     |

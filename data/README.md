@@ -1,162 +1,361 @@
-<!--
----
-title: "Data"
-description: "Raw and processed datasets for Steam Dataset 2025, containing 5,000+ games, 36,265+ user reviews, and enriched analytical datasets supporting multi-modal database implementation and machine learning applications"
-author: "VintageDon - https://github.com/vintagedon"
-ai_contributor: "Claude Sonnet 4"
-date: "2025-09-03"
-version: "1.0"
-status: "Published"
-tags:
-- type: [directory-overview/dataset-catalog/data-assets]
-- domain: [data-assets/steam-dataset/gaming-data/data-management]
-- tech: [json-data/postgresql-import/dataset-management]
-- phase: [phase-2/phase-3]
-related_documents:
-- "[Analytics Documentation](../docs/analytics/README.md)"
-- "[Database Schema](../docs/postgresql-database-schema.md)"
-- "[Scripts Implementation](../scripts/README.md)"
----
--->
+# 📊 Steam Dataset 2025: Data Directory
 
-# 📁 Data
-
-This directory contains raw and processed datasets for Steam Dataset 2025, including comprehensive gaming application metadata, user reviews, and enriched analytical datasets. The data assets support multi-modal database implementation, machine learning applications, and advanced gaming market research with systematic quality assurance and validation.
-
-## Overview
-
-The data collection represents the first analytically-native Steam dataset, designed specifically for advanced data science applications rather than simple CSV exports. The datasets capture the complete Steam ecosystem including games, DLC, software, and user engagement data, with systematic API collection methodology ensuring high data quality and comprehensive coverage.
+This directory contains the Steam Dataset 2025 data files and provides comprehensive access information for both sample evaluation and full dataset research applications. The data represents the largest publicly available Steam catalog collection using exclusively official Valve Web APIs.
 
 ---
 
-## 📁 Directory Contents
+## 📂 Directory Overview
 
-This section provides systematic navigation to all data assets and their processing stages.
+This directory organizes Steam Dataset 2025 data files in a systematic structure supporting both immediate evaluation and comprehensive research applications.
 
-### Data Processing Stages
+### Data Organization Strategy
 
-| Stage | Purpose | Documentation |
-|-----------|-------------|-------------------|
-| [01_raw/](01_raw/) | Original Steam API responses and unprocessed data collection | Raw JSON datasets from Steam Web API |
-| [02_processed/](02_processed/) | Enriched and validated datasets ready for database import | Quality-assured datasets with enhanced metadata |
-
-### Dataset Catalog
-
-| Dataset | Stage | Content | Records | Link |
-|-------------|-----------|-------------|-------------|----------|
-| steam_2025_5k-dataset-games_20250831.json | Raw | Complete game metadata from Steam API | 5,000+ games | [01_raw/steam_2025_5k-dataset-games_20250831.json](01_raw/steam_2025_5k-dataset-games_20250831.json) |
-| steam_2025_5k-dataset-reviews_20250901.json | Raw | User review data with engagement metrics | 36,265+ reviews | [01_raw/steam_2025_5k-dataset-reviews_20250901.json](01_raw/steam_2025_5k-dataset-reviews_20250901.json) |
-| steam_2025_5k-dataset-enchriched_20250901.json | Processed | Validated and enriched combined dataset | Combined | [02_processed/steam_2025_5k-dataset-enchriched_20250901.json.json](02_processed/steam_2025_5k-dataset-enchriched_20250901.json.json) |
+- 🎯 Sample Data: Immediate access for evaluation and testing (GitHub compatible)
+- 📊 Full Dataset: Complete catalog available through academic archive (Zenodo)
+- 🔄 Processing Stages: Clear separation between raw API responses and processed analytical data
+- 📚 Complete Documentation: Comprehensive guides for accessing and utilizing all data forms
 
 ---
 
-## 🗂️ Repository Structure
+## 🗂️ Directory Contents
 
-``` markdown
+This section provides systematic navigation to all data files and subdirectories within the Steam Dataset 2025 data collection.
+
+### Data Subdirectories
+
+| Directory | Content | Size | Access |
+|---------------|-------------|----------|------------|
+| [01_raw/](01_raw/) | Original Steam API responses (sample) | 102MB | ✅ GitHub Available |
+| [02_processed/](02_processed/) | Cleaned and enriched sample data | 85MB | ✅ GitHub Available |
+
+### Key Data Files
+
+| File | Description | Format | Status |
+|----------|-----------------|------------|------------|
+| steam_2025_5k-dataset-games_20250831.json.gz | 5,000 game sample with complete metadata | Compressed JSON | ✅ Available |
+| steam_2025_5k-dataset-reviews_20250901.json.gz | Player reviews for sample games | Compressed JSON | ✅ Available |
+| steam_2025_5k-dataset-enriched_20250901.json | Processed sample with analytics enhancements | JSON | ✅ Available |
+
+---
+
+## 🗂️ Data Structure Overview
+
+Visual representation of the complete Steam Dataset 2025 data organization across both GitHub and planned Zenodo releases:
+
+```markdown
 data/
-├── 📥 01_raw/                              # Original Steam API responses
-│   ├── steam_2025_5k-dataset-games_20250831.json      # Raw game metadata collection
-│   └── steam_2025_5k-dataset-reviews_20250901.json    # Raw user review collection
-├── ⚙️ 02_processed/                        # Enriched and validated datasets
-│   └── steam_2025_5k-dataset-enchriched_20250901.json.json # Quality-assured combined dataset
-└── 📖 README.md                           # This file
+├── 📁 01_raw/                    # Original API responses
+│   ├── README.md                 # Raw data documentation
+│   ├── steam_2025_5k-dataset-games_20250831.json.gz     # 5K sample (102MB)
+│   └── steam_2025_5k-dataset-reviews_20250901.json.gz   # Sample reviews (45MB)
+├── 📁 02_processed/              # Cleaned and enriched data
+│   ├── README.md                 # Processed data documentation
+│   └── steam_2025_5k-dataset-enriched_20250901.json     # Enhanced sample (85MB)
+└── 📋 README.md                  # This file
+
+FUTURE: Zenodo Full Dataset (4.2GB total)
+├── 🎮 steam_games_master.json           # Complete games catalog (2.8GB)
+├── 📝 steam_reviews_master.json         # Complete review collection (1.4GB)
+├── 🧠 steam_embeddings_master.json      # Vector embeddings (600MB)
+└── 📊 steam_sample_5k.json              # Sample subset for reference
 ```
 
 ### Navigation Guide
 
-- [📥 Raw Data](01_raw/) - Original Steam API responses and unprocessed collections
-- [⚙️ Processed Data](02_processed/) - Enriched datasets with quality assurance and validation
+- [📁 Raw Data Directory](01_raw/README.md) - Original Steam API responses and collection metadata
+- [📁 Processed Data Directory](02_processed/README.md) - Cleaned, enriched, and analysis-ready formats
 
 ---
 
-## 🔗 Related Categories
+## 🚀 Quick Access Guide
 
-This section establishes horizontal relationships within the project knowledge graph, connecting data assets to implementation and analysis.
+### For Immediate Evaluation (GitHub)
 
-| Category | Relationship | Documentation |
-|--------------|------------------|-------------------|
-| [Scripts Implementation](../scripts/README.md) | Scripts generate, validate, and process all dataset assets | [../scripts/README.md](../scripts/README.md) |
-| [Analytics Documentation](../docs/analytics/README.md) | Statistical analysis and insights derived from dataset assets | [../docs/analytics/README.md](../docs/analytics/README.md) |
-| [Database Schema](../docs/postgresql-database-schema.md) | Database implementation targets and processes dataset assets | [../docs/postgresql-database-schema.md](../docs/postgresql-database-schema.md) |
-| [Notebooks](../notebooks/README.md) | Interactive analysis and machine learning applications using datasets | [../notebooks/README.md](../notebooks/README.md) |
+Sample Dataset - Ready for Download:
 
----
+- 🎮 Games Sample: [steam_2025_5k-dataset-games_20250831.json.gz](01_raw/steam_2025_5k-dataset-games_20250831.json.gz) (102MB)
+- 📝 Reviews Sample: [steam_2025_5k-dataset-reviews_20250901.json.gz](01_raw/steam_2025_5k-dataset-reviews_20250901.json.gz) (45MB)
+- 📊 Enhanced Sample: [steam_2025_5k-dataset-enriched_20250901.json](02_processed/steam_2025_5k-dataset-enriched_20250901.json) (85MB)
 
-## Getting Started
+Quick Start:
 
-For researchers and data scientists accessing Steam Dataset 2025 data assets:
+```bash
+# Download sample dataset
+wget https://github.com/VintageDon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-games_20250831.json.gz
 
-1. Raw Data Exploration: Begin with [raw datasets](01_raw/) to understand original Steam API structures
-2. Processed Data Analysis: Use [enriched datasets](02_processed/) for analysis and machine learning applications  
-3. Database Implementation: Import datasets using [database scripts](../scripts/04-postgres_schema_design/README.md)
-4. Analytical Applications: Apply datasets in [interactive notebooks](../notebooks/README.md) for advanced analysis
-5. Quality Assessment: Review [analytics documentation](../docs/analytics/README.md) for data quality metrics and validation
+# Decompress for analysis
+gunzip steam_2025_5k-dataset-games_20250831.json.gz
 
----
+# Ready for analysis!
+```
 
-## Dataset Characteristics
+### For Complete Research (Zenodo - Planned)
 
-The Steam Dataset 2025 collection provides comprehensive gaming market representation:
+Full Dataset Specifications:
 
-Content Coverage:
+- 📊 Total Size: 4.2GB (complete Steam ecosystem)
+- 🎮 Applications: 239,664 complete catalog entries
+- 📝 Reviews: 1,048,148 user reviews  
+- 🧠 Embeddings: 1024-dimensional semantic vectors
+- 📅 Release: Pending completion of documentation and embedding generation
 
-- Applications: 8,711 total applications including games, DLC, software, and media
-- Primary Games: 5,000 complete game entries with full metadata
-- User Reviews: 36,265+ individual user reviews with sentiment and engagement data
-- Developer Ecosystem: 6,740 unique developers and 5,605 publishers
-- Genre Taxonomy: Comprehensive multi-label genre classification system
+Access Information:
 
-Data Quality Metrics:
-
-- API Success Rate: 88.1% successful Steam API responses
-- Field Coverage: 260+ unique data fields discovered and mapped
-- Temporal Span: Current market snapshot with historical context
-- Geographic Scope: Global Steam catalog with regional pricing variations
-- Content Diversity: Traditional games plus utility software, creative tools, and media
-
-Technical Specifications:
-
-- Data Format: JSON with nested structures preserving API response fidelity
-- Size Metrics: Raw datasets ~240MB, processed datasets ~135MB
-- Character Encoding: UTF-8 supporting international content and Unicode
-- Validation Status: Systematic integrity checks and quality assurance
-- Processing Pipeline: RAVGV methodology ensuring systematic validation
+- 🏛️ Archive: Zenodo academic repository (planned)
+- 🔗 DOI: Persistent identifier for academic citation (pending)
+- 📋 Notification: GitHub repository updates when available
 
 ---
 
-## Data Usage Guidelines
+## 📊 Dataset Specifications
 
-Access and Attribution:
+### Sample Dataset (Currently Available)
 
-- License: MIT License enabling broad research and commercial usage
-- Citation: Appropriate attribution required for academic and commercial applications
-- Data Privacy: All data sourced from public Steam Web API endpoints
-- Ethical Use: Responsible usage supporting gaming research and industry analysis
+| Component | Records | Compressed Size | Uncompressed | Content |
+|---------------|-------------|-------------------|------------------|-------------|
+| Games Sample | 5,000 applications | 102MB | ~250MB | Complete metadata, JSONB fields |
+| Reviews Sample | ~50,000 reviews | 45MB | ~120MB | User reviews for sample games |
+| Enhanced Sample | 5,000 applications | N/A | 85MB | Processed with analytics features |
 
-Technical Considerations:
+### Full Dataset (Zenodo Release)
 
-- File Handling: Large JSON files requiring appropriate memory management
-- Database Import: Optimized for PostgreSQL with JSONB and vector support
-- Performance: Raw datasets suitable for exploration, processed datasets for production
-- Validation: Cross-reference with provided quality metrics and validation reports
+| Component | Records | Estimated Size | Content |
+|---------------|-------------|-------------------|-------------|
+| Complete Games | 239,664 applications | 2.8GB | Full Steam catalog metadata |
+| Complete Reviews | 1,048,148 reviews | 1.4GB | User reviews across all collected games |
+| Vector Embeddings | 239,664 vectors | 600MB | 1024-dimensional semantic embeddings |
+| Total Dataset | Complete ecosystem | 4.2GB | Comprehensive Steam analytics platform |
 
-Research Applications:
+### Data Quality Metrics
 
-- Gaming Market Analysis: Industry trends, pricing strategies, content evolution
-- Machine Learning: Game success prediction, recommendation systems, sentiment analysis
-- Academic Research: Digital markets, user behavior, platform economics
-- Product Development: Competitive intelligence, market positioning, feature analysis
+| Quality Measure | Sample Dataset | Full Dataset | Notes |
+|---------------------|-------------------|------------------|-----------|
+| API Success Rate | 56% (demonstration) | 90.6% (systematic) | Sample designed for variety, full optimized for coverage |
+| Metadata Completeness | 100% basic fields | 100% basic fields | All records include core identification |
+| Pricing Information | ~60% coverage | ~60% coverage | Free games have no pricing data |
+| Review Availability | ~45% of games | ~50% of games | Based on game popularity and user engagement |
 
 ---
 
-## Document Information
+## 📥 Download Procedures
+
+### Method 1: Direct GitHub Download
+
+For Individual Files:
+
+```bash
+# Download specific sample files
+curl -L -o games_sample.json.gz "https://github.com/VintageDon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-games_20250831.json.gz"
+curl -L -o reviews_sample.json.gz "https://github.com/VintageDon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-reviews_20250901.json.gz"
+
+# Decompress
+gunzip *.gz
+```
+
+For Complete Repository:
+
+```bash
+# Clone entire repository
+git clone https://github.com/VintageDon/steam-dataset-2025.git
+cd steam-dataset-2025/data
+
+# Access all sample data
+ls -la 01_raw/ 02_processed/
+```
+
+### Method 2: Programmatic Access
+
+Python Example:
+
+```python
+import requests
+import gzip
+import json
+from pathlib import Path
+
+def download_sample_data():
+    """Download and decompress Steam Dataset 2025 sample data"""
+    
+    # URLs for sample files
+    files = {
+        'games': 'https://github.com/VintageDon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-games_20250831.json.gz',
+        'reviews': 'https://github.com/VintageDon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-reviews_20250901.json.gz'
+    }
+    
+    for name, url in files.items():
+        print(f"Downloading {name} sample...")
+        response = requests.get(url)
+        
+        # Save and decompress
+        with open(f'{name}_sample.json.gz', 'wb') as f:
+            f.write(response.content)
+        
+        with gzip.open(f'{name}_sample.json.gz', 'rt') as f:
+            data = json.load(f)
+            
+        print(f"✅ {name}: {len(data)} records loaded")
+        
+        # Save uncompressed for analysis
+        with open(f'{name}_sample.json', 'w') as f:
+            json.dump(data, f, indent=2)
+
+# Download sample data
+download_sample_data()
+```
+
+### Method 3: Future Full Dataset Access (Zenodo)
+
+When Available:
+
+- 🏛️ Zenodo Repository: Direct download from academic archive
+- 📋 Persistent DOI: Stable citation and access link
+- 📦 Complete Package: All components in single archive
+- 🔍 Metadata Rich: Complete academic documentation included
+
+---
+
+## 🔍 Data Format Specifications
+
+### JSON Structure Overview
+
+Games Data Structure:
+
+```json
+{
+  "metadata": {
+    "collection_date": "2025-08-31T15:13:05Z",
+    "total_records": 5000,
+    "api_success_rate": "56%",
+    "collection_method": "steam_web_api"
+  },
+  "games": [
+    {
+      "appid": 123456,
+      "name": "Game Title",
+      "app_details": {
+        "success": true,
+        "data": {
+          // Complete Steam API response
+          "type": "game",
+          "name": "Game Title",
+          "is_free": false,
+          "price_overview": { /* pricing data */ },
+          "pc_requirements": { /* system requirements */ },
+          "genres": [ /* genre classifications */ ]
+        }
+      },
+      "reviews": {
+        // Review data when available
+      }
+    }
+  ]
+}
+```
+
+### Compression Standards
+
+| Format | Algorithm | Typical Compression | Tools |
+|------------|---------------|-------------------------|-----------|
+| Raw JSON | None | N/A | Any JSON parser |
+| Compressed (.gz) | gzip (level 9) | 70-80% size reduction | gzip, 7-zip, built-in OS tools |
+
+Decompression Examples:
+
+```bash
+# Command line
+gunzip filename.json.gz
+7z x filename.json.gz
+
+# Python
+import gzip, json
+with gzip.open('filename.json.gz', 'rt') as f:
+    data = json.load(f)
+```
+
+---
+
+## ⚠️ Important Usage Notes
+
+### Data Currency & Limitations
+
+Temporal Considerations:
+
+- 📅 Collection Period: August-September 2025
+- ⏰ Point-in-Time: Data represents snapshot, not real-time values
+- 💰 Pricing: Currency rates and promotional pricing reflect collection period
+- 📊 Review Counts: User review totals continue growing after collection
+
+Known Constraints:
+
+- 🌍 Geographic Bias: Collection from US-based infrastructure
+- 📝 Review Sampling: Limited to 10 recent reviews per application
+- 🎮 Content Coverage: 9.4% of Steam catalog missing due to API limitations
+- 💡 See [Known Limitations](../docs/limitations.md) for complete analysis
+
+### Appropriate Use Cases
+
+✅ Well-Suited For:
+
+- Historical trend analysis and market research
+- Content-based recommendation system development
+- Academic research on gaming industry dynamics
+- Machine learning model training and evaluation
+- Cross-sectional analysis of platform ecosystem
+
+⚠️ Requires Consideration:
+
+- Real-time pricing or availability decisions
+- Complete census analysis (account for 9.4% missing data)
+- Global market analysis (US collection perspective)
+- Longitudinal trend studies (single time point)
+
+---
+
+## 📚 Additional Resources
+
+### Documentation Links
+
+| Resource | Purpose | Relevance |
+|--------------|-------------|---------------|
+| [Data Access Guide](../docs/data-access.md) | Comprehensive download and usage procedures | Essential for all users |
+| [Known Limitations](../docs/limitations.md) | Complete constraint and bias documentation | Critical for research applications |
+| [Quick Start Guide](../docs/quick-start.md) | 30-minute setup to first analysis | Perfect for new users |
+| [Dataset Card](../paper/dataset-card.md) | Complete academic datasheet | Required for academic applications |
+
+### Technical Resources
+
+| Resource | Content | Audience |
+|--------------|-------------|--------------|
+| [Multi-Modal Architecture](../docs/methodologies/multi-modal-architecture.md) | Database schema and design rationale | Technical implementers |
+| [Vector Embeddings](../docs/methodologies/vector-embeddings.md) | Semantic search implementation | ML engineers |
+| [ETL Pipeline](../docs/methodologies/etl-pipeline.md) | Complete processing methodology | Data engineers |
+
+---
+
+## 🤝 Support & Contribution
+
+### Getting Help
+
+- 🐛 Data Issues: [GitHub Issues](https://github.com/VintageDon/steam-dataset-2025/issues) with specific file and error information
+- 📧 General Questions: Check [Documentation Hub](../docs/README.md) first for existing answers
+- 🎓 Academic Inquiries: Reference [Dataset Card](../paper/dataset-card.md) for comprehensive information
+
+### Data Quality Reports
+
+- 🔍 Error Reporting: Specific data quality issues with file references and expected vs. actual values
+- 💡 Enhancement Suggestions: Additional data processing or format suggestions
+- 📊 Usage Examples: Share successful analysis approaches and interesting findings
+
+---
+
+Document Information
 
 | Field | Value |
 |-----------|-----------|
-| Author | VintageDon - <https://github.com/vintagedon> |
-| Created | 2025-09-03 |
-| Last Updated | 2025-09-03 |
-| Version | 1.0 |
+| Author | VintageDon - [GitHub](https://github.com/VintageDon) |
+| Created | 2025-09-07 |
+| Last Updated | 2025-09-07 |
+| Version | 2.0 |
 
 ---
-*Tags: data-assets, steam-dataset, gaming-data, json-datasets, research-data*
+*Tags: data-access, steam-dataset, sample-data, zenodo-release, gaming-analytics*

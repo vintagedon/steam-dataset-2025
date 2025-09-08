@@ -4,13 +4,13 @@
 
 | Metric                | Value                                        |
 | :-------------------- | :------------------------------------------- |
-| **Generating Script** | `test_steam_api.py` (v1.2)                   |
-| **Repository** | `https://github.com/vintagedon/steam-dataset-2025` |
-| **Start Timestamp** | `2025-08-31 15:18:26`                        |
-| **End Timestamp** | `2025-08-31 15:18:45`                        |
-| **Duration** | 19 seconds                                   |
-| **Parameters** | Default full test suite run                  |
-| **Results** |                                              |
+| Generating Script | `test_steam_api.py` (v1.2)                   |
+| Repository | `https://github.com/vintagedon/steam-dataset-2025` |
+| Start Timestamp | `2025-08-31 15:18:26`                        |
+| End Timestamp | `2025-08-31 15:18:45`                        |
+| Duration | 19 seconds                                   |
+| Parameters | Default full test suite run                  |
+| Results |                                              |
 | _Final Status_        | Success                                      |
 | _GetAppList Status_   | Success (`263,901` apps found)               |
 | _Rate Limit Test_     | `10/10` successful requests                  |
