@@ -24,7 +24,6 @@ Steam Dataset 2025 provides unprecedented access to the complete Steam ecosystem
 - [Technology Stack](#technology-stack)
 - [Complete Development Journey](#complete-development-journey)
 - [Use Cases & Applications](#use-cases--applications)
-- [Research Applications](#research-applications)
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
 - [Citation & Academic Use](#citation--academic-use)
@@ -50,7 +49,7 @@ Steam Dataset 2025 provides unprecedented access to the complete Steam ecosystem
 ### For Technical Implementation
 
 - [Multi-Modal Architecture](docs/methodologies/multi-modal-db-architecture.md) - PostgreSQL + JSONB + Vector database design
-- [Vector Embeddings Methodology](docs/methodologies/vector-embeddings.md) - BAAI/bge-m3 implementation and reproducibility
+- [Vector Embeddings Methodology](docs/methodologies/vector-embeddings.md) - BGE-M3 implementation and reproducibility
 - [ETL Pipeline Guide](scripts/README.md) - Complete data processing methodology
 
 ---
@@ -90,10 +89,10 @@ Steam Dataset 2025 provides unprecedented access to the complete Steam ecosystem
 
 ### What Makes This Different
 
-- API-Pure Methodology: Exclusively official Steam Web APIs (no web scraping or third-party estimates)
-- Multilingual Support: Native handling of 100+ languages through BGE-M3 embeddings
-- Multi-Modal Database: First Steam dataset with integrated relational + document + vector architecture
-- Academic Standards: Complete transparency and reproducibility following peer-review standards
+- **API-Pure Methodology:** Exclusively official Steam Web APIs (no web scraping or third-party estimates)
+- **Multilingual Support:** Native handling of 100+ languages through BGE-M3 embeddings
+- **Multi-Modal Database:** First Steam dataset with integrated relational + document + vector architecture
+- **Academic Standards:** Complete transparency and reproducibility following peer-review standards
 
 ### Content Distribution
 
@@ -107,10 +106,10 @@ Steam Dataset 2025 provides unprecedented access to the complete Steam ecosystem
 
 ### Scale Achievements
 
-- 10-40x Larger than typical academic gaming datasets (6K-11K applications)
-- 2x Larger than nearest public competitor (120K applications)
-- 90.6% Coverage of accessible Steam catalog with documented gap analysis
-- Complete Transparency with full methodology and reproducibility documentation
+- **10-40x Larger** than typical academic gaming datasets (6K-11K applications)
+- **2x Larger** than nearest public competitor (120K applications)
+- **90.6% Coverage** of accessible Steam catalog with documented gap analysis
+- **Complete Transparency** with full methodology and reproducibility documentation
 
 ---
 
@@ -123,7 +122,7 @@ graph TD
     A[Steam Web API<br/>Official Endpoints] --> B[Python ETL Pipeline<br/>Rate-Limited Collection]
     B --> C[PostgreSQL Core<br/>Relational Data]
     B --> D[JSONB Documents<br/>Semi-Structured]
-    B --> E[Vector Embeddings<br/>1024-Dim Semantic]
+    B --> E[Vector Embeddings<br/>384-Dim Semantic]
     
     C --> F[Advanced Analytics<br/>Complex Queries]
     D --> F
@@ -141,10 +140,10 @@ graph TD
 
 ### Database Layers
 
-- Relational Layer: Normalized entities with referential integrity
-- Document Layer: JSONB for flexible Steam API response storage  
-- Vector Layer: Semantic embeddings for content-based analysis
-- Analytics Layer: Optimized queries and materialized views
+- **Relational Layer:** Normalized entities with referential integrity
+- **Document Layer:** JSONB for flexible Steam API response storage  
+- **Vector Layer:** Semantic embeddings for content-based analysis
+- **Analytics Layer:** Optimized queries and materialized views
 
 ---
 
@@ -152,66 +151,69 @@ graph TD
 
 ```markdown
 steam-dataset-2025/
-├── data/                    # Dataset files and access documentation
-│   ├── 01_raw/                # Original API responses (sample available)
-│   ├── 02_processed/          # Cleaned and enriched data
-│   └── README.md              # Data access and download guide
-├── docs/                   # Comprehensive documentation suite
-│   ├── analytics/             # Analytical methodologies and frameworks
-│   ├── methodologies/         # Data collection and validation procedures
-│   ├── project_journal/       # Development progression documentation
-│   ├── citation.md           # Academic citation guide
-│   ├── data-access.md        # File locations and download procedures
-│   ├── infrastructure.md     # Infrastructure documentation
-│   ├── limitations.md        # Known constraints and biases
-│   ├── postgresql-database-schema.md # Database schema documentation
-│   ├── postgesql-database-performance.md # Performance benchmarks
-│   └── README.md             # Documentation hub
-├── notebooks/              # Interactive data science demonstrations
-│   ├── 1.0-exploration/       # Exploratory data analysis
-│   ├── 2.0-preprocessing/     # Feature engineering
-│   ├── 3.0-modeling/          # Machine learning and predictive analytics
-│   └── 4.0-release-1/         # Production analytical applications
-├── paper/                  # Academic publication materials
-│   ├── dataset-card.md       # Complete academic datasheet
-│   ├── validation-summary.md # Competitive analysis and positioning
-│   └── README.md             # Academic materials index
-├── scripts/               # Complete ETL and processing pipeline
-│   ├── 01-test-steam-api/     # Initial API validation and testing
-│   ├── 02-get_steam_data_sample/ # Sample data collection
-│   ├── 03-analyze_steam_data_schema/ # Schema analysis tools
-│   ├── 04-postgres_schema_design/ # Database schema and import scripts
-│   ├── 05-5000-steam-game-dataset-analysis/ # Sample analysis framework
-│   ├── 06-full-dataset-import/ # Production-scale ETL pipeline
-│   ├── 07-generate-vector-embeddings/ # Semantic search implementation
-│   ├── 08-materialization-columns/ # JSONB materialization pipeline
-│   └── README.md             # Script documentation
-├── reports/               # Comprehensive analytical reports
-│   ├── figures/              # Generated charts and visualizations
-│   └── README.md             # Reports overview
-├── work-logs/             # Development progress documentation
-│   ├── 01-dataset-foundations/
-│   ├── 02-steam-data-sample/
-│   ├── 03-analyze-steam-data-sample/
-│   ├── 04-postgresql-schema-analysis/
-│   ├── 05-5000-steam-game-dataset-analysis/
-│   ├── 06-full-data-set-import/
-│   ├── 07-vector-embeddings/
-│   ├── 08-materialization-columns/
+├── assets/                # Visualization assets and sponsor materials
+│   ├── sponsors/             # Sponsor logos and acknowledgments
+│   ├── steam-fulldataset-dataset-plots-initial/  # Production analytics charts
+│   ├── steam5k-dataset-plots/  # Sample dataset visualizations
+│   └── README.md             # Assets documentation
+├── data/                  # Dataset files and access documentation
+│   ├── 01_raw/               # Original API responses (5K sample available)
+│   ├── 02_processed/         # Cleaned and enriched data (prepared for release)
+│   └── README.md             # Data access and download guide
+├── docs/                  # Comprehensive documentation suite
+│   ├── analytics/            # Analytical methodologies and reports
+│   │   ├── steam-5k-dataset-analysis.md
+│   │   ├── steam-api-schema-analysis.md
+│   │   └── README.md
+│   ├── methodologies/        # Data collection and validation procedures
+│   │   ├── ai-human-collaboration-methodology.md
+│   │   ├── data-validaton-and-qa.md
+│   │   ├── multi-modal-db-architecture.md
+│   │   ├── steam-api-collection.md
+│   │   ├── vector-embeddings.md
+│   │   └── README.md
+│   ├── citation.md          # Academic citation guide
+│   ├── data-access.md       # File locations and download procedures
+│   ├── data_dictionary.md   # Complete field documentation
+│   ├── infrastructure.md    # Infrastructure specifications
+│   ├── limitations.md       # Known constraints and biases
+│   ├── postgresql-database-schema.md  # Database schema documentation
+│   ├── postgesql-database-performance.md  # Performance benchmarks
+│   └── README.md            # Documentation hub
+├── documentation-standards/  # Documentation templates and standards
+│   ├── interoir-readme-template.md
+│   ├── kb-general-template.md
+│   ├── worklog-kb-template.md
 │   └── README.md
-├── assets/                # Visualization assets and charts
-│   ├── steam-fulldataset-dataset-plots-initial/ # Production analytics charts
-│   └── sponsors/             # Sponsor logos and materials
-└── README.md              # This file
+├── notebooks/             # Interactive data science demonstrations (planned)
+│   └── README.md
+├── work-logs/            # Complete development session documentation
+│   ├── 01-dataset-foundations/  # API validation and connectivity (Phase 1)
+│   ├── 02-steam-data-sample/    # Sample collection methodology (Phase 2)
+│   ├── 03-analyze-steam-data-sample/  # Schema analysis (Phase 3)
+│   ├── 04-postgresql-schema-analysis/  # Database implementation (Phase 4)
+│   ├── 05-5000-steam-game-dataset-analysis/  # Analytical framework (Phase 5)
+│   ├── 06-full-data-set-import/  # Full catalog collection (Phase 6)
+│   ├── 07-vector-embeddings/     # Semantic search implementation (Phase 7)
+│   ├── 08-materialization-columns/  # Performance optimization (Phase 8)
+│   ├── 09-pc-requirements-materialization/  # Hardware extraction (Phase 9)
+│   └── README.md                # Work logs hub
+├── .gitignore
+├── CODE_OF_CONDUCT.md
+├── environment.yml         # Conda environment specification
+├── LICENSE                 # MIT License
+├── README.md              # This file
+├── repo-tree.txt          # Repository structure snapshot
+└── requirements.txt       # Python dependencies
 ```
 
 ### Navigation Guide
 
-- [Quick Start](docs/data-access.md) - Get up and running in 30 minutes
-- [Data Overview](data/README.md) - Complete data pipeline and dataset documentation
-- [Scripts Documentation](scripts/README.md) - Collection and processing pipeline guide  
-- [Technical Documentation](docs/README.md) - Architecture and methodology details
-- [Database Schema](docs/postgresql-database-schema.md) - PostgreSQL implementation guide
+- **[Quick Start](docs/data-access.md)** - Get up and running in 30 minutes
+- **[Data Overview](data/README.md)** - Complete data pipeline and dataset documentation
+- **[Work Logs](work-logs/README.md)** - Complete development journey documentation
+- **[Technical Documentation](docs/README.md)** - Architecture and methodology details
+- **[Database Schema](docs/postgresql-database-schema.md)** - PostgreSQL implementation guide
 
 ---
 
@@ -219,24 +221,24 @@ steam-dataset-2025/
 
 ### Data Collection & Processing
 
-- Python 3.9+: Core collection and processing infrastructure
-- Steam Web API: Official API endpoints with comprehensive rate limiting
-- Data Validation: Systematic integrity checking and quality assurance
-- Error Handling: Robust retry logic and comprehensive logging
+- **Python 3.9+:** Core collection and processing infrastructure
+- **Steam Web API:** Official API endpoints with comprehensive rate limiting
+- **Data Validation:** Systematic integrity checking and quality assurance
+- **Error Handling:** Robust retry logic and comprehensive logging
 
 ### Database & Analytics
 
-- PostgreSQL 16: Primary database with JSONB and vector support
-- pgvector Extension: 1024-dimensional embeddings with HNSW indexing
-- Analytics Framework: Materialized views and optimized query patterns
-- Performance Optimization: Strategic indexing and query optimization
+- **PostgreSQL 16:** Primary database with JSONB and vector support
+- **pgvector Extension:** 384-dimensional embeddings with HNSW indexing
+- **Analytics Framework:** Materialized views and optimized query patterns
+- **Performance Optimization:** Strategic indexing and query optimization
 
 ### Advanced Capabilities
 
-- Semantic Search: AI-powered content discovery and similarity analysis
-- Market Intelligence: Comprehensive analytics covering pricing, trends, and competition
-- Recommendation Systems: Foundation for sophisticated content recommendation engines
-- Research Platform: Academic-grade infrastructure for gaming industry research
+- **Semantic Search:** AI-powered content discovery and similarity analysis
+- **Market Intelligence:** Comprehensive analytics covering pricing, trends, and competition
+- **Recommendation Systems:** Foundation for sophisticated content recommendation engines
+- **Research Platform:** Academic-grade infrastructure for gaming industry research
 
 ---
 
@@ -244,7 +246,7 @@ steam-dataset-2025/
 
 ### Phase 1: API Foundation Development (Complete)
 
-*Worklog: [phase-01-worklog-data-set-foundations.md](work-logs/01-dataset-foundations/phase-01-worklog-data-set-foundations.md)*
+*Work Log: [01-dataset-foundations](work-logs/01-dataset-foundations/README.md)*
 
 - Steam Web API integration with comprehensive error handling
 - Rate limiting implementation (1.5s delays, sustainable 17.3 req/min)
@@ -257,22 +259,22 @@ steam-dataset-2025/
 
 ### Phase 2: Sample Collection Methodology (Complete)
 
-*Worklog: [phase-02-worklog-steam-data-sample.md](work-logs/02-steam-data-sample/phase-02-worklog-steam-data-sample.md)*
+*Work Log: [02-steam-data-sample](work-logs/02-steam-data-sample/README.md)*
 
-- Systematic random sampling strategy across 179 Steam applications
+- Systematic collection strategy across 179 Steam applications
 - Parallel API collection (appdetails + reviews) with intelligent error handling
 - Data quality assurance with 56% success rate (expected for delisted/restricted content)
 - Automated JSON serialization with gzip compression for efficient storage
 
-**Key Deliverables:** `get_steam_data_sample.py` generating `steam_data_sample.json` (100 games, 1.7MB)
+**Key Deliverables:** `get_steam_data_sample.py` generating `steam_data_sample.json` (179 games, 1.7MB)
 
 ---
 
 ### Phase 3: Schema Analysis & Documentation (Complete)
 
-*Worklog: [phase-03-worklog-analyze-steam-data-sample.md](work-logs/03-analyze-steam-data-sample/phase-03-worklog-analyze-steam-data-sample.md)*
+*Work Log: [03-analyze-steam-data-sample](work-logs/03-analyze-steam-data-sample/README.md)*
 
-- Automated Steam API response structure analysis across 193 fields
+- Automated Steam API response structure analysis across 200+ fields
 - PostgreSQL schema recommendations with JSONB optimization
 - Data type profiling with presence/non-null statistics
 - Comprehensive field documentation with examples and normalization strategies
@@ -283,12 +285,12 @@ steam-dataset-2025/
 
 ### Phase 4: Database Pipeline Architecture (Complete)
 
-*Worklog: [phase-04-worklog-postgresql-schema-analysis.md](work-logs/04-postgresql-schema-analysis/phase-04-worklog-postgresql-schema-analysis.md)*
+*Work Log: [04-postgresql-schema-analysis](work-logs/04-postgresql-schema-analysis/README.md)*
 
 - PostgreSQL 16 schema implementation with normalized relational design
 - JSONB storage for semi-structured API responses preserving data fidelity
 - 7-script ETL pipeline: validation → schema setup → import → enrichment → analytics
-- Production-ready bulk import achieving 239k applications in production run
+- Production-ready bulk import achieving 5,030 applications in sample run
 
 **Key Deliverables:** Complete database schema with 15+ normalized tables and automated import pipeline
 
@@ -296,7 +298,7 @@ steam-dataset-2025/
 
 ### Phase 5: Analytics Framework & Sample Dataset (Complete)
 
-*Worklog: [phase-05-worklog-steam-dataset-analysis.md](work-logs/05-5000-steam-game-dataset-analysis/phase-05-worklog-steam-dataset-analysis.md)*
+*Work Log: [05-5000-steam-game-dataset-analysis](work-logs/05-5000-steam-game-dataset-analysis/README.md)*
 
 - 16 sophisticated analytical queries covering market intelligence, pricing, and developer analysis
 - Automated visualization generation producing publication-quality charts
@@ -309,12 +311,12 @@ steam-dataset-2025/
 
 ### Phase 6: Full Dataset Implementation (Complete)
 
-*Worklog: [phase-06-worklog-full-dataset-import.md](work-logs/06-full-data-set-import/phase-06-worklog-full-dataset-import.md)*
+*Work Log: [06-full-data-set-import](work-logs/06-full-data-set-import/README.md)*
 
 - Complete Steam catalog processing (239,664 applications successfully imported)
-- Production-scale ETL pipeline with streaming architecture and gap analysis
+- Production-scale ETL pipeline with checkpoint architecture and gap analysis
 - Review corpus integration (1M+ reviews) with metadata enrichment
-- Comprehensive data reconciliation achieving 90.6% catalog coverage with documented gaps
+- Comprehensive data reconciliation achieving 90.8% catalog coverage with documented gaps
 
 **Key Deliverables:** Production `steamfull` database with complete ecosystem and validation reports
 
@@ -322,40 +324,40 @@ steam-dataset-2025/
 
 ### Phase 7: Vector Embeddings & Semantic Search (Complete)
 
-*Worklog: [phase-07-worklog-vector-embeddings.md](work-logs/07-vector-embeddings/phase-07-worklog-vector-embeddings.md)*
+*Work Log: [07-vector-embeddings](work-logs/07-vector-embeddings/README.md)*
 
-- BAAI/bge-m3 model deployment generating 1024-dimensional embeddings
-- GPU-accelerated batch processing with adaptive batching for VRAM management
-- Keyset pagination for robust processing of 239k+ applications and 1M+ reviews
-- Real-time system monitoring with threaded performance tracking
+- all-MiniLM-L6-v2 model deployment generating 384-dimensional embeddings
+- GPU-accelerated batch processing (NVIDIA A4000) with optimized throughput
+- HNSW index creation for sub-50ms similarity search queries
+- Complete embedding coverage: 239,664 applications with semantic search capability
 
-**Key Deliverables:** `generate-embeddings-with-monitoring.py` achieving ~60 records/second throughput
-
----
-
-### Phase 8: Platform Support & Pricing Materialization (Complete)
-
-*Worklog: [phase-08-worklog-materialization-columns.md](work-logs/08-materialization-columns/phase-08-worklog-materialization-columns.md)*
-
-- JSONB-to-relational migration for platform support, pricing, and achievement data
-- Self-correcting validation loop achieving zero discrepancies across 239k records
-- Business rule enforcement (free game pricing exclusion) with defensive population logic
-- Comprehensive validation suite with source-to-target comparison and logic checks
-
-**Key Deliverables:** 8 materialized columns with 100% validation accuracy for Kaggle accessibility package
+**Key Deliverables:** `generate-embeddings-with-monitoring.py` achieving ~8.3 records/second throughput
 
 ---
 
-### Phase 9: Publication & Release (In Progress)
+### Phase 8: Performance Optimization (Complete)
 
-Following the [Definitive Publication Roadmap](docs/publication-roadmap.pdf):
+*Work Log: [08-materialization-columns](work-logs/08-materialization-columns/README.md)*
 
-- **Multi-Format Packaging:** CSV (accessibility), PostgreSQL dump (power users), NPY embeddings (AI researchers)
-- **Kaggle Release:** 10/10 usability with comprehensive README, data dictionary, and 4 starter notebooks
-- **Zenodo Archival:** DOI minting with ORCID linkage for academic citation
-- **Documentation Finalization:** Dataset card, validation summary, and citation guidelines
+- Strategic JSONB-to-column materialization for frequently-queried fields
+- Platform support, pricing data, and achievement counts extracted to typed columns
+- Self-correcting validation loop achieving zero discrepancies across 239K records
+- Query performance improvements: 70-124x speedup for common patterns
 
-**Target:** Q4 2025 public release on Kaggle and Zenodo with complete documentation suite
+**Key Deliverables:** 8 materialized columns with 100% validation accuracy and comprehensive quality assurance
+
+---
+
+### Phase 9: Hardware Requirements Extraction (Complete)
+
+*Work Log: [09-pc-requirements-materialization](work-logs/09-pc-requirements-materialization/README.md)*
+
+- Advanced HTML parsing extracting structured hardware requirements from free-text
+- RAM, VRAM, and storage requirements parsed across minimum and recommended specs
+- Temporal hardware trend analysis enabled (2GB → 16GB RAM evolution 2008-2025)
+- 65.7% RAM extraction coverage with transparent documentation of limitations
+
+**Key Deliverables:** 6 hardware requirement columns enabling previously impossible temporal analyses
 
 ---
 
@@ -363,58 +365,38 @@ Following the [Definitive Publication Roadmap](docs/publication-roadmap.pdf):
 
 ### Gaming Industry Research
 
-- Market Analysis: Publisher networks, genre evolution, pricing trends
-- Content Strategy: Success prediction, recommendation systems, market segmentation
-- Global Markets: Cross-regional analysis, localization strategies, platform dynamics
+- **Market Analysis:** Publisher networks, genre evolution, pricing trends
+- **Content Strategy:** Success prediction, recommendation systems, market segmentation
+- **Global Markets:** Cross-regional analysis, localization strategies, platform dynamics
 
 ### Machine Learning Applications
 
-- Semantic Search: Content-based game discovery and recommendation
-- NLP Research: Sentiment analysis, topic modeling, review classification
-- Graph Analysis: Publisher relationships, collaboration networks, ecosystem mapping
-- Predictive Modeling: Success prediction, trend forecasting, user behavior analysis
+- **Semantic Search:** Content-based game discovery and recommendation
+- **NLP Research:** Sentiment analysis, topic modeling, review classification
+- **Graph Analysis:** Publisher relationships, collaboration networks, ecosystem mapping
+- **Predictive Modeling:** Success prediction, trend forecasting, user behavior analysis
 
 ### Academic Research
 
-- Digital Economics: Platform economics, marketplace dynamics, pricing strategies
-- HCI Studies: User experience, review patterns, engagement analysis
-- Data Science Education: Multi-modal database architecture, vector search implementation
-- Methodology Research: API-pure collection, reproducibility frameworks
-
----
-
-## Research Applications
-
-### Published Methodologies
-
-This project demonstrates several cutting-edge methodologies suitable for academic publication:
-
-- API-Pure Data Collection: Methodologically rigorous approach ensuring data integrity and reproducibility
-- Multi-Modal Database Architecture: Integration of relational, document, and vector databases for comprehensive analysis
-- Semantic Search Implementation: Production deployment of embedding-based similarity search at scale
-- Systematic Data Validation: Comprehensive quality assurance frameworks for large-scale data projects
-
-### Future Research Directions
-
-- Graph Neural Networks: Developer and publisher relationship analysis
-- Temporal Analysis: Market evolution and trend prediction modeling
-- Cross-Platform Analysis: Multi-ecosystem gaming market intelligence
-- Recommendation Systems: Advanced collaborative filtering and content-based approaches
+- **Digital Economics:** Platform economics, marketplace dynamics, pricing strategies
+- **HCI Studies:** User experience, review patterns, engagement analysis
+- **Data Science Education:** Multi-modal database architecture, vector search implementation
+- **Methodology Research:** API-pure collection, reproducibility frameworks, RAVGV methodology
 
 ---
 
 ## Getting Started
 
-### Quick Start with Production Dataset
+### Quick Start with Sample Dataset
 
-1. Clone Repository:
+1. **Clone Repository:**
 
    ```bash
    git clone https://github.com/vintagedon/steam-dataset-2025.git
    cd steam-dataset-2025
    ```
 
-2. Set Up Environment:
+2. **Set Up Environment:**
 
    ```bash
    python -m venv venv
@@ -422,36 +404,30 @@ This project demonstrates several cutting-edge methodologies suitable for academ
    pip install -r requirements.txt
    ```
 
-3. Database Setup:
+3. **Access Sample Data:**
 
    ```bash
-   # Install PostgreSQL 16 with pgvector
-   # Run schema creation scripts
-   cd scripts/04-postgres_schema_design/
-   python 04-02-setup-postgresql-schema.py
+   # Sample dataset available in data/01_raw/
+   # See data/README.md for download instructions
    ```
 
-4. Data Import:
+4. **Explore Documentation:**
 
    ```bash
-   # Import production dataset
-   python 04-03-import-json-to-pgsql.py
-   python 04-04-post-import-database-tasks.py
+   # Review methodology and analytical approaches
+   # See docs/ directory for comprehensive guides
    ```
 
-5. Explore Analytics:
+### For Database Implementation
 
-   ```bash
-   # Launch Jupyter for interactive analysis
-   jupyter lab notebooks/
-   ```
+Full database setup requires PostgreSQL 16 with pgvector extension. See [Database Schema Documentation](docs/postgresql-database-schema.md) for complete implementation guide.
 
 ### Documentation Paths
 
-- [Data Overview](data/README.md) - Complete data pipeline and dataset documentation
-- [Scripts Documentation](scripts/README.md) - Collection and processing pipeline guide  
-- [Technical Documentation](docs/README.md) - Architecture and methodology details
-- [Database Schema](docs/postgresql-database-schema.md) - PostgreSQL implementation guide
+- **[Data Overview](data/README.md)** - Complete data pipeline and dataset documentation
+- **[Work Logs](work-logs/README.md)** - Complete development journey (9 phases)
+- **[Technical Documentation](docs/README.md)** - Architecture and methodology details
+- **[Database Schema](docs/postgresql-database-schema.md)** - PostgreSQL implementation guide
 
 ---
 
@@ -461,10 +437,10 @@ We welcome contributions from the data science and gaming research communities:
 
 ### Areas for Contribution
 
-- Analytics Development: New analytical frameworks and visualization approaches
-- Documentation Enhancement: Improved guides and methodological documentation
-- Performance Optimization: Database and query performance improvements
-- Research Applications: Novel research applications and use case development
+- **Analytics Development:** New analytical frameworks and visualization approaches
+- **Documentation Enhancement:** Improved guides and methodological documentation
+- **Performance Optimization:** Database and query performance improvements
+- **Research Applications:** Novel research applications and use case development
 
 ### Contribution Guidelines
 
@@ -473,6 +449,8 @@ We welcome contributions from the data science and gaming research communities:
 3. Include tests and documentation for new features
 4. Submit pull request with clear description of changes
 5. Participate in code review process
+
+See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community guidelines.
 
 ---
 
@@ -491,30 +469,12 @@ If you use this dataset in academic research, please cite:
 }
 ```
 
-Academic Materials:
+### Academic Materials
 
-- [Dataset Card](paper/dataset-card.md) - Complete academic documentation
-- [Validation Summary](paper/validation-summary.md) - Competitive analysis and positioning
-- [Citation Guide](docs/citation.md) - Proper attribution for publications
-
----
-
-## License & Legal
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-Key Permissions:
-
-- Commercial use and modification
-- Academic research and publication  
-- Distribution and derivative works
-
-Requirements:
-
-- Include license notice and attribution
-- Acknowledge original dataset source
-
-Data Usage: All data collected through official Steam Web APIs in compliance with Valve's terms of service. This dataset is intended for academic research and educational purposes.
+- **[Dataset Card](paper/dataset-card.md)** - Complete academic documentation
+- **[Validation Summary](paper/validation-summary.md)** - Competitive analysis and positioning
+- **[Citation Guide](docs/citation.md)** - Proper attribution for publications
+- **[Methodologies](docs/methodologies/README.md)** - Reproducible research procedures
 
 ---
 
@@ -530,31 +490,50 @@ Steam Dataset 2025 is proudly supported by industry partners who recognize the v
   </a>
 </div>
 
-[MSP4 LLC](https://msp4.com/) - Leading managed IT services provider supporting innovative data science and research initiatives. MSP4's enterprise infrastructure expertise enables the robust technical foundation that makes large-scale projects like Steam Dataset 2025 possible.
+[**MSP4 LLC**](https://msp4.com/) - Leading managed IT services provider supporting innovative data science and research initiatives. MSP4's enterprise infrastructure expertise enables the robust technical foundation that makes large-scale projects like Steam Dataset 2025 possible.
 
 ### Become a Sponsor
 
 Interested in supporting open data science research and gaining visibility in the analytics community? Contact us about sponsorship opportunities that align with your organization's commitment to data innovation and academic research.
 
-Sponsorship Benefits:
+**Sponsorship Benefits:**
 
-- Community Recognition: Logo placement and acknowledgment in project documentation
-- Research Access: Early access to analytical findings and market intelligence reports  
-- Technical Collaboration: Opportunities for joint research and methodology development
-- Industry Leadership: Association with cutting-edge data engineering and analytics innovation
+- **Community Recognition:** Logo placement and acknowledgment in project documentation
+- **Research Access:** Early access to analytical findings and market intelligence reports  
+- **Technical Collaboration:** Opportunities for joint research and methodology development
+- **Industry Leadership:** Association with cutting-edge data engineering and analytics innovation
+
+---
+
+## License & Legal
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+**Key Permissions:**
+
+- Commercial use and modification
+- Academic research and publication  
+- Distribution and derivative works
+
+**Requirements:**
+
+- Include license notice and attribution
+- Acknowledge original dataset source
+
+**Data Usage:** All data collected through official Steam Web APIs in compliance with Valve's terms of service. This dataset is intended for academic research and educational purposes.
 
 ---
 
 ## Contact & Support
 
-- Project Maintainer: [VintageDon](https://github.com/vintagedon)
-- ORCID: [0009-0008-7695-4093](https://orcid.org/0009-0008-7695-4093)
-- Issues & Bugs: [GitHub Issues](https://github.com/vintagedon/steam-dataset-2025/issues)
-- Discussions: [GitHub Discussions](https://github.com/vintagedon/steam-dataset-2025/discussions)
-- Sponsorship Inquiries: Contact via GitHub for partnership opportunities
+- **Project Maintainer:** [VintageDon](https://github.com/vintagedon)
+- **ORCID:** [0009-0008-7695-4093](https://orcid.org/0009-0008-7695-4093)
+- **Issues & Bugs:** [GitHub Issues](https://github.com/vintagedon/steam-dataset-2025/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/vintagedon/steam-dataset-2025/discussions)
+- **Sponsorship Inquiries:** Contact via GitHub for partnership opportunities
 
 ---
 
-Last Updated: September 29, 2025 | Project Status: Production Complete | Current Phase: Publication Preparation
+**Last Updated:** September 29, 2025 | **Project Status:** Production Complete | **Current Phase:** Publication Preparation
 
 *Project developed using systematic AI-human collaboration following RAVGV methodology*
