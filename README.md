@@ -145,10 +145,6 @@ steam-dataset-2025/
 │   ├── methodologies/              # Data collection and processing guides
 │   └── citation.md                 # Citation guide
 ├── 🗂️ documentation-standards/    # Template and style guides
-├── 📓 notebooks/                   # Jupyter analysis examples (3 notebooks)
-│   ├── 01-steam-platform-evolution-and-marketplace/
-│   ├── 02-semantic-game-discovery/
-│   └── 03-the-semantic-fingerprint/
 ├── 💻 scripts/                     # Complete ETL pipeline (12 phases)
 │   ├── 01-dataset-foundations/
 │   ├── 02-steam-data-sample/
@@ -166,7 +162,13 @@ steam-dataset-2025/
 │   ├── DATASET_CARD.md             # Academic documentation
 │   ├── DATA_DICTIONARY.md          # Complete field specifications
 │   ├── notebook-data/              # Pre-exported notebook datasets
+│   │   ├── 01-platform-evolution/
+│   │   ├── 02-semantic-game-discovery/
+│   │   └── 03-the-semantic-fingerprint/
 │   └── notebooks/                  # Published Jupyter notebooks with PDFs
+│       ├── 01-steam-platform-evolution-and-marketplace/
+│       ├── 02-semantic-game-discovery/
+│       └── 03-the-semantic-fingerprint/
 └── 📝 work-logs/                   # Complete development history
     ├── 01-dataset-foundations/
     ├── 02-steam-data-sample/
@@ -183,7 +185,7 @@ steam-dataset-2025/
 ### **Navigation Guide**
 
 - **[📥 Data Access](data/)** - Download datasets and access documentation
-- **[📓 Notebooks](notebooks/)** - Interactive analysis examples with full PDF exports
+- **[📓 Notebooks](steam-dataset-2025-v1/notebooks/)** - Interactive analysis examples with full PDF exports
 - **[📖 Documentation](docs/)** - Complete technical specifications
 - **[💻 Scripts](scripts/)** - Full ETL pipeline and processing code
 - **[📝 Work Logs](work-logs/)** - Development journey and methodology decisions
@@ -220,7 +222,7 @@ steam-dataset-2025/
 
 Three production-ready Jupyter notebooks demonstrate dataset capabilities with complete documentation and PDF exports:
 
-### **[01: Platform Evolution & Market Landscape](notebooks/01-steam-platform-evolution-and-marketplace/)**
+### **[01: Platform Evolution & Market Landscape](steam-dataset-2025-v1/notebooks/01-steam-platform-evolution-and-marketplace/)**
 
 **Research Questions:**
 
@@ -228,11 +230,11 @@ Three production-ready Jupyter notebooks demonstrate dataset capabilities with c
 - Which genres drive platform growth and pricing strategy changes?
 - What patterns emerge in cross-platform support (Windows/Mac/Linux)?
 
-**[📓 View Notebook (.ipynb)](notebooks/01-steam-platform-evolution-and-marketplace/notebook-01-steam-platform-evolution.ipynb) | [📄 Download PDF](notebooks/01-steam-platform-evolution-and-marketplace/notebook-01-steam-platform-evolution.pdf)**
+**[📓 View Notebook (.ipynb)](steam-dataset-2025-v1/notebooks/01-steam-platform-evolution-and-marketplace/notebook-01-steam-platform-evolution-and-market-landscape.ipynb) | [📄 Download PDF](steam-dataset-2025-v1/notebooks/01-steam-platform-evolution-and-marketplace/notebook-01-steam-platform-evolution.pdf)**
 
 ---
 
-### **[02: Semantic Game Discovery](notebooks/02-semantic-game-discovery/)**
+### **[02: Semantic Game Discovery](steam-dataset-2025-v1/notebooks/02-semantic-game-discovery/)**
 
 **Research Questions:**
 
@@ -240,11 +242,11 @@ Three production-ready Jupyter notebooks demonstrate dataset capabilities with c
 - Can semantic search discover similar games across genre boundaries?
 - What representative games best exemplify each major genre?
 
-**[📓 View Notebook (.ipynb)](notebooks/02-semantic-game-discovery/notebook-02-semantic-game-discovery.ipynb) | [📄 Download PDF](notebooks/02-semantic-game-discovery/notebook-02-semantic-game-discovery.pdf)**
+**[📓 View Notebook (.ipynb)](steam-dataset-2025-v1/notebooks/02-semantic-game-discovery/02-semantic-game-discovery.ipynb) | [📄 Download PDF](steam-dataset-2025-v1/notebooks/02-semantic-game-discovery/notebook-02-semantic-game-discovery.pdf)**
 
 ---
 
-### **[03: The Semantic Fingerprint](notebooks/03-the-semantic-fingerprint/)**
+### **[03: The Semantic Fingerprint](steam-dataset-2025-v1/notebooks/03-the-semantic-fingerprint/)**
 
 **Research Questions:**
 
@@ -252,7 +254,7 @@ Three production-ready Jupyter notebooks demonstrate dataset capabilities with c
 - How does class imbalance affect ML performance at scale?
 - Which genres are most predictable from text descriptions?
 
-**[📓 View Notebook (.ipynb)](notebooks/03-the-semantic-fingerprint/notebook-03-the-semantic-fingerprint.ipynb) | [📄 Download PDF](notebooks/03-the-semantic-fingerprint/notebook-03-the-semantic-fingerprint.pdf)**
+**[📓 View Notebook (.ipynb)](steam-dataset-2025-v1/notebooks/03-the-semantic-fingerprint/03-the-semantic-fingerprint.ipynb) | [📄 Download PDF](steam-dataset-2025-v1/notebooks/03-the-semantic-fingerprint/notebook-03-the-semantic-fingerprint.pdf)**
 
 ---
 
@@ -264,7 +266,7 @@ Three production-ready Jupyter notebooks demonstrate dataset capabilities with c
 - ✅ Reproducible code with fixed random seeds
 - ✅ Publication-quality visualizations
 
-**[🚀 Explore All Notebooks](notebooks/)**
+**[🚀 Explore All Notebooks](steam-dataset-2025-v1/notebooks/)**
 
 ---
 
