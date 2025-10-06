@@ -1,0 +1,512 @@
+[
+  {
+    "query": "relaxing farming simulation with community building",
+    "results": [
+      {
+        "appid": 3373800,
+        "name": "Relaxing Fields",
+        "short_description": "A short, simple and relaxing idle game where you grow crops, build homes for farmers, and earn money to decorate.",
+        "genres": "Simulation, Indie, Casual",
+        "price_usd": 2.99,
+        "cosine_similarity": 0.6484739780426025
+      },
+      {
+        "appid": 3807510,
+        "name": "Farming Life Simulator",
+        "short_description": "Plant seeds, grow crops, chop trees, go to fishing, and trade goods in a fully interactive farming simulator. Build relationships, expand your fields, manage resources, and experience daily life in a living village.",
+        "genres": "Simulation, Indie, Early Access",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6461491969912777
+      },
+      {
+        "appid": 3393740,
+        "name": "Firefly Village",
+        "short_description": "The Firefly Village awaits! A bite-sized, streamlined farming sim that focuses on moments that matter, without wasting a single second of your time. Build a homestead, raise crops, tend to livestock, make friends, and enjoy a pocket of paradise where farming is a delight and friends plentiful.",
+        "genres": "Simulation, Indie, Casual, RPG",
+        "price_usd": 8.99,
+        "cosine_similarity": 0.6358726024627686
+      },
+      {
+        "appid": 1357610,
+        "name": "Desktop Farm",
+        "short_description": "Relaxing game where you can build your farm on your desktop. Your farm will be your interactive live wallpaper. Perfect to play in the background doing other things.",
+        "genres": "Strategy, Simulation, Indie, Casual",
+        "price_usd": 2.99,
+        "cosine_similarity": 0.6280339138528068
+      },
+      {
+        "appid": 3949430,
+        "name": "Farmer's Market",
+        "short_description": "Grow crops, sell your harvest at the market, and expand your farm in this cozy low-poly farming simulator. Unlock new seeds, tools, and upgrades as you enjoy a relaxing countryside life at your own pace.",
+        "genres": "Casual",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6257870420344458
+      },
+      {
+        "appid": 444440,
+        "name": "Scapeland",
+        "short_description": "The quiet and peaceful countryside in Scapeland is the perfect place to built up your own little paradise. Multiply your funds by selling plants and animal products. Enlarge your property, explore new areas and meet new people. This farming game is all about the happy and stress-free life of a farmer... or is it?",
+        "genres": "Indie, Casual, Adventure, Action",
+        "price_usd": 3.99,
+        "cosine_similarity": 0.6225404514396471
+      },
+      {
+        "appid": 1123830,
+        "name": "Farm Manager 2021",
+        "short_description": "Farm Manager 2021 is an indie game that lets you relax and immerse yourself in farm management. A casual but grounded builder game that combines management and farm maintenance in one package. Grow and expand your farm into a thriving estate or enjoy it as a delightful escape from everyday life.",
+        "genres": "Strategy, Simulation, Indie, Casual",
+        "price_usd": 19.99,
+        "cosine_similarity": 0.6197497844696045
+      },
+      {
+        "appid": 2856770,
+        "name": "Simple Things",
+        "short_description": "Relax and create beautiful homes for your villagers in this simple, stress-free building game.",
+        "genres": "Indie, Casual",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6190082430839539
+      },
+      {
+        "appid": 3111710,
+        "name": "Animal Farmland",
+        "short_description": "A casual simulation management idle game. Players can click to place crops and buildings, earn coins, unlock a wealth of animals and buildings, and expand the farm",
+        "genres": "Strategy, Simulation, Indie, Casual",
+        "price_usd": 3.99,
+        "cosine_similarity": 0.6182860363551368
+      },
+      {
+        "appid": 3036710,
+        "name": "Holiday Farm",
+        "short_description": "A sandbox game that simulates life on a farm. Experience life, growing vegetables, raising animals, diving in mineral water on a happy island.",
+        "genres": "Indie, Casual, Adventure, RPG",
+        "price_usd": 0.99,
+        "cosine_similarity": 0.6173842549324036
+      }
+    ]
+  },
+  {
+    "query": "fast-paced action roguelike with permadeath mechanics",
+    "results": [
+      {
+        "appid": 3859430,
+        "name": "Waterpunk: Through the Rust",
+        "short_description": "The action of this roguelike shooter takes place in a flooded post-apocalyptic world where human civilization has fallen in a war against soulless machines. Expect fast-paced battles, procedural generation, permadeath, and meta-progression.",
+        "genres": "Indie, Adventure, Action",
+        "price_usd": NaN,
+        "cosine_similarity": 0.647794583308375
+      },
+      {
+        "appid": 2903590,
+        "name": "HYPERFATAL",
+        "short_description": "AIR STRAFE, ROCKET JUMP, and SURF your way through dimensions in this HYPER-intensive skill-based movement shooter of old. The onslaught of foes in your way are invading worlds, and the only way to stop them is to show you will be FATAL.",
+        "genres": "Racing, Indie, Adventure, Action",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6467075137321671
+      },
+      {
+        "appid": 295770,
+        "name": "Rogue Shooter: The FPS Roguelike",
+        "short_description": "A fast-paced mashup of roguelikes and first-person shooters.",
+        "genres": "Action",
+        "price_usd": 4.99,
+        "cosine_similarity": 0.6413861130841915
+      },
+      {
+        "appid": 2356930,
+        "name": "Roguebot",
+        "short_description": "Fast-paced Roguelike shooter in a dystopian steampunk future.",
+        "genres": "Indie, Casual, Free To Play, Action",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6367012452096121
+      },
+      {
+        "appid": 2435870,
+        "name": "Blood Rush",
+        "short_description": "BLOOD RUSH is a fast paced, skill based FPS, mixed with roguelites elements. Upgrade yourself, buy unique guns, drain miracles from relics and destroy anyone or anything standing on your way!",
+        "genres": "Indie, Early Access, Action, RPG",
+        "price_usd": 13.99,
+        "cosine_similarity": 0.6360354423522949
+      },
+      {
+        "appid": 3612210,
+        "name": "Rumbly",
+        "short_description": "Rumbly is a Fast-Paced Roguelike \u2014 Outspeed and outplay enemies by hitting directional inputs to dodge attacks. Master enemy patterns, unlock powerful upgrades, and chain combos in battles where every second counts. Precision is power in this speed tactical brawler!",
+        "genres": "Strategy, Indie, Casual, Action",
+        "price_usd": NaN,
+        "cosine_similarity": 0.630301494309351
+      },
+      {
+        "appid": 2256450,
+        "name": "RAM: Random Access Mayhem",
+        "short_description": "The roguelike where you play as the enemies. Take control of your foes, turn them against each other in fast-paced combat, and leap to a new host before your current body breaks down.",
+        "genres": "Indie, Early Access, Action",
+        "price_usd": 14.99,
+        "cosine_similarity": 0.6295803410064982
+      },
+      {
+        "appid": 643830,
+        "name": "Botlike - a robot's rampage",
+        "short_description": "Botlike - loot and shoot your way through hordes of robots or die trying. Play as S.I.R. - a grumpy old warbot on his path to revenge. Use your ever-growing arsenal of weapons, upgrades and powerful items to defeat an evil and totalitarian robot league. Grab your top hat and let the rampage begin!",
+        "genres": "Indie, Early Access, Action",
+        "price_usd": 9.99,
+        "cosine_similarity": 0.62871972493647
+      },
+      {
+        "appid": 2553840,
+        "name": "Blood, Fuel, Ammo & Speed",
+        "short_description": "Blood, Fuel, Ammo &amp; Speed is a fast-paced roguelite FPS action game. BFAS is focused on highly brutal, stylish, and smooth gameplay. Rip the Demons apart with your various satisfying weapons and sleek movement patterns. Power up your Operator with numerous stat upgrades and items.",
+        "genres": "Indie, Action",
+        "price_usd": 2.99,
+        "cosine_similarity": 0.6265740394592285
+      },
+      {
+        "appid": 2111190,
+        "name": "MULLET MADJACK",
+        "short_description": "MULLET MADJACK is a HIGH-OCTANE-ACTION SHOOTER that put you directly inside a CLASSIC ANIME. Pick your favorite weapon and reach the last floor; Beat your best time or try again. Haste makes waste\u2026 OF YOUR ENEMIES!",
+        "genres": "Indie, Action",
+        "price_usd": 19.99,
+        "cosine_similarity": 0.6265478098286246
+      }
+    ]
+  },
+  {
+    "query": "story-driven RPG with moral choices and consequences",
+    "results": [
+      {
+        "appid": 3861220,
+        "name": "ARK Axiom",
+        "short_description": "ARK Axiom is a narrative-driven, turn-based RPG where player choices affect both story and gameplay. Players abandon one path and embrace another, unlocking varying abilities, altering party dynamics, and reshaping the world itself.",
+        "genres": "Indie, RPG",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6891074140475856
+      },
+      {
+        "appid": 362960,
+        "name": "Tyranny",
+        "short_description": "Experience a story-driven RPG where your choices mean all the difference in the world.",
+        "genres": "Adventure, RPG",
+        "price_usd": 29.99,
+        "cosine_similarity": 0.6854668038527056
+      },
+      {
+        "appid": 673630,
+        "name": "Heaven And Earth",
+        "short_description": "War threatens to engulf the world, and your choices will determine how it plays out.",
+        "genres": "Indie, Adventure, RPG",
+        "price_usd": 0.99,
+        "cosine_similarity": 0.6802598619151329
+      },
+      {
+        "appid": 3909690,
+        "name": "Taina's Cursed Legacy",
+        "short_description": "A text-based RPG with a nonlinear story set in a free Slavic fantasy world. Shape the heroine's character through your choices and unlock multiple endings. Mystery, folklore, and relationships \u2014 your fate depends only on you.",
+        "genres": "Indie, Free To Play, Adventure, RPG",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6772031178590923
+      },
+      {
+        "appid": 1976660,
+        "name": "WTP Story 1",
+        "short_description": "WTP - Story 1 is a dynamic choice lead adventure.",
+        "genres": "Adventure, RPG",
+        "price_usd": 4.99,
+        "cosine_similarity": 0.6741548374799099
+      },
+      {
+        "appid": 3886120,
+        "name": "A Spaceship Accident",
+        "short_description": "A choice-driven narrative game with RPG mechanics, filled with cosmic wonders and horror. Forge your own path across more than 50 unique endings. Barter, upgrade your character, fight, and explore alien worlds, overcoming every obstacle to find your way back to Earth\u2026 and to your daughter.",
+        "genres": "Adventure",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6695382589927461
+      },
+      {
+        "appid": 3844270,
+        "name": "The Hero Tale",
+        "short_description": "Open world action RPG set in a colorful medieval fantasy. Explore, fight, and grow stronger as you follow the path of a hero. Interface and subtitles in Spanish; audio in English.",
+        "genres": "Indie, Free To Play, Adventure, Action",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6691082711622242
+      },
+      {
+        "appid": 3523000,
+        "name": "hero of Y",
+        "short_description": "Hero of Y is an RPG centered on the growth of a hero and the choice of destiny. Players will take on the role of a hero chosen by destiny to save the continent from being eroded by evil forces in a chaotic world.",
+        "genres": "RPG",
+        "price_usd": 0.99,
+        "cosine_similarity": 0.6681522924809389
+      },
+      {
+        "appid": 791630,
+        "name": "Tale of Ronin",
+        "short_description": "A game about the human side of the Samurai. Live as a Ronin, survive the consequences of your choices in a dynamic world of turmoil and violence.",
+        "genres": "Indie, Adventure, RPG",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6670556067724943
+      },
+      {
+        "appid": 3641820,
+        "name": "XiaoJun",
+        "short_description": "This is a dark, immersive narrative RPG following a boy\u2019s turbulent life. From rural hardship to urban survival, he learns that fate must be seized. Players will experience a gripping journey through childhood struggles, betrayal, revenge, and the search for identity.",
+        "genres": "RPG",
+        "price_usd": 1.99,
+        "cosine_similarity": 0.6629616420578611
+      }
+    ]
+  },
+  {
+    "query": "cozy puzzle game for casual players",
+    "results": [
+      {
+        "appid": 3988920,
+        "name": "Puzzle Cozy",
+        "short_description": "Puzzle Cozy - pleasant atmosphere, relaxing music, complete tranquility.",
+        "genres": "Indie, Casual",
+        "price_usd": NaN,
+        "cosine_similarity": 0.7446412444114685
+      },
+      {
+        "appid": 1686960,
+        "name": "Furry Puzzle",
+        "short_description": "An exciting casual puzzle game featuring beautiful furry characters. Enjoy an amazing atmosphere, great music, and high-quality furry artwork\u2014perfect for relaxing. Made with love by furry lovers, for furry lovers!",
+        "genres": "Casual",
+        "price_usd": 0.49,
+        "cosine_similarity": 0.7433387637138367
+      },
+      {
+        "appid": 1703230,
+        "name": "Colors!",
+        "short_description": "Minimalist and intuitive puzzle game with relaxing music.",
+        "genres": "Casual",
+        "price_usd": 0.59,
+        "cosine_similarity": 0.7259640097618103
+      },
+      {
+        "appid": 875670,
+        "name": "Sophisticated Puzzle",
+        "short_description": "Relaxing puzzle game.",
+        "genres": "Indie, Casual",
+        "price_usd": 0.99,
+        "cosine_similarity": 0.7166386842727661
+      },
+      {
+        "appid": 3508220,
+        "name": "Art-Therapy: Jigsaw Puzzle",
+        "short_description": "\ud83e\udde9 A Cozy Jigsaw Puzzle Game for Everyone! If you like puzzles, this one\u2019s for you. It has over 100 beautiful pictures in different styles\u2014some colorful and fun, others peaceful and calming. There\u2019s no rush, no timers, just a simple and relaxing way to spend your time.",
+        "genres": "Casual",
+        "price_usd": NaN,
+        "cosine_similarity": 0.7158218026161194
+      },
+      {
+        "appid": 814660,
+        "name": "The Unintended Consequences of Curiosity",
+        "short_description": "The Unintended Consequences of Curiosity is a casual adventure puzzle game. A couch co-op that is equally playable solo. It packs a heart warming story and a charming world for everyone to explore.",
+        "genres": "Casual, Adventure, Action, RPG",
+        "price_usd": 7.99,
+        "cosine_similarity": 0.7151228189468384
+      },
+      {
+        "appid": 1626900,
+        "name": "Furry Pride",
+        "short_description": "An exciting casual puzzle game featuring beautiful furry characters. Enjoy an amazing atmosphere, great music, and high-quality furry artwork\u2014perfect for relaxing. Created with love by furry lovers, for furry lovers!",
+        "genres": "Simulation, Casual, Adventure, Action, RPG",
+        "price_usd": 0.49,
+        "cosine_similarity": 0.7138117126338666
+      },
+      {
+        "appid": 3867790,
+        "name": "Puzzly",
+        "short_description": "This is a casual jigsaw puzzle game. All you need to do is use the mouse to drag the pieces to the correct positions, and when you complete the puzzle and form a complete picture, you can unlock the picture gallery.",
+        "genres": "Indie, Casual",
+        "price_usd": 3.99,
+        "cosine_similarity": 0.7100596600735403
+      },
+      {
+        "appid": 3630970,
+        "name": "Puzzle Moments",
+        "short_description": "&quot;Puzzle Moments&quot; is a 2D puzzle casual game.",
+        "genres": "Casual",
+        "price_usd": 0.99,
+        "cosine_similarity": 0.709565477993163
+      },
+      {
+        "appid": 1480370,
+        "name": "Love Puzzle",
+        "short_description": "This is casual, intellectual, minimalist puzzle game. Control your square and find the way to pass the level. Gameplay is fun and relaxing.",
+        "genres": "Simulation, Indie, Casual, Adventure",
+        "price_usd": 1.99,
+        "cosine_similarity": 0.7081814756177147
+      }
+    ]
+  },
+  {
+    "query": "competitive multiplayer shooter with ranked modes",
+    "results": [
+      {
+        "appid": 2873380,
+        "name": "Chaotic Conflicts",
+        "short_description": "Chaotic Conflicts is a casual and chaotic fast-paced Online FPS game. In this chaotic shooter you'll try to shoot your way to the top of the scoreboard while competing with other players and random events.",
+        "genres": "Indie, Casual, Action",
+        "price_usd": 1.99,
+        "cosine_similarity": 0.6755109220134161
+      },
+      {
+        "appid": 1856080,
+        "name": "Ambushed",
+        "short_description": "Play with your team and do your best!",
+        "genres": "Indie, Action",
+        "price_usd": 4.99,
+        "cosine_similarity": 0.6726335287094116
+      },
+      {
+        "appid": 2841160,
+        "name": "BADMAD ROBOTS",
+        "short_description": "Intense and fun team-based free-to-play multiplayer shooter. Fight hard to survive on streets overrun by broken violent robots in a brutal post-human society.",
+        "genres": "Free To Play, Action",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6614587306976318
+      },
+      {
+        "appid": 3848370,
+        "name": "Rival Soldier Front",
+        "short_description": "Rival Soldier Front is a tactical online first-person shooter where players engage in fast-paced team battles using real-world weapons, specialized soldier classes, and skill-based mechanics across competitive game modes.",
+        "genres": "Action",
+        "price_usd": NaN,
+        "cosine_similarity": 0.660724004463912
+      },
+      {
+        "appid": 302830,
+        "name": "BLOCKADE 3D",
+        "short_description": "BLOCKADE 3D! First Person Shooter in an editable procedural cubic world. A large arsenal of weapons, 4 teams at the same time and up to 32 players on one map. A large number of game modes!",
+        "genres": "Free To Play, Early Access, Action",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6586030721664429
+      },
+      {
+        "appid": 657170,
+        "name": "Shoot 'm Up",
+        "short_description": "Tactical multiplayer chaos.That's what would describe this game in 3 words. It's fast, it's messy, it's challenging. Do you like blowing up zombies to bits together with your friends? Protecting your base from the enemy team? Grab your gear and start the chaos!",
+        "genres": "Indie, Action",
+        "price_usd": 5.99,
+        "cosine_similarity": 0.6575702428817749
+      },
+      {
+        "appid": 681060,
+        "name": "Shooty Squad",
+        "short_description": "Shooty Squad is a fast paced, competitive multiplayer first person shooter with hilarious graphics and ragdoll physics. With weapons and maps focused on being as balanced and competitive as possible ! Also has offline Zombie mode.",
+        "genres": "Casual, Early Access, Action",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6571295074070134
+      },
+      {
+        "appid": 961680,
+        "name": "Rampage Online",
+        "short_description": "Get to the top of the best online shooter players!",
+        "genres": "Massively Multiplayer, Indie, Casual, Action",
+        "price_usd": 1.99,
+        "cosine_similarity": 0.6554557886448044
+      },
+      {
+        "appid": 729680,
+        "name": "RANDOM WARS",
+        "short_description": "Random Wars is a classic FPS that offers a more engaging environment where you experience soldier training, simulations, and combat, all in a fun, multiplayer setting.",
+        "genres": "Simulation, Indie, Action",
+        "price_usd": 1.99,
+        "cosine_similarity": 0.6517423598919904
+      },
+      {
+        "appid": 921490,
+        "name": "Unchained",
+        "short_description": "Unchained is a fast paced retro multiplayer first person shooter in which you can compete in different game modes and maps, using a large arsenal of unique and deadly weapons (And some cool powerups too) to defeat your enemies.",
+        "genres": "Indie, Free To Play, Action",
+        "price_usd": NaN,
+        "cosine_similarity": 0.651591420173645
+      }
+    ]
+  },
+  {
+    "query": "atmospheric horror game with psychological elements",
+    "results": [
+      {
+        "appid": 1517340,
+        "name": "From The Darkness",
+        "short_description": "From the darkness is a psychological horror game with a scary atmosphere, the game takes place in an old Soviet abandoned apartment.",
+        "genres": "Indie, Adventure",
+        "price_usd": 6.99,
+        "cosine_similarity": 0.714085272416127
+      },
+      {
+        "appid": 1464350,
+        "name": "Fear in The Modern House - CH2",
+        "short_description": "A psychological horror game, based on horror movie stories, in which you live Josh's life, dubbed and subtitled.",
+        "genres": "Indie, Casual, Adventure, Action",
+        "price_usd": 3.99,
+        "cosine_similarity": 0.7107780324485313
+      },
+      {
+        "appid": 2252070,
+        "name": "[SUBJECT]",
+        "short_description": "[SUBJECT] is a first-person psychological horror game. You wake up confused in a dark room, not knowing where you are. The last thing you remember is a robotic voice echoing through you ears. How you got here or why is unclear, but you do know one thing: You're being watched.",
+        "genres": "Indie, Adventure",
+        "price_usd": 8.99,
+        "cosine_similarity": 0.706663320860071
+      },
+      {
+        "appid": 3598340,
+        "name": "SCHIZOPHRENIA",
+        "short_description": "SCHIZOPHRENIA. A psychological horror game, which will immerse you in a dark, sad, environment. This bastard is knocking, wake up, and open the door now. First game of TheCourget. Created by TheCourget",
+        "genres": "Indie, Free To Play, Adventure, Action",
+        "price_usd": NaN,
+        "cosine_similarity": 0.7065517270667876
+      },
+      {
+        "appid": 3098410,
+        "name": "From Hell",
+        "short_description": "From Hell is a first-person psychological horror game that focuses on creating fear and tension for the player.",
+        "genres": "Indie, Adventure, Action",
+        "price_usd": 5.99,
+        "cosine_similarity": 0.7007959245686671
+      },
+      {
+        "appid": 1743350,
+        "name": "KOSHMAR",
+        "short_description": "KOSHMAR is a psychological horror game, in which you have to face an evil entity that seeks revenge!",
+        "genres": "Simulation, Indie",
+        "price_usd": 5.99,
+        "cosine_similarity": 0.6990239562349411
+      },
+      {
+        "appid": 1005420,
+        "name": "Mental House",
+        "short_description": "Mental House is a psychological first-person horror game. Puzzles, Unexpected moments, Depressing atmosphere and more. Explore the research center and try to survive, revealing the terrible secret of this place.",
+        "genres": "Indie, Adventure, Action",
+        "price_usd": 18.99,
+        "cosine_similarity": 0.6985422315820053
+      },
+      {
+        "appid": 652600,
+        "name": "Descent - Silence of Mind",
+        "short_description": "Hypnosis, memories, delusions and a disturbing secret revolve around silence of mind.",
+        "genres": "Indie, Adventure",
+        "price_usd": 0.49,
+        "cosine_similarity": 0.6976651313704145
+      },
+      {
+        "appid": 2206790,
+        "name": "Fog Horror",
+        "short_description": "Fog Horror \u2014 psychological horror game. You'll fall into oppressive atmosphere here. Watch out hostile entities entire the viscose void!",
+        "genres": "Massively Multiplayer, Indie, Casual, Adventure, Action",
+        "price_usd": NaN,
+        "cosine_similarity": 0.6972368304902035
+      },
+      {
+        "appid": 3404050,
+        "name": "Inside Intruder",
+        "short_description": "Inside Intruder - is a psychological horror game that mostly focuses on atmosphere. Game takes place in your own home, where a uninvited guest comes in.",
+        "genres": "Indie",
+        "price_usd": 1.99,
+        "cosine_similarity": 0.6966270154785499
+      }
+    ]
+  }
+]
