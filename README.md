@@ -327,7 +327,7 @@ jupyter notebook notebooks/
 
 1. **Review Architecture**: Read [Multi-Modal DB Guide](docs/methodologies/multi-modal-db-architecture.md)
 2. **Setup Database**: Follow [PostgreSQL Schema](docs/postgresql-database-schema.md) documentation
-3. **Explore Pipeline**: Review [Scripts Documentation](scripts/) for ETL implementation
+3. **Explore Worklogs**: Review [Worklogs Documentation](work-logs/) for ETL implementation
 4. **Implement Features**: Use [Vector Embeddings](docs/methodologies/vector-embeddings.md) guide
 
 ---
