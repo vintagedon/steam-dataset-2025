@@ -1,107 +1,132 @@
-# =================================================================================================
-# File:          post-import-tasks-steamfull.py
-# Project:       Steam Dataset 2025
-# Repository:    https://github.com/vintagedon/steam-dataset-2025
-# Author:        Don (vintagedon)  |  GitHub: https://github.com/vintagedon  |  ORCID: 0009-0008-7695-4093
-# License:       MIT
-# Last Updated:  2025-09-29
-#
-# Purpose:
-#   Apply post-import SQL tasks (indexes, views) against the steamfull DB from a .sql file.
-#
-# Section Map:
-#   1) Imports — dependencies and why they're needed
-#   2) Configuration & Setup — env, logging, runtime knobs
-#   3) Core Components — classes/functions with intent + IO contracts
-#   4) Orchestration — how components are wired together
-#   5) Entry Point — CLI usage and safe error handling
-#
-# Provenance / RAG Hints:
-#   SOURCE_OF_TRUTH: Steam master JSON & PostgreSQL (see Phase 04 schema)
-#   READS / WRITES:  unchanged from original script behavior
-#
-# Security:
-#   - Secrets via .env only (PG_* / STEAM_API_KEY); do not hardcode credentials.
-#
-# Change Log (docs-only):
-#   - 2025-09-29  Added standardized header + dual-audience inline comments; no behavioral changes.
-# =================================================================================================
+<!--
+---
+title: "Phase 06: Full Dataset Import"
+description: "Production collection of complete 240K+ Steam catalog with 1M+ reviews establishing foundation for vector embeddings and advanced analytics"
+author: "VintageDon - https://github.com/vintagedon"
+ai_contributor: "Claude 3.5 Sonnet (claude-sonnet-4-20250514)"
+date: "2025-10-06"
+version: "1.0"
+status: "Published"
+tags:
+- type: [phase-documentation/production-collection/full-dataset]
+- domain: [data-engineering/batch-processing/data-collection]
+- tech: [python/postgresql/steam-api/batch-processing]
+- phase: [phase-6/full-import]
+related_documents:
+- "[Work Logs Parent](../README.md)"
+- "[Phase 05: 5K Analysis](../05-5000-steam-game-dataset-analysis/README.md)"
+- "[Phase 07: Vector Embeddings](../07-vector-embeddings/README.md)"
+---
+-->
 
-# --- Imports --------------------------------------------------------------------------------------
-# Human: Group stdlib vs third-party; fail fast with helpful install hints.
-# ML:    DEPENDS_ON — capture runtime libs for reproducibility.
-import os
-import sys
-import psycopg2
-from dotenv import load_dotenv
+# 📂 **Phase 06: Full Dataset Import**
 
-# --- Configuration ---
-# The SQL script to execute
-SQL_FILE = 'post_import_setup_steamfull.sql'
+This phase documents production collection of the complete Steam catalog comprising 240,000+ applications and 1,000,000+ user reviews, establishing the comprehensive dataset foundation for vector embeddings and advanced analytics capabilities.
 
-# --- Core Component -------------------------------------------------------------------------------
-# Human: Read SQL file and execute against DB.
-# ML:    SIDE_EFFECTS: executes multiple statements
-def ):
-    """
-    Connects to the database and executes the contents of the specified SQL file.
-    """
-    print("--- Post-Import Task Runner ---")
-    try:
-        # Load database credentials from .env file
-        print("Loading database credentials from .env file...")
-# --- Configuration & Setup ------------------------------------------------------------------------
-# Human: Centralize env + logging knobs to keep core logic clean/testable.
-# ML:    CONFIG_KEYS — parse constants/env names for orchestration.
-        load_dotenv()
-        db_host = os.getenv('PG_HOST')
-        db_port = os.getenv('PG_PORT')
-        db_user = os.getenv('PG_APP_USER')
-        db_password = os.getenv('PG_APP_USER_PASSWORD')
-        # Hardcoding the database name as 'steamfull' based on your logs
-        db_name = 'steamfull'
+## **Overview**
 
-        if not all([db_host, db_port, db_user, db_password, db_name]):
-            print("Error: Database environment variables are not fully set in .env file.")
-            sys.exit(1)
+Phase 06 scaled collection infrastructure from 5K validation to full production dataset spanning August-September 2025. The session implemented robust batch processing with missing record recovery, analytical report generation, and comprehensive post-import optimization. This production collection achieved 56% API success rate handling delisted games and regional restrictions while maintaining data integrity through systematic validation and establishing the complete dataset for semantic search implementation.
 
-        # Read the entire SQL script
-        print(f"Reading SQL commands from {SQL_FILE}...")
-        with open(SQL_FILE, 'r') as f:
-            sql_script = f.read()
+---
 
-        # Connect to the PostgreSQL database
-        print(f"Connecting to PostgreSQL database at {db_host}...")
-        conn = psycopg2.connect(
-            host=db_host,
-            port=db_port,
-            dbname=db_name,
-            user=db_user,
-            password=db_password
-        )
-        # Autocommit mode to execute each statement individually
-        conn.autocommit = True
-        cur = conn.cursor()
-        print("Connection successful.")
+## 📋 **Directory Contents**
 
-        # Execute the script
-        print(f"Executing script: {SQL_FILE}...")
-        cur.execute(sql_script)
-        print("-> Success! Post-import script executed.")
+| **Document** | **Purpose** | **Link** |
+|--------------|-------------|----------|
+| **[phase-06-worklog-full-dataset-import.md](phase-06-worklog-full-dataset-import.md)** | Complete session log documenting production collection process | [phase-06-worklog-full-dataset-import.md](phase-06-worklog-full-dataset-import.md) |
 
-    except FileNotFoundError:
-        print(f"Error: The SQL file '{SQL_FILE}' was not found.")
-        sys.exit(1)
-    except Exception as e:
-        print(f"\nAn error occurred: {e}")
-    finally:
-        if 'conn' in locals() and conn:
-            conn.close()
-            print("Database connection closed.")
-        print("--- Task execution complete! ---")
+### **Collection Scripts**
 
-# --- Entry Point -----------------------------------------------------------------------------------
-# Human: Direct CLI execution path with actionable errors.
-# ML:    RUNTIME_START — begin telemetry if needed.
-if __name__ == '__main__':
-    execute_sql_from_file()
+| **Script** | **Purpose** | **Link** |
+|------------|-------------|----------|
+| **[collect_full_dataset.py](collect_full_dataset.py)** | Primary full catalog collection script with batch processing | [collect_full_dataset.py](collect_full_dataset.py) |
+| **[collect_full_reviews.py](collect_full_reviews.py)** | Reviews collection for 1M+ user review dataset | [collect_full_reviews.py](collect_full_reviews.py) |
+| **[recollect_missing_games.py](recollect_missing_games.py)** | Recovery script for missing or failed records | [recollect_missing_games.py](recollect_missing_games.py) |
+| **[find_missing_appids.py](find_missing_appids.py)** | Gap detection identifying incomplete collection records | [find_missing_appids.py](find_missing_appids.py) |
+
+### **Database Scripts**
+
+| **Script** | **Purpose** | **Link** |
+|------------|-------------|----------|
+| **[setup-steam-full-database.py](setup-steam-full-database.py)** | Production database schema setup for full dataset | [setup-steam-full-database.py](setup-steam-full-database.py) |
+| **[import-master-data.py](import-master-data.py)** | Master import orchestration for complete dataset | [import-master-data.py](import-master-data.py) |
+| **[post-import-tasks-steamfull.py](post-import-tasks-steamfull.py)** | Post-import optimization and validation tasks | [post-import-tasks-steamfull.py](post-import-tasks-steamfull.py) |
+| **[post_import_setup_steamfull.sql](post_import_setup_steamfull.sql)** | SQL post-import optimization queries | [post_import_setup_steamfull.sql](post_import_setup_steamfull.sql) |
+
+### **Analysis Scripts**
+
+| **Script** | **Purpose** | **Link** |
+|------------|-------------|----------|
+| **[analyze_json_structure.py](analyze_json_structure.py)** | JSON structure analysis for quality validation | [analyze_json_structure.py](analyze_json_structure.py) |
+| **[generate_analytical_report.py](generate_analytical_report.py)** | Comprehensive dataset analytics and reporting | [generate_analytical_report.py](generate_analytical_report.py) |
+| **[analysis_queries.sql](analysis_queries.sql)** | Production analytics SQL queries | [analysis_queries.sql](analysis_queries.sql) |
+
+### **Configuration**
+
+| **File** | **Purpose** | **Link** |
+|----------|-------------|----------|
+| **[.env.example](.env.example)** | Production environment configuration template | [.env.example](.env.example) |
+
+---
+
+## 🗂️ **Repository Structure**
+
+```
+06-full-data-set-import/
+├── 📋 phase-06-worklog-full-dataset-import.md  # Session log
+├── 🐍 collect_full_dataset.py                  # Primary collection
+├── 🐍 collect_full_reviews.py                  # Reviews collection
+├── 🐍 recollect_missing_games.py               # Recovery script
+├── 🐍 find_missing_appids.py                   # Gap detection
+├── 🐍 setup-steam-full-database.py             # Database setup
+├── 🐍 import-master-data.py                    # Import orchestration
+├── 🐍 post-import-tasks-steamfull.py           # Post-import tasks
+├── 📊 post_import_setup_steamfull.sql          # SQL optimization
+├── 🐍 analyze_json_structure.py                # Structure analysis
+├── 🐍 generate_analytical_report.py            # Analytics reporting
+├── 📊 analysis_queries.sql                     # Analytics SQL
+├── 📄 .env.example                             # Configuration
+└── 📂 README.md                                # This file
+```
+
+---
+
+## 🔗 **Related Categories**
+
+| **Category** | **Relationship** | **Documentation** |
+|--------------|------------------|-------------------|
+| **[Phase 05: 5K Analysis](../05-5000-steam-game-dataset-analysis/README.md)** | Validation phase preceding full production collection | [../05-5000-steam-game-dataset-analysis/README.md](../05-5000-steam-game-dataset-analysis/README.md) |
+| **[Phase 07: Vector Embeddings](../07-vector-embeddings/README.md)** | Uses complete dataset for semantic search capabilities | [../07-vector-embeddings/README.md](../07-vector-embeddings/README.md) |
+| **[Steam API Collection Methodology](../../docs/methodologies/steam-api-collection.md)** | Documents collection patterns from this phase | [../../docs/methodologies/steam-api-collection.md](../../docs/methodologies/steam-api-collection.md) |
+
+---
+
+## **Phase Highlights**
+
+### **Collection Results**
+
+- **Applications**: 239,664 total records (56% success rate from 427K total catalog)
+- **Reviews**: 1,048,148 user reviews enriching dataset
+- **Time Period**: August-September 2025 collection window
+- **Data Volume**: 21GB database including indexes
+
+### **Technical Achievements**
+
+- **Batch Processing**: Reliable multi-day collection with periodic saves
+- **Error Recovery**: Missing record identification and recollection
+- **Data Quality**: Comprehensive validation ensuring integrity
+- **Performance**: Optimized indexes and materialization preparation
+
+---
+
+## **Document Information**
+
+| **Field** | **Value** |
+|-----------|-----------|
+| **Author** | VintageDon - https://github.com/vintagedon |
+| **Created** | 2025-10-06 |
+| **Last Updated** | 2025-10-06 |
+| **Version** | 1.0 |
+
+---
+*Tags: phase-06, full-dataset, production-collection, steam-api, batch-processing, reviews*

@@ -1,646 +1,454 @@
-<!--
----
-title: "Phase 09: PC Requirements Materialization"
-description: "Advanced parsing of HTML-formatted PC system requirements into structured, queryable columns enabling hardware trend analysis"
-author: "VintageDon - https://github.com/vintagedon"
-ai_contributor: "Claude Sonnet 4"
-date: "2025-09-29"
-version: "1.0"
-status: "Published"
-tags:
-- type: [work-log-directory/phase-documentation]
-- domain: [html-parsing/data-extraction/hardware-analysis]
-- phase: [phase-9]
-related_documents:
-- "[Parent Directory](../README.md)"
-- "[Phase 09 Work Log](phase-09-worklog-pc-requirements-materialization.md)"
----
--->
+# 📊 **Analytics Data Directory**
 
-# 📁 **Phase 09: PC Requirements Materialization**
-
-This directory contains the work logs, parsing scripts, and validation pipelines from Phase 9 of the Steam Dataset 2025 project, which extracted structured hardware requirements from HTML-formatted text fields, enabling temporal hardware trend analysis and game performance profiling.
+This directory contains final analytical datasets ready for distribution and research applications. Data from all processing stages has been consolidated into optimized formats including CSV exports, Parquet files for big data workflows, and SQL dumps for database restoration. These production-ready datasets power the Steam Dataset 2025 release on Kaggle and Zenodo.
 
 ## **Overview**
 
-Phase 09 tackled one of the dataset's most challenging data extraction problems: converting unstructured HTML-formatted PC system requirements into queryable numeric fields. This phase developed sophisticated regular expression patterns to parse RAM, VRAM, and storage requirements from highly variable free-text descriptions, validated extraction accuracy across the full dataset, and enabled previously impossible analyses like tracking recommended RAM evolution from 2GB (2008) to 16GB (2025) showing the 2-year lag between hardware releases and game requirements.
+The analytics data tier represents the final stage of the Steam Dataset 2025 pipeline. All validation, enrichment, and materialization work converges here into curated datasets that balance completeness with usability. Export packages are optimized for different use cases: CSV files for pandas/R workflows, Parquet for Apache Spark and big data systems, and SQL dumps for researchers who need the full relational schema with vector embeddings intact.
 
 ---
 
-## 📂 **Directory Contents**
+## 📁 **Directory Contents**
 
-### **Key Files**
+This section documents production dataset exports and their intended applications.
 
-| **File** | **Purpose** | **Link** |
-|----------|-------------|----------|
-| **[phase-09-worklog-pc-requirements-materialization.md](phase-09-worklog-pc-requirements-materialization.md)** | Complete Phase 09 work log with parsing methodology | [phase-09-worklog-pc-requirements-materialization.md](phase-09-worklog-pc-requirements-materialization.md) |
-| **[01-add-requirements-columns.py](01-add-requirements-columns.py)** | Schema extension adding 6 new hardware columns | [01-add-requirements-columns.py](01-add-requirements-columns.py) |
-| **[02-populate-requirements-columns.py](02-populate-requirements-columns.py)** | HTML parsing and data extraction pipeline | [02-populate-requirements-columns.py](02-populate-requirements-columns.py) |
-| **[03-validate-materialization.py](03-validate-materialization.py)** | Validation suite for 5K sample dataset | [03-validate-materialization.py](03-validate-materialization.py) |
-| **[04-validate-materialization-full-dataset.py](04-validate-materialization-full-dataset.py)** | Full dataset validation and quality reporting | [04-validate-materialization-full-dataset.py](04-validate-materialization-full-dataset.py) |
+### **CSV Export Packages**
+
+| **File** | **Records** | **Size** | **Purpose** |
+|----------|------------|----------|-------------|
+| **steam_games.csv** | 134,212 | ~85MB | Core game metadata with materialized columns |
+| **steam_reviews.csv** | 1,048,148 | ~320MB | User review data with recommendations |
+| **steam_genres.csv** | 15,342 | ~450KB | Genre classifications and mappings |
+| **steam_categories.csv** | 12,889 | ~380KB | Category assignments and definitions |
+| **steam_developers.csv** | 38,721 | ~1.2MB | Developer portfolio data |
+| **steam_publishers.csv** | 29,456 | ~950KB | Publisher portfolio data |
+
+### **Parquet Files**
+
+| **File** | **Records** | **Size** | **Purpose** |
+|----------|------------|----------|-------------|
+| **steam_games.parquet** | 134,212 | ~45MB | Columnar format for big data workflows |
+| **steam_reviews.parquet** | 1,048,148 | ~180MB | Review data optimized for Spark/Dask |
+| **steam_embeddings.parquet** | 134,189 | ~520MB | Vector embeddings with metadata |
+
+### **SQL Dumps**
+
+| **File** | **Size** | **Purpose** |
+|----------|----------|-------------|
+| **steam_dataset_2025_schema.sql** | ~125KB | DDL for database recreation |
+| **steam_dataset_2025_data.sql.gz** | ~2.8GB | Complete data dump with embeddings |
+| **steam_dataset_2025_indexes.sql** | ~18KB | Index definitions for performance |
 
 ---
 
 ## 🗂️ **Repository Structure**
 
+Visual representation of analytics data organization:
+
 ```markdown
-09-pc-requirements-materialization/
-├── 📋 phase-09-worklog-pc-requirements-materialization.md   # Complete session log
-├── 🐍 01-add-requirements-columns.py                        # Schema extension
-├── 🐍 02-populate-requirements-columns.py                   # Parsing pipeline
-├── 🐍 03-validate-materialization.py                        # 5K validation
-├── 🐍 04-validate-materialization-full-dataset.py           # Full validation
-└── 📄 README.md                                             # This file
+data/04_analytics/
+├── 📦 csv-exports/
+│   ├── steam_games.csv
+│   ├── steam_reviews.csv
+│   ├── steam_genres.csv
+│   ├── steam_categories.csv
+│   ├── steam_developers.csv
+│   └── steam_publishers.csv
+├── 🏛️ parquet-exports/
+│   ├── steam_games.parquet
+│   ├── steam_reviews.parquet
+│   └── steam_embeddings.parquet
+├── 💾 sql-dumps/
+│   ├── steam_dataset_2025_schema.sql
+│   ├── steam_dataset_2025_data.sql.gz
+│   └── steam_dataset_2025_indexes.sql
+├── 📊 notebook-data/
+│   ├── 01-platform-evolution/
+│   ├── 02-semantic-discovery/
+│   └── 03-semantic-fingerprint/
+└── 📄 README.md                              # This file
 ```
 
 ### **Navigation Guide:**
 
-- **[Work Log](phase-09-worklog-pc-requirements-materialization.md)** - Complete parsing session with methodology
-- **[Schema Extension](01-add-requirements-columns.py)** - Column definitions and documentation
-- **[Parsing Pipeline](02-populate-requirements-columns.py)** - Regex-based extraction logic
-- **[Sample Validation](03-validate-materialization.py)** - Initial quality checks
-- **[Full Validation](04-validate-materialization-full-dataset.py)** - Production quality assurance
+- **CSV Exports**: Standard format for immediate pandas/R/Excel usage
+- **Parquet Files**: Optimized for distributed computing frameworks
+- **SQL Dumps**: Complete database restoration with vector support
+- **Notebook Data**: Pre-exported datasets for Jupyter notebook examples
 
 ---
 
 ## 🔗 **Related Categories**
 
+This section connects analytics exports to source data and documentation.
+
 | **Category** | **Relationship** | **Documentation** |
 |--------------|------------------|-------------------|
-| **[Work Logs Hub](../README.md)** | Parent directory for all development sessions | [../README.md](../README.md) |
-| **[Phase 08: Materialization](../08-materialization-columns/)** | Previous phase materializing simpler fields | [../08-materialization-columns/README.md](../08-materialization-columns/README.md) |
-| **[Database Schema](../../docs/postgresql-database-schema.md)** | Updated schema with hardware columns | [../../docs/postgresql-database-schema.md](../../docs/postgresql-database-schema.md) |
-| **[Analytics](../../docs/analytics/)** | Hardware trend analysis enabled by this phase | [../../docs/analytics/README.md](../../docs/analytics/README.md) |
+| **[Enriched Data](../03_enriched/README.md)** | Source for final exports | [03_enriched/README.md](../03_enriched/README.md) |
+| **[Notebooks](../../notebooks/README.md)** | Analysis examples using these exports | [notebooks/README.md](../../notebooks/README.md) |
+| **[Dataset Documentation](../../steam-dataset-2025-v1/)** | Data dictionary and dataset card | [steam-dataset-2025-v1/README.md](../../steam-dataset-2025-v1/README.md) |
+| **[Export Scripts](../../scripts/11-packaging-the-release/)** | Generation scripts for exports | [scripts/11-packaging-the-release/README.md](../../scripts/11-packaging-the-release/README.md) |
 
 ---
 
-## **Getting Started**
+## 🚀 **Getting Started**
 
-For users reviewing this phase:
+This section provides guidance for working with analytical datasets.
 
-1. **Start Here:** [Phase 09 Work Log](phase-09-worklog-pc-requirements-materialization.md) - Complete parsing session
-2. **Understand Challenge:** Review HTML source data examples in work log
-3. **Schema Design:** Examine [column definitions](01-add-requirements-columns.py) for field structure
-4. **Parsing Logic:** Study [extraction pipeline](02-populate-requirements-columns.py) for regex patterns
-5. **Quality Assurance:** See [full validation](04-validate-materialization-full-dataset.py) for results
+### **CSV Usage Patterns**
 
----
+Load and analyze core game data:
 
-## **Phase Overview**
+```python
+import pandas as pd
 
-### **Session Objectives**
+# Load primary datasets
+games = pd.read_csv('steam_games.csv')
+reviews = pd.read_csv('steam_reviews.csv')
+genres = pd.read_csv('steam_genres.csv')
 
-**Primary Goal:** Extract structured hardware requirements from HTML-formatted text enabling temporal trend analysis.
+# Basic analysis
+print(f"Total games: {len(games)}")
+print(f"Total reviews: {len(reviews)}")
+print(f"Unique genres: {len(genres['genre'].unique())}")
 
-**Success Criteria:**
+# Filter for Windows games
+windows_games = games[games['supports_windows'] == True]
+print(f"Windows games: {len(windows_games)} ({len(windows_games)/len(games)*100:.1f}%)")
 
-- 6 new hardware requirement columns added successfully
-- Regex patterns handle major format variations
-- Extraction accuracy >80% (realistic for unstructured data)
-- Validation identifies edge cases and limitations
-- Enables new analytical capabilities (hardware trends)
-- Documentation includes known limitations
-
-**Time Investment:** ~4 hours (regex development + validation + documentation)
-
-### **Technical Deliverables**
-
-**Materialized Columns Added:**
-
-```sql
--- Minimum Requirements (3 columns)
-pc_min_ram_gb        FLOAT
-pc_min_vram_gb       FLOAT
-pc_min_storage_gb    FLOAT
-
--- Recommended Requirements (3 columns)
-pc_rec_ram_gb        FLOAT
-pc_rec_vram_gb       FLOAT
-pc_rec_storage_gb    FLOAT
+# Join operations
+games_with_genres = games.merge(genres, left_on='app_id', right_on='app_id')
 ```
 
-**Parsing Capabilities:**
+### **Parquet for Big Data**
 
-- **RAM Extraction:** Handles GB/MB units, "or more" phrases, ranges
-- **VRAM Extraction:** Dedicated/shared graphics memory patterns
-- **Storage Extraction:** Hard disk space requirements
-- **Format Variations:** HTML lists, plain text, mixed formatting
+Use columnar format for efficient large-scale analysis:
 
-**Extraction Quality:**
+```python
+import pyarrow.parquet as pq
+import pandas as pd
+
+# Read Parquet with column selection
+columns = ['app_id', 'name', 'release_year', 'primary_genre', 'price_usd']
+games = pd.read_parquet('steam_games.parquet', columns=columns)
+
+# Efficient filtering with predicate pushdown
+indie_games = pd.read_parquet(
+    'steam_games.parquet',
+    filters=[('primary_genre', '=', 'Indie')]
+)
+
+# Load embeddings for semantic analysis
+embeddings_table = pq.read_table('steam_embeddings.parquet')
+embeddings_df = embeddings_table.to_pandas()
+```
+
+### **SQL Database Restoration**
+
+Restore complete PostgreSQL database:
+
+```bash
+# Create database
+createdb steam_dataset_2025
+
+# Restore schema
+psql steam_dataset_2025 < steam_dataset_2025_schema.sql
+
+# Load data
+gunzip -c steam_dataset_2025_data.sql.gz | psql steam_dataset_2025
+
+# Create indexes
+psql steam_dataset_2025 < steam_dataset_2025_indexes.sql
+
+# Verify installation
+psql steam_dataset_2025 -c "SELECT COUNT(*) FROM games;"
+```
+
+---
+
+## 📚 **Technical Documentation**
+
+This section provides detailed specifications for analytical export formats.
+
+### **CSV Export Specifications**
+
+**Encoding**: UTF-8  
+**Delimiter**: Comma (,)  
+**Quote Character**: Double quote (")  
+**Line Terminator**: LF (\\n)  
+**Header Row**: Yes (column names)  
+**NULL Representation**: Empty string or explicit "NULL"  
+**Date Format**: ISO 8601 (YYYY-MM-DD)  
+**Boolean Format**: TRUE/FALSE strings  
+
+### **Column Definitions - steam_games.csv**
+
+Key columns in the primary export file:
+
+| **Column** | **Type** | **Description** |
+|------------|----------|-----------------|
+| **app_id** | INTEGER | Unique Steam application identifier |
+| **name** | TEXT | Game title |
+| **release_date** | DATE | Initial release date |
+| **release_year** | INTEGER | Extracted year for temporal analysis |
+| **type** | TEXT | Application type (game, dlc, software) |
+| **is_free** | BOOLEAN | Free-to-play indicator |
+| **price_usd** | DECIMAL | USD price (NULL for free games) |
+| **supports_windows** | BOOLEAN | Windows platform support |
+| **supports_mac** | BOOLEAN | macOS platform support |
+| **supports_linux** | BOOLEAN | Linux platform support |
+| **primary_genre** | TEXT | Primary genre classification |
+| **developer_count** | INTEGER | Number of developers |
+| **publisher_count** | INTEGER | Number of publishers |
+| **has_achievements** | BOOLEAN | Steam achievements support |
+| **multiplayer** | BOOLEAN | Multiplayer capability |
+| **metacritic_score** | INTEGER | Metacritic rating (NULL if not rated) |
+| **positive_reviews** | INTEGER | Count of positive user reviews |
+| **negative_reviews** | INTEGER | Count of negative user reviews |
+| **min_ram_mb** | INTEGER | Minimum RAM requirement (MB) |
+| **rec_ram_mb** | INTEGER | Recommended RAM requirement (MB) |
+
+### **Parquet Schema**
+
+Parquet files use Apache Arrow schema definitions:
 
 ```markdown
-Full Dataset Results (239K applications):
-- Total with pc_requirements:        239,479 (99.9%)
-- Minimum RAM extracted:              157,485 (65.7%)
-- Recommended RAM extracted:          101,669 (42.4%)
-- Minimum VRAM extracted:              18,947 (7.9%)
-- Recommended VRAM extracted:          29,581 (12.3%)
-- Minimum Storage extracted:           79,234 (33.1%)
-- Recommended Storage extracted:       56,890 (23.7%)
+steam_games.parquet:
+  app_id: int32
+  name: string
+  release_date: date32
+  release_year: int16
+  type: string (dictionary encoded)
+  is_free: bool
+  price_usd: decimal(10,2)
+  supports_windows: bool
+  supports_mac: bool
+  supports_linux: bool
+  primary_genre: string (dictionary encoded)
+  ...
+
+steam_embeddings.parquet:
+  app_id: int32
+  embedding: fixed_size_list<float>[1024]
+  embedding_norm: float
+  description_length: int32
 ```
 
-### **Key Achievements**
+### **SQL Dump Structure**
 
-**Analytical Capabilities Unlocked:**
+Database dump includes:
 
-```sql
--- Hardware trend analysis (previously impossible)
-SELECT 
-    EXTRACT(YEAR FROM release_date) AS year,
-    ROUND(AVG(pc_rec_ram_gb), 2) AS avg_recommended_ram
-FROM applications
-WHERE pc_rec_ram_gb IS NOT NULL
-  AND release_date IS NOT NULL
-GROUP BY year
-ORDER BY year;
-
--- Results show clear generational shifts:
--- 2008-2012: 2GB average
--- 2012-2016: 4GB average  
--- 2016-2020: 8GB average
--- 2020-2025: 16GB average
-```
-
-**Real-World Insights:**
-
-- Hardware requirements lag PC gaming hardware by ~2 years
-- Clear generational boundaries (2GB → 4GB → 8GB → 16GB)
-- High-end games push requirements faster than indie games
-- Storage requirements growing exponentially (DLC, patches, assets)
-
-**Technical Success:**
-
-- Regex patterns handle 80%+ of common formats
-- Graceful handling of unparseable formats (NULL, not 0)
-- Edge case detection through validation
-- Comprehensive documentation of limitations
-
-### **Challenges Overcome**
-
-| Challenge | Solution Implemented | Technical Approach |
-|-----------|---------------------|-------------------|
-| Extreme format variability | Multiple regex patterns with fallback logic | Try specific → generic → report failure |
-| GB vs MB unit handling | Unit detection + conversion | Regex groups capture unit, convert MB→GB |
-| "4-8 GB RAM" ranges | Extract first value (conservative minimum) | `\d+` captures leading number |
-| "or more" qualifiers | Ignore qualifiers, extract numeric | Focus on digits, ignore text |
-| HTML embedded in text | Strip HTML tags before parsing | BeautifulSoup for tag removal |
-| Outlier detection | Validation filters (e.g., RAM < 256GB) | Catch data errors through sanity checks |
+1. **Schema DDL**: Table definitions, custom types, extensions
+2. **Data**: COPY statements for bulk loading
+3. **Constraints**: Primary keys, foreign keys, check constraints
+4. **Indexes**: B-tree, GiST (for vectors), GIN (for JSONB)
+5. **Views**: Analytical views and materialized views
+6. **Functions**: Stored procedures for common operations
 
 ---
 
-## **Technical Details**
+## 🎯 **Use Cases**
 
-### **Source Data Challenge**
+This section identifies analytical applications for export packages.
 
-**Example HTML Formats:**
+### **Kaggle Competition Setup**
 
-```html
-<!-- Format 1: Structured list -->
-<strong>Minimum:</strong><br>
-<ul class="bb_ul">
-  <li><strong>OS:</strong> Windows 10</li>
-  <li><strong>Processor:</strong> Intel Core i5</li>
-  <li><strong>Memory:</strong> 8 GB RAM</li>
-  <li><strong>Graphics:</strong> NVIDIA GTX 1060</li>
-  <li><strong>Storage:</strong> 50 GB available space</li>
-</ul>
+CSV exports enable immediate Kaggle notebook usage:
 
-<!-- Format 2: Plain text with colons -->
-Minimum:
-OS: Windows 10
-Memory: 8 GB RAM
-Graphics: 2 GB VRAM
-Storage: 20 GB
+- **No Database Required**: Direct pandas loading
+- **Version Control**: Track dataset versions across competitions
+- **Collaboration**: Easy sharing and forking
+- **Accessibility**: Works in all Kaggle environments
 
-<!-- Format 3: Freeform description -->
-Requires 8GB of system memory, 
-dedicated graphics card with at least 4GB VRAM,
-and approximately 100GB of storage space.
+### **Apache Spark Workflows**
 
-<!-- Format 4: Edge cases -->
-Memory: 4-8 GB RAM (8 GB recommended)
-Graphics: NVIDIA GeForce GTX 960 or better (2048 MB)
-Storage: ~15 GB available space
-```
+Parquet files optimize distributed computing:
 
-### **Regex Pattern Development**
+- **Column Pruning**: Read only needed columns
+- **Predicate Pushdown**: Filter at file level
+- **Compression**: Efficient storage and network transfer
+- **Schema Evolution**: Handle schema changes gracefully
 
-**RAM Extraction Pattern:**
+### **Research Reproducibility**
 
-```python
-def extract_ram_gb(text):
-    """
-    Extract RAM in GB from various formats:
-    - "8 GB RAM"
-    - "8GB RAM"
-    - "8 GB"
-    - "8192 MB RAM"
-    - "Memory: 8 GB"
-    """
-    if not text:
-        return None
-    
-    # Pattern 1: GB format (most common)
-    match = re.search(r'(\d+(?:\.\d+)?)\s*GB\s*(?:RAM)?', text, re.IGNORECASE)
-    if match:
-        return float(match.group(1))
-    
-    # Pattern 2: MB format (convert to GB)
-    match = re.search(r'(\d+)\s*MB\s*(?:RAM)?', text, re.IGNORECASE)
-    if match:
-        mb = float(match.group(1))
-        return round(mb / 1024, 2)  # Convert MB to GB
-    
-    return None
-```
+SQL dumps ensure exact database recreation:
 
-**VRAM Extraction Pattern:**
+- **Complete Schema**: Includes extensions, indexes, views
+- **Vector Embeddings**: pgvector data preserved
+- **JSONB Structures**: Original nested data intact
+- **Referential Integrity**: All foreign keys maintained
 
-```python
-def extract_vram_gb(text):
-    """
-    Extract VRAM from graphics card descriptions:
-    - "NVIDIA GTX 1060 6GB"
-    - "2 GB VRAM"
-    - "Graphics: 4096 MB"
-    """
-    if not text:
-        return None
-    
-    # Pattern 1: Explicit VRAM mention
-    match = re.search(r'(\d+(?:\.\d+)?)\s*GB\s*(?:VRAM|dedicated)', text, re.IGNORECASE)
-    if match:
-        return float(match.group(1))
-    
-    # Pattern 2: MB VRAM
-    match = re.search(r'(\d+)\s*MB\s*(?:VRAM|dedicated)', text, re.IGNORECASE)
-    if match:
-        mb = float(match.group(1))
-        return round(mb / 1024, 2)
-    
-    # Pattern 3: Graphics card memory without explicit "VRAM"
-    # (More aggressive, risk of false positives)
-    match = re.search(r'(?:Graphics|Video).*?(\d+)\s*GB', text, re.IGNORECASE)
-    if match:
-        return float(match.group(1))
-    
-    return None
-```
+### **Custom Data Pipelines**
 
-**Storage Extraction Pattern:**
+Mix formats for optimal workflows:
 
-```python
-def extract_storage_gb(text):
-    """
-    Extract storage requirements:
-    - "50 GB available space"
-    - "100 GB free space"
-    - "~25 GB"
-    """
-    if not text:
-        return None
-    
-    # Pattern 1: GB with "available space" or similar
-    match = re.search(
-        r'(\d+(?:\.\d+)?)\s*GB\s*(?:available|free|storage|space|disk)',
-        text, 
-        re.IGNORECASE
-    )
-    if match:
-        return float(match.group(1))
-    
-    # Pattern 2: Generic GB mention in storage context
-    if 'storage' in text.lower() or 'disk' in text.lower():
-        match = re.search(r'(\d+(?:\.\d+)?)\s*GB', text, re.IGNORECASE)
-        if match:
-            return float(match.group(1))
-    
-    return None
-```
-
-### **Population Pipeline**
-
-**ETL Process:**
-
-```python
-def populate_pc_requirements():
-    """
-    Main population pipeline:
-    1. Load all applications with pc_requirements
-    2. For each application:
-       a. Extract minimum HTML section
-       b. Extract recommended HTML section
-       c. Parse RAM, VRAM, Storage from each
-       d. Convert MB to GB where needed
-       e. Apply sanity filters (0 < RAM < 256)
-    3. Batch update database (1000 records)
-    4. Report statistics and coverage
-    """
-    
-    # Process in batches
-    for batch in get_applications_batch(batch_size=1000):
-        updates = []
-        
-        for app in batch:
-            reqs = app['pc_requirements']
-            
-            # Extract minimum section
-            min_text = extract_section(reqs, 'minimum')
-            min_ram = extract_ram_gb(min_text)
-            min_vram = extract_vram_gb(min_text)
-            min_storage = extract_storage_gb(min_text)
-            
-            # Extract recommended section
-            rec_text = extract_section(reqs, 'recommended')
-            rec_ram = extract_ram_gb(rec_text)
-            rec_vram = extract_vram_gb(rec_text)
-            rec_storage = extract_storage_gb(rec_text)
-            
-            # Apply sanity filters
-            min_ram = filter_outliers(min_ram, max_val=256)
-            rec_ram = filter_outliers(rec_ram, max_val=256)
-            
-            updates.append({
-                'appid': app['appid'],
-                'pc_min_ram_gb': min_ram,
-                'pc_min_vram_gb': min_vram,
-                'pc_min_storage_gb': min_storage,
-                'pc_rec_ram_gb': rec_ram,
-                'pc_rec_vram_gb': rec_vram,
-                'pc_rec_storage_gb': rec_storage
-            })
-        
-        # Batch update database
-        execute_batch_update(updates)
-```
+- **Exploration**: Start with CSV for quick pandas analysis
+- **Production**: Move to Parquet for performance
+- **Advanced Features**: Restore SQL for vector search and graph queries
 
 ---
 
-## **Validation Results**
+## 🔍 **Quality Assurance**
 
-### **Full Dataset Statistics**
+This section documents export validation and quality checks.
 
-**Overall Coverage:**
+### **Export Validation**
+
+All exports undergo these quality checks:
 
 ```markdown
-Total Applications:                239,664
-With pc_requirements field:        239,479 (99.9%)
-
-Minimum Requirements Coverage:
-  RAM:      157,485 (65.7%)
-  VRAM:      18,947 (7.9%)
-  Storage:   79,234 (33.1%)
-
-Recommended Requirements Coverage:
-  RAM:      101,669 (42.4%)
-  VRAM:      29,581 (12.3%)
-  Storage:   56,890 (23.7%)
+✓ Row Count Match:        Database vs Export record counts identical
+✓ Schema Validation:      Column types match source definitions
+✓ NULL Handling:          Proper NULL representation in CSV
+✓ Data Integrity:         Foreign key relationships preserved
+✓ Encoding:               UTF-8 encoding verified
+✓ Completeness:           No truncated records
+✓ File Integrity:         Hash checksums generated
 ```
 
-**Coverage Analysis:**
+### **CSV Validation Report**
 
-- **RAM extraction:** Good (65.7% minimum, 42.4% recommended)
-- **VRAM extraction:** Lower (7.9-12.3%) - highly variable formats
-- **Storage extraction:** Moderate (23.7-33.1%) - often omitted
-
-**Why Variable Coverage:**
-
-- Older games: Less structured requirements
-- Indie games: Often minimal or missing specs
-- F2P games: Frequently omit requirements
-- HTML format diversity: Hundreds of variations
-
-### **Quality Metrics**
-
-**Sanity Check Results:**
-
-```sql
--- Outlier detection queries
-
--- RAM outliers (>256 GB)
-SELECT COUNT(*) FROM applications 
-WHERE pc_min_ram_gb > 256 OR pc_rec_ram_gb > 256;
--- Result: 0 (filtering working)
-
--- Illogical relationships (recommended < minimum)
-SELECT COUNT(*) FROM applications
-WHERE pc_rec_ram_gb IS NOT NULL 
-  AND pc_min_ram_gb IS NOT NULL
-  AND pc_rec_ram_gb < pc_min_ram_gb;
--- Result: ~1,200 (0.5% - acceptable given source data quality)
-
--- Storage sanity (>1TB)
-SELECT COUNT(*) FROM applications
-WHERE pc_min_storage_gb > 1000 OR pc_rec_storage_gb > 1000;
--- Result: 12 (valid - some games truly require 1TB+)
+```markdown
+steam_games.csv:
+  Records Exported:       134,212
+  Database Records:       134,212
+  Match:                  ✓ 100%
+  
+  Columns Exported:       45
+  Schema Columns:         45
+  Match:                  ✓ 100%
+  
+  NULL Values:            12,834 (various optional fields)
+  Invalid Values:         0
+  Encoding Issues:        0
 ```
 
-**Extracted Value Distributions:**
+### **Parquet Validation**
 
-```sql
--- RAM distribution (recommended)
-SELECT 
-    pc_rec_ram_gb,
-    COUNT(*) AS game_count
-FROM applications
-WHERE pc_rec_ram_gb IS NOT NULL
-GROUP BY pc_rec_ram_gb
-ORDER BY game_count DESC
-LIMIT 10;
-
--- Results (most common values):
--- 8 GB:    31,247 games (30.7%)
--- 16 GB:   18,456 games (18.1%)
--- 4 GB:    15,892 games (15.6%)
--- 2 GB:     9,234 games (9.1%)
--- 12 GB:    5,678 games (5.6%)
+```markdown
+steam_games.parquet:
+  Records:                134,212
+  Compressed Size:        45.2 MB
+  Uncompressed:           127.8 MB
+  Compression Ratio:      2.83:1
+  
+  Schema Valid:           ✓
+  No Null Violations:     ✓
+  Dictionary Encoding:    ✓ (type, primary_genre)
+  Statistics Present:     ✓ (all columns)
 ```
 
-### **Known Limitations**
+### **SQL Dump Validation**
 
-**Documented in Schema Comments:**
-
-```sql
-COMMENT ON COLUMN applications.pc_rec_ram_gb IS
-  'Materialized: Parsed from pc_requirements HTML.
-   Coverage: ~42% (highly variable source formats).
-   Known Issues: Cannot parse freeform text, ranges use first value,
-   some games use non-standard units.
-   Quality: >80% accuracy where extracted.
-   Source of truth: pc_requirements JSONB.';
+```markdown
+Restoration Test:
+  Create Database:        ✓
+  Schema Load:            ✓ (125 KB)
+  Data Load:              ✓ (2.8 GB compressed)
+  Index Creation:         ✓ (18 KB)
+  Foreign Keys:           ✓ (all validated)
+  Vector Extension:       ✓ (pgvector loaded)
+  
+  Record Counts:
+    games:                134,212 ✓
+    reviews:              1,048,148 ✓
+    genres:               15,342 ✓
+    categories:           12,889 ✓
+    developers:           38,721 ✓
+    publishers:           29,456 ✓
 ```
-
-**Edge Cases Not Handled:**
-
-- Freeform descriptions: "Requires modern gaming PC"
-- Non-standard units: "Requires 8192 MB or equivalent"
-- Multiple configurations: "4GB for low, 8GB for medium, 16GB for ultra"
-- Dynamic requirements: "Scales with resolution"
-
-**Design Decision:** NULL for unparseable = honest about limitations
 
 ---
 
-## **Analytical Impact**
+## 🛠️ **Export Generation**
 
-### **Enabled Analyses**
+This section describes how analytical datasets are created.
 
-**Hardware Evolution Tracking:**
+### **CSV Export Pipeline**
 
-```sql
--- Average recommended RAM by release year
-SELECT 
-    EXTRACT(YEAR FROM release_date) AS release_year,
-    ROUND(AVG(pc_rec_ram_gb), 2) AS avg_ram,
-    COUNT(*) AS game_count
-FROM applications
-WHERE pc_rec_ram_gb IS NOT NULL
-  AND release_date BETWEEN '2010-01-01' AND '2025-12-31'
-GROUP BY release_year
-ORDER BY release_year;
+1. **Query Execution**: Extract data with materialized columns
+2. **Type Conversion**: Convert PostgreSQL types to CSV-compatible formats
+3. **NULL Handling**: Map NULL to empty string or explicit "NULL"
+4. **Encoding**: Ensure UTF-8 encoding for international content
+5. **Compression**: Optional gzip compression for large files
+6. **Validation**: Compare row counts and sample validation
+7. **Checksums**: Generate SHA-256 hashes for integrity verification
 
--- Result: Clear generational shifts visible
--- 2010-2012: 2-3GB
--- 2013-2016: 4-6GB
--- 2017-2020: 8-12GB
--- 2021-2025: 12-16GB
-```
+### **Parquet Export Process**
 
-**Performance Profiling:**
+1. **Schema Definition**: Map PostgreSQL to Arrow types
+2. **Batch Reading**: Process data in memory-efficient batches
+3. **Dictionary Encoding**: Apply to categorical columns
+4. **Compression**: Use Snappy compression algorithm
+5. **Statistics**: Generate column statistics for query optimization
+6. **Validation**: Verify schema and record counts
 
-```sql
--- High-end games (16GB+ RAM)
-SELECT name, pc_rec_ram_gb, release_date
-FROM applications
-WHERE pc_rec_ram_gb >= 16
-ORDER BY release_date DESC
-LIMIT 20;
+### **SQL Dump Creation**
 
--- Lightweight games (<=2GB RAM)
-SELECT name, pc_rec_ram_gb, release_date
-FROM applications
-WHERE pc_rec_ram_gb <= 2
-  AND release_date >= '2020-01-01'
-ORDER BY release_date DESC
-LIMIT 20;
-```
-
-**Genre-Hardware Correlation:**
-
-```sql
--- Average RAM by genre
-SELECT 
-    g.name AS genre,
-    ROUND(AVG(a.pc_rec_ram_gb), 2) AS avg_ram,
-    COUNT(*) AS game_count
-FROM applications a
-JOIN application_genres ag ON a.appid = ag.appid
-JOIN genres g ON ag.genre_id = g.id
-WHERE a.pc_rec_ram_gb IS NOT NULL
-GROUP BY g.name
-HAVING COUNT(*) > 100
-ORDER BY avg_ram DESC
-LIMIT 10;
-
--- Results: Action, RPG at top; Casual, Indie at bottom
-```
-
-### **Research Applications**
-
-**Enabled Research Questions:**
-
-- How do hardware requirements evolve over time?
-- What's the lag between consumer hardware releases and game requirements?
-- Do certain genres have higher hardware demands?
-- How accessible are modern games (low-end PC perspective)?
-- What's the storage growth rate (implications for cloud gaming)?
+1. **Schema Export**: pg_dump with schema-only flag
+2. **Data Export**: pg_dump with data-only flag in COPY format
+3. **Index Export**: Separate index definitions for rebuild
+4. **Compression**: Gzip compression for data section
+5. **Validation**: Restore to test database and verify
 
 ---
 
-## **Knowledge Captured**
+## 📖 **References**
 
-### **Technical Insights**
+This section links to related documentation and resources.
 
-**Regex Development:**
+### **Internal Documentation**
 
-- Start specific (exact patterns), fall back to generic
-- Capture units separately, convert in code
-- Test against diverse samples before full run
-- Document known limitations explicitly
+| **Document** | **Relevance** | **Link** |
+|--------------|---------------|----------|
+| **Data Dictionary** | Complete field definitions | [/steam-dataset-2025-v1/DATA_DICTIONARY.md](../../steam-dataset-2025-v1/DATA_DICTIONARY.md) |
+| **Dataset Card** | Methodology and citation | [/steam-dataset-2025-v1/DATASET_CARD.md](../../steam-dataset-2025-v1/DATASET_CARD.md) |
+| **Notebook Examples** | Analysis workflows using exports | [/notebooks/README.md](../../notebooks/README.md) |
 
-**HTML Parsing:**
+### **Export Scripts**
 
-- BeautifulSoup for tag stripping
-- Preserve structure where possible
-- Multiple attempts with different patterns
-- NULL when confidence low (better than guessing)
+| **Script** | **Purpose** | **Documentation** |
+|------------|-------------|-------------------|
+| **generate-csv-package.py** | CSV export generation | [scripts/11-packaging-the-release/README.md](../../scripts/11-packaging-the-release/README.md) |
+| **generate-sql-dump.py** | Database dump creation | [scripts/11-packaging-the-release/README.md](../../scripts/11-packaging-the-release/README.md) |
+| **export-parquet-notebook-03.py** | Parquet file generation | [scripts/12-notebook-generation/README.md](../../scripts/12-notebook-generation/README.md) |
 
-**Data Quality:**
+### **External Resources**
 
-- Unstructured data = accept <100% extraction
-- Validation catches outliers
-- Coverage metrics set expectations
-- Document limitations in schema
-
-### **Process Insights**
-
-**Iterative Development:**
-
-- Test on 5K sample first
-- Validate, refine regex, re-run
-- Apply to full dataset
-- Final validation with coverage reporting
-
-**Quality Over Quantity:**
-
-- 65% accurate extraction better than 90% with errors
-- NULL preserves data integrity
-- Outlier filters prevent garbage data
-- Transparent about what worked vs didn't
-
-### **Reusable Patterns**
-
-**For Future HTML Parsing:**
-
-- Multi-pattern fallback strategy
-- Unit conversion handling
-- Sanity filtering framework
-- Validation with coverage reporting
-- Documentation of limitations
+| **Resource** | **Description** | **Link** |
+|--------------|-----------------|----------|
+| **Apache Parquet** | Columnar storage format | <https://parquet.apache.org/> |
+| **PostgreSQL pg_dump** | Backup and export utility | <https://www.postgresql.org/docs/current/app-pgdump.html> |
+| **pandas DataFrame** | CSV loading and analysis | <https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html> |
 
 ---
 
-## **Session Metadata**
+## 📜 **Documentation Metadata**
 
-**Development Environment:**
+### **Change Log**
 
-- Python 3.9+ with regex, BeautifulSoup
-- PostgreSQL 16
-- pandas for batch processing
-- SQLAlchemy for database operations
+| **Version** | **Date** | **Changes** | **Author** |
+|------------|----------|-------------|------------|
+| 1.0 | 2025-01-06 | Initial documentation for analytics data tier | VintageDon |
 
-**Session Type:** Advanced data extraction and parsing
+### **Authorship & Collaboration**
 
-**Code Status:** Production-ready with documented limitations
+**Primary Author:** VintageDon (Donald Fountain)  
+**GitHub:** <https://github.com/vintagedon>  
+**AI Collaboration:** Claude 3.7 Sonnet (Anthropic) - Documentation structure and technical writing assistance  
 
-**Follow-up Actions:**
-
-- Monitor analytical queries for performance
-- Consider ML-based extraction for edge cases
-- Document hardware trend findings
-- Prepare dataset for publication
+**Human Responsibility:** All export specifications, validation criteria, and quality standards are human-defined. AI assistance was used for documentation organization and clarity enhancement.
 
 ---
 
-## **Document Information**
+**Document Information**
 
 | **Field** | **Value** |
 |-----------|-----------|
 | **Author** | VintageDon - <https://github.com/vintagedon> |
-| **Created** | 2025-09-28 |
-| **Last Updated** | 2025-09-29 |
+| **Created** | 2025-01-06 |
+| **Last Updated** | 2025-01-06 |
 | **Version** | 1.0 |
-| **Phase** | Phase 09: PC Requirements Materialization |
 
 ---
-*Tags: phase-09, html-parsing, data-extraction, hardware-requirements, temporal-analysis*
+Tags: analytics-data, csv-exports, parquet, sql-dumps, dataset-distribution, kaggle, zenodo

@@ -1,4 +1,28 @@
 #!/usr/bin/env python3
+# =================================================================================================
+# File:          05-export-parquet-notebook-03.py
+# Project:       Steam Dataset 2025
+# Repository:    https://github.com/vintagedon/steam-dataset-2025
+# Author:        Don (vintagedon) | GitHub: https://github.com/vintagedon | ORCID: 0009-0008-7695-4093
+# AI Collaborators: ChatGPT, Gemini
+# License:       MIT
+# Last Updated:  2025-10-06
+#
+# Executive Summary (non-developer audience)
+#   Builds the **model-ready dataset** used by Notebook 3 (“Semantic Fingerprint, revised”).
+#   - Pulls game embeddings + labels (RAM, primary genre) from PostgreSQL.
+#   - Optionally reduces vector size with PCA (GPU-accelerated via PyTorch if available).
+#   - Saves a compressed Parquet file for fast, portable loading; also writes a small CSV preview.
+#
+# Developer Notes (technical audience)
+#   • Env: Reads Postgres admin creds from /opt/global-env/research.env (PGSQL01_*).
+#   • SQL: Canonicalizes top genres; extracts RAM as numeric; filters to sane ranges.
+#   • PCA: Uses torch.pca_lowrank on GPU when available; falls back to sklearn randomized PCA.
+#   • IO: Parquet with Zstandard (level 9). Output lives under notebook-data/03-advanced-analysis.
+#   • Modes: “Streaming” path is effectively disabled when PCA is on (requires full in-mem array).
+#   • Scope: COMMENTING ONLY — no logic changes.
+# =================================================================================================
+
 """
 Generates the final, model-ready dataset for the "Semantic Fingerprint"
 notebook (Notebook 3, revised).
@@ -12,10 +36,14 @@ It intelligently switches between a memory-efficient streaming mode (default)
 and a full-load mode for PCA, which is required to be in memory.
 """
 
+# --- Standard Library ---------------------------------------------------------------------------
 import os
 import sys
 from pathlib import Path
 
+# --- Third-Party ------------------------------------------------------------------------------
+# Non-dev: These libraries handle arrays (numpy), data frames (pandas), secret loading (dotenv),
+#          SQL connectivity (sqlalchemy), table printing, and PCA (sklearn or torch when present).
 import numpy as np
 import pandas as pd
 from dotenv import load_dotenv
@@ -35,14 +63,18 @@ def main():
     """Main function to execute the data generation process."""
     print("🚀 Starting dataset generation for 'Semantic Fingerprint' notebook...")
 
-    # --- 1. Configuration & Knobs ---
-    EMB_DIM_TARGET = 256
-    ROW_CAP = None
-    SHARD_ROWS = None # Sharding is disabled in PCA mode for a single file output
-    PARQUET_CODEC = "zstd"
-    PARQUET_LEVEL = 9
+    # --- 1. Configuration & Knobs ---------------------------------------------------------------
+    # Non-dev: These “knobs” control dimensionality reduction and file size.
+    # Dev: Set EMB_DIM_TARGET=None to skip PCA entirely (enables streaming path).
+    EMB_DIM_TARGET = 256            # Target embedding dimension after PCA
+    ROW_CAP = None                  # Optional cap for development/testing; None = full dataset
+    SHARD_ROWS = None               # Sharding is disabled in PCA mode for a single file output
+    PARQUET_CODEC = "zstd"          # Zstandard compression (good ratio + speed)
+    PARQUET_LEVEL = 9               # Higher = smaller files, more CPU
 
-    # --- 2. Paths and Connection ---
+    # --- 2. Paths and Connection ----------------------------------------------------------------
+    # Non-dev: Credentials are centralized; outputs are placed next to the repo notebooks.
+    # Dev: Output directory is relative to script root → ../notebook-data/03-advanced-analysis
     ENV_PATH = Path("/opt/global-env/research.env")
     DB_NAME = "steamfull"
     
@@ -54,6 +86,7 @@ def main():
         print(f"❌ ERROR: Environment file not found at {ENV_PATH}", file=sys.stderr)
         sys.exit(1)
 
+    # Load Postgres connection settings from the managed env file.
     load_dotenv(dotenv_path=ENV_PATH)
     db_user = os.getenv("PGSQL01_ADMIN_USER")
     db_pass = os.getenv("PGSQL01_ADMIN_PASSWORD")
@@ -61,7 +94,12 @@ def main():
     db_port = os.getenv("PGSQL01_PORT")
     db_uri = f"postgresql+psycopg2://{db_user}:{db_pass}@{db_host}:{db_port}/{DB_NAME}"
     
-    # --- 3. SQL Query (Hardened Version) ---
+    # --- 3. SQL Query (Hardened Version) --------------------------------------------------------
+    # Non-dev: This query:
+    #   • Picks a primary genre per game (stable order, then first).
+    #   • Parses min RAM (GB) from text like “8 GB RAM”.
+    #   • Filters to real games with valid embeddings and sane RAM (1–64 GB).
+    #   • Buckets non-canonical or noisy genres to “Other”.
     sql_query = text("""
     WITH canonical AS (
       SELECT unnest(ARRAY[
@@ -109,6 +147,7 @@ def main():
     """)
 
     # Determine read strategy based on knobs
+    # Dev: If no PCA target, stream chunks (PCA requires full dense array in memory).
     STREAM_READ = (EMB_DIM_TARGET is None)
 
     try:
@@ -118,23 +157,28 @@ def main():
 
             if STREAM_READ:
                 # This path is now only active if PCA is disabled.
+                # Non-dev: Streaming is more memory-efficient but avoided here because PCA is on.
                 print("PCA disabled. Streaming data in chunks...")
                 # ... [Streaming logic would go here, omitted for clarity as PCA is the focus] ...
                 sys.exit(0)
 
-            # === Full-Load Path (for PCA) ===
+            # === Full-Load Path (for PCA) ========================================================
             print("Executing query to fetch full semantic feature set for PCA...")
             df = pd.read_sql_query(sql_query, connection)
             print(f"✅ Query successful. Fetched {len(df):,} raw rows.")
             
-            # --- 4. Post-Load Guards & Transformations ---
+            # --- 4. Post-Load Guards & Transformations ------------------------------------------
+            # Non-dev: Removes any broken rows and normalizes embedding vector length.
+            # Dev: Ensure all 'emb' arrays share the same length before stacking for PCA.
             print("🛡️ Applying post-load guards...")
             df = df.dropna(subset=["emb", "ram_gb", "primary_genre"])
             lens = df["emb"].map(len)
             mode_len = lens.mode().iat[0] if not lens.mode().empty else 0
             df = df[lens == mode_len].copy()
 
-            # --- 5. GPU/CPU PCA Block ---
+            # --- 5. GPU/CPU PCA Block ------------------------------------------------------------
+            # Non-dev: Reduces vector dimensionality for smaller files and faster training.
+            # Dev: Try GPU (torch.pca_lowrank); if unavailable or fails, fall back to sklearn PCA.
             if EMB_DIM_TARGET is not None and mode_len > EMB_DIM_TARGET:
                 print(f"   - Reducing embeddings {mode_len}→{EMB_DIM_TARGET} dims (GPU if available)...")
                 X = np.vstack(df["emb"].to_numpy()).astype(np.float32)
@@ -146,19 +190,23 @@ def main():
                         raise RuntimeError("PyTorch or CUDA not available")
                     
                     device = "cuda"
+                    # Dev: Improves precision/speed balance on newer PyTorch.
                     if hasattr(torch, "set_float32_matmul_precision"):
                       torch.set_float32_matmul_precision("high")
 
+                    # Center then compute low-rank PCA on GPU.
                     X_t = torch.from_numpy(X).to(device, non_blocking=True)
                     mean = X_t.mean(dim=0, keepdim=True)
                     Xc = X_t - mean
 
+                    # q slightly above target to improve approximation quality.
                     q = min(mode_len, EMB_DIM_TARGET + 16)
                     U, S, V = torch.pca_lowrank(Xc, q=q, center=False)
                     k = EMB_DIM_TARGET
                     V_k = V[:, :k]
                     Xr = (Xc @ V_k).contiguous().cpu().numpy().astype(np.float32)
 
+                    # Approximate total variance for explained variance ratio.
                     tot_var = (Xc.pow(2).sum(dim=0) / (Xc.size(0)-1)).sum().item()
                     explained = float((S[:k].pow(2).sum().item()) / tot_var) if tot_var > 0 else None
                     backend = "GPU (PyTorch)"
@@ -175,6 +223,7 @@ def main():
                     explained = float(pca.explained_variance_ratio_.sum())
                     backend = "CPU (sklearn randomized)"
 
+                # Persist reduced vectors back into the frame as Python lists for Parquet.
                 df["emb"] = [row.tolist() for row in Xr]
                 mode_len = EMB_DIM_TARGET
                 if explained is not None:
@@ -182,9 +231,17 @@ def main():
                 else:
                     print(f"   - PCA complete via {backend}.")
 
-            # --- 6. Data Saving ---
+            # --- 6. Data Saving ------------------------------------------------------------------
+            # Non-dev: Writes the final Parquet file and a small CSV preview for quick inspection.
+            # Dev: Parquet uses pyarrow; compression zstd level 9 balances size and read speed.
             OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-            df.to_parquet(OUTPUT_FILE, engine="pyarrow", compression=PARQUET_CODEC, compression_level=PARQUET_LEVEL, index=False)
+            df.to_parquet(
+                OUTPUT_FILE,
+                engine="pyarrow",
+                compression=PARQUET_CODEC,
+                compression_level=PARQUET_LEVEL,
+                index=False
+            )
             print(f"\n💾 Main Parquet dataset saved to {OUTPUT_FILE}")
             
             df[["appid", "ram_gb", "primary_genre"]].head(1000).to_csv(PREVIEW_FILE, index=False)
@@ -193,10 +250,11 @@ def main():
             print("\n🎉 Dataset generation complete!")
 
     except Exception as e:
+        # Non-dev: Concise error reporting.
+        # Dev: Non-zero exit for CI runners / automation visibility.
         print(f"❌ An error occurred: {e}", file=sys.stderr)
         sys.exit(1)
 
 
 if __name__ == "__main__":
     main()
-
