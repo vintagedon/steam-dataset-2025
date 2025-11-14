@@ -60,21 +60,21 @@ The official Zenodo citation with DOI is the preferred format for academic publi
 
 ```markdown
 Fountain, D. (2025). Steam Dataset 2025: A large-scale, multi-modal dataset of the Steam 
-gaming platform [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.17286923
+gaming platform [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.17266922
 ```
 
 **IEEE Format:**
 
 ```markdown
 D. Fountain, "Steam Dataset 2025: A large-scale, multi-modal dataset of the Steam gaming 
-platform," Zenodo, 2025. [Online]. Available: https://doi.org/10.5281/zenodo.17286923
+platform," Zenodo, 2025. [Online]. Available: https://doi.org/10.5281/zenodo.17266922
 ```
 
 **Chicago Format (17th Edition):**
 
 ```markdown
 Fountain, Donald. "Steam Dataset 2025: A Large-Scale, Multi-Modal Dataset of the Steam 
-Gaming Platform." Zenodo, 2025. https://doi.org/10.5281/zenodo.17286923.
+Gaming Platform." Zenodo, 2025. https://doi.org/10.5281/zenodo.17266922.
 ```
 
 **BibTeX Entry:**
@@ -87,7 +87,7 @@ Gaming Platform." Zenodo, 2025. https://doi.org/10.5281/zenodo.17286923.
   year         = 2025,
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.17286923},
-  url          = {https://doi.org/10.5281/zenodo.17286923}
+  url          = {https://doi.org/10.5281/zenodo.17266922}
 }
 ```
 
@@ -103,7 +103,7 @@ For academic submissions requiring ORCID identification:
 ```markdown
 Fountain, D. (ORCID: 0009-0008-7695-4093). (2025). Steam Dataset 2025: A large-scale, 
 multi-modal dataset of the Steam gaming platform [Dataset]. Zenodo. 
-https://doi.org/10.5281/zenodo.17286923
+https://doi.org/10.5281/zenodo.17266922
 ```
 
 ### **2.3 DOI Badge**
@@ -113,13 +113,13 @@ For inclusion in presentations, papers, or websites:
 **Markdown Badge:**
 
 ```markdown
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17286923)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17266922)
 ```
 
 **HTML Badge:**
 
 ```html
-<a href="https://doi.org/10.5281/zenodo.17286923">
+<a href="https://doi.org/10.5281/zenodo.17266922">
   <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg" alt="DOI">
 </a>
 ```
@@ -158,21 +158,21 @@ Different citation formats for specific data package types when users work with 
 
 ```markdown
 Fountain, D. (2025). Steam Dataset 2025: Accessibility CSV package [Data files]. 
-Zenodo. https://doi.org/10.5281/zenodo.17286923
+Zenodo. https://doi.org/10.5281/zenodo.17266922
 ```
 
 **SQL Database Dump Citation:**
 
 ```markdown
 Fountain, D. (2025). Steam Dataset 2025: PostgreSQL database dump [Database]. 
-Zenodo. https://doi.org/10.5281/zenodo.17286923
+Zenodo. https://doi.org/10.5281/zenodo.17266922
 ```
 
 **Vector Embeddings Package Citation:**
 
 ```markdown
 Fountain, D. (2025). Steam Dataset 2025: Pre-computed vector embeddings (BGE-M3) 
-[Data files]. Zenodo. https://doi.org/10.5281/zenodo.17286923
+[Data files]. Zenodo. https://doi.org/10.5281/zenodo.17266922
 ```
 
 ### **3.3 Kaggle Dataset Citation**
@@ -263,7 +263,7 @@ Minimum attribution required for all uses of the Steam Dataset 2025:
 **Short Form (for space-constrained contexts):**
 
 ```markdown
-Steam Dataset 2025 by Donald Fountain (https://doi.org/10.5281/zenodo.17286923)
+Steam Dataset 2025 by Donald Fountain (https://doi.org/10.5281/zenodo.17266922)
 Licensed under CC BY 4.0
 ```
 
@@ -359,7 +359,7 @@ For reproducibility, always cite the specific version used in your research:
 ```markdown
 Fountain, D. (2025). Steam Dataset 2025: A large-scale, multi-modal dataset of the 
 Steam gaming platform (Version 1.0.0) [Dataset]. Zenodo. 
-https://doi.org/10.5281/zenodo.17286923
+https://doi.org/10.5281/zenodo.17266922
 ```
 
 **In-Text Version Reference:**
@@ -387,7 +387,7 @@ Analysis performed using Steam Dataset 2025 v1.0.0 (database snapshot: 2025-09-2
 
 | **Resource Type** | **Title** | **Description** | **Link** |
 |-------------------|-----------|-----------------|----------|
-| Archive | Zenodo Dataset Record | Permanent archival version with DOI | [doi.org/10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17286923) |
+| Archive | Zenodo Dataset Record | Permanent archival version with DOI | [doi.org/10.5281/zenodo.17266922](https://doi.org/10.5281/zenodo.17266922) |
 | Official API | Steam Web API Documentation | Source data API reference | [steamcommunity.com/dev](https://steamcommunity.com/dev) |
 | Database | PostgreSQL 16 Documentation | Database engine documentation | [postgresql.org/docs/16/](https://www.postgresql.org/docs/16/) |
 | Extension | pgvector Documentation | Vector operations and similarity search | [github.com/pgvector/pgvector](https://github.com/pgvector/pgvector) |

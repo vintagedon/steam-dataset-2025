@@ -2,7 +2,7 @@
 
 > The first analytically-native Steam dataset employing multi-modal database architecture for advanced data science workflows. 239,664 applications with semantic search, graph analysis, and comprehensive metadata.
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17286923)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17266922)
 [![Dataset](https://img.shields.io/badge/Dataset-239%2C664%20Applications-blue.svg)](https://github.com/VintageDon/steam-dataset-2025)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
@@ -17,7 +17,7 @@ Steam Dataset 2025 moves beyond traditional CSV exports to enable semantic searc
 
 ### **For Researchers**
 
-- **[📥 Download Dataset (Zenodo)](https://doi.org/10.5281/zenodo.17286923)** - Complete dataset with DOI citation
+- **[📥 Download Dataset (Zenodo)](https://doi.org/10.5281/zenodo.17266922)** - Complete dataset with DOI citation
 - **[📊 Explore on Kaggle](#)** - Interactive notebooks and community discussions *(Coming Soon)*
 - **[📖 Dataset Card](steam-dataset-2025-v1/DATASET_CARD.md)** - Complete methodology and academic documentation
 - **[📚 Data Dictionary](steam-dataset-2025-v1/DATA_DICTIONARY.md)** - Comprehensive field specifications
@@ -318,7 +318,7 @@ jupyter notebook notebooks/
 
 ### **Quick Start for Researchers**
 
-1. **Download Dataset**: Access via [Zenodo](https://doi.org/10.5281/zenodo.17286923) or Kaggle
+1. **Download Dataset**: Access via [Zenodo](https://doi.org/10.5281/zenodo.17266922) or Kaggle
 2. **Read Documentation**: Start with [Dataset Card](steam-dataset-2025-v1/DATASET_CARD.md)
 3. **Explore Examples**: Review [Jupyter notebooks](notebooks/) with PDF exports
 4. **Cite Properly**: Follow [Citation Guide](docs/citation.md) for academic use
@@ -369,7 +369,7 @@ jupyter notebook notebooks/
 
 #### **Zenodo (Recommended for Research)**
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17286923)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17266922)
 
 **Complete Dataset Package:**
 
@@ -386,7 +386,7 @@ jupyter notebook notebooks/
 - Academic hosting
 - Long-term preservation
 
-**[📥 Download from Zenodo](https://doi.org/10.5281/zenodo.17286923)**
+**[📥 Download from Zenodo](https://doi.org/10.5281/zenodo.17266922)**
 
 ---
 
@@ -489,7 +489,7 @@ Support open data science research and gain visibility in the analytics communit
   publisher    = {Zenodo},
   version      = {1.0.0},
   doi          = {10.5281/zenodo.17286923},
-  url          = {https://doi.org/10.5281/zenodo.17286923}
+  url          = {https://doi.org/10.5281/zenodo.17266922}
 }
 ```
 
@@ -498,7 +498,7 @@ Support open data science research and gain visibility in the analytics communit
 ```
 Fountain, D. (2025). Steam Dataset 2025: Multi-Modal Gaming Analytics 
 Platform (Version 1.0.0) [Data set]. Zenodo. 
-https://doi.org/10.5281/zenodo.17286923
+https://doi.org/10.5281/zenodo.17266922
 ```
 
 **[📖 Complete Citation Guide](docs/citation.md)** - Additional formats and attribution guidelines
@@ -575,7 +575,7 @@ This dataset follows academic standards for transparency and reproducibility:
 | **Phase 8** | Performance Optimization | ✅ Complete | [Work Log 08](work-logs/08-materialization-columns/) |
 | **Phase 9** | Hardware Extraction | ✅ Complete | [Work Log 09](work-logs/09-pc-requirements-materialization/) |
 | **Phase 10** | Dataset Packaging | ✅ Complete | [Work Log 10](work-logs/10-dataset-accessibility-packages/) |
-| **Release** | Zenodo Publication | ✅ Published | [DOI: 10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17286923) |
+| **Release** | Zenodo Publication | ✅ Published | [DOI: 10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17266922) |
 | **Release** | Kaggle Publication | 🔄 Pending | Coming Soon |
 
 ---
