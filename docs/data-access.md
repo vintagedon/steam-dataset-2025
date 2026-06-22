@@ -53,7 +53,7 @@ This section outlines all available access methods, helping you choose the right
 
 ### **2.1 Zenodo: Official Academic Release (Recommended for Research)**
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17286923)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17266922)
 
 **Best For:** Academic research, publications, permanent archival access  
 **Status:** ✅ Published and Available
@@ -77,7 +77,7 @@ This section outlines all available access methods, helping you choose the right
 
 ```bash
 # Option 1: Direct browser download
-# Visit: https://doi.org/10.5281/zenodo.17286923
+# Visit: https://doi.org/10.5281/zenodo.17266922
 # Click "Download" on the files you need
 
 # Option 2: Command line download (requires zenodo_get)
@@ -97,7 +97,7 @@ wget https://zenodo.org/record/17286923/files/steam_reviews.csv
 - ✅ **Long-Term Preservation** guaranteed by Zenodo/CERN
 - ✅ **Complete Package** including documentation and notebooks
 
-**[📥 Access on Zenodo](https://doi.org/10.5281/zenodo.17286923)**
+**[📥 Access on Zenodo](https://doi.org/10.5281/zenodo.17266922)**
 
 ---
 
@@ -417,7 +417,7 @@ Proper attribution for academic publications and research applications.
   publisher    = {Zenodo},
   version      = {1.0.0},
   doi          = {10.5281/zenodo.17286923},
-  url          = {https://doi.org/10.5281/zenodo.17286923}
+  url          = {https://doi.org/10.5281/zenodo.17266922}
 }
 ```
 
@@ -426,7 +426,7 @@ Proper attribution for academic publications and research applications.
 ```markdown
 Fountain, D. (2025). Steam Dataset 2025: Multi-Modal Gaming Analytics 
 Platform (Version 1.0.0) [Data set]. Zenodo. 
-https://doi.org/10.5281/zenodo.17286923
+https://doi.org/10.5281/zenodo.17266922
 ```
 
 ### **5.2 License Terms**
@@ -607,4 +607,4 @@ LIMIT 10;
 
 **Document Version:** 2.0 | **Last Updated:** January 6, 2025 | **Status:** Published
 
-*Access the complete dataset at: [https://doi.org/10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17286923)*
+*Access the complete dataset at: [https://doi.org/10.5281/zenodo.17266922](https://doi.org/10.5281/zenodo.17266922)*

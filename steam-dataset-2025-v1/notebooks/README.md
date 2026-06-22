@@ -308,7 +308,7 @@ All notebooks tested for nbviewer compatibility. View rendered notebooks without
 → Notebook 1: ~5 minutes | Notebook 2: ~10 minutes | Notebook 3: ~15 minutes (on standard laptop)
 
 **"Are these suitable for academic papers?"**  
-→ Yes - All notebooks include proper citations, methodology transparency, and reproducible workflows. Use official Zenodo DOI: [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17286923)
+→ Yes - All notebooks include proper citations, methodology transparency, and reproducible workflows. Use official Zenodo DOI: [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17266922)
 
 ---
 
@@ -328,7 +328,7 @@ All notebooks tested for nbviewer compatibility. View rendered notebooks without
 
 | **Resource Type** | **Title** | **Description** | **Link** |
 |-------------------|-----------|-----------------|----------|
-| Dataset Archive | Zenodo Record | Official dataset publication with DOI | [doi.org/10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17286923) |
+| Dataset Archive | Zenodo Record | Official dataset publication with DOI | [doi.org/10.5281/zenodo.17266922](https://doi.org/10.5281/zenodo.17266922) |
 | Repository | GitHub Repository | Complete source code and documentation | [github.com/VintageDon/steam-dataset-2025](https://github.com/VintageDon/steam-dataset-2025) |
 | Tutorial | Jupyter Documentation | Notebook execution and customization | [jupyter.org/documentation](https://jupyter.org/documentation) |
 | ML Library | scikit-learn User Guide | Machine learning documentation | [scikit-learn.org/stable/user_guide.html](https://scikit-learn.org/stable/user_guide.html) |

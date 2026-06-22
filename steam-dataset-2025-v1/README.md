@@ -17,12 +17,12 @@ tags: ["steam", "gaming", "dataset", "machine-learning", "semantic-search", "pos
 
 ## The Large-Scale, Multi-Modal Dataset of the Steam Gaming Platform
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17286923)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17266922)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16.10-blue.svg)](https://www.postgresql.org/)
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 
-**Version 1.0.0** | **Released October 2025** | **DOI: [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17286923)**
+**Version 1.0.0** | **Released October 2025** | **DOI: [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17266922)**
 
 ---
 
@@ -386,7 +386,7 @@ Multi-layered validation following RAVGV (Request-Analyze-Verify-Generate-Valida
 **Zenodo Archive (Recommended):**
 
 ```markdown
-https://doi.org/10.5281/zenodo.17286923
+https://doi.org/10.5281/zenodo.17266922
 ```
 
 **Alternative Sources:**
@@ -452,7 +452,7 @@ sentence-transformers >= 2.2  # For embedding generation
   year         = 2025,
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.17286923},
-  url          = {https://doi.org/10.5281/zenodo.17286923}
+  url          = {https://doi.org/10.5281/zenodo.17266922}
 }
 ```
 
@@ -460,14 +460,14 @@ sentence-transformers >= 2.2  # For embedding generation
 
 ```markdown
 Fountain, D. (2025). Steam Dataset 2025: A large-scale, multi-modal dataset of the 
-Steam gaming platform [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.17286923
+Steam gaming platform [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.17266922
 ```
 
 ### **IEEE Format**
 
 ```markdown
 D. Fountain, "Steam Dataset 2025: A large-scale, multi-modal dataset of the Steam gaming 
-platform," Zenodo, 2025. [Online]. Available: https://doi.org/10.5281/zenodo.17286923
+platform," Zenodo, 2025. [Online]. Available: https://doi.org/10.5281/zenodo.17266922
 ```
 
 ---
@@ -504,7 +504,7 @@ Data collected from official Steam Web API under [Steam Web API Terms](https://s
 
 ### **Project Links**
 
-- **DOI:** [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17286923)
+- **DOI:** [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17266922)
 - **Repository:** [github.com/VintageDon/steam-dataset-2025](https://github.com/VintageDon/steam-dataset-2025)
 - **ORCID:** [0009-0008-7695-4093](https://orcid.org/0009-0008-7695-4093)
 - **Kaggle:** [Pending publication]
@@ -547,6 +547,6 @@ Special thanks to Valve Corporation for maintaining the Steam platform and provi
 
 ---
 
-**Version 1.0.0** | **Released October 2025** | **DOI: [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17286923)**
+**Version 1.0.0** | **Released October 2025** | **DOI: [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17266922)**
 
 This dataset represents the culmination of systematic data engineering practices and transparent AI-human collaboration, demonstrating that sophisticated research infrastructure can be built through methodical approaches and comprehensive documentation.

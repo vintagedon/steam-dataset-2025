@@ -424,12 +424,12 @@ Not applicable - dataset contains only API-sourced data and user-generated revie
   publisher    = {Zenodo},
   version      = {1.0.0},
   doi          = {10.5281/zenodo.17286923},
-  url          = {https://doi.org/10.5281/zenodo.17286923}
+  url          = {https://doi.org/10.5281/zenodo.17266922}
 }
 ```
 
 **Recommended Citation Format**:
-> Fountain, D. (2025). *The Steam Dataset 2025: A Large-Scale, Multi-Modal Dataset of the Steam Gaming Platform* (Version 1.0.0) [Data set]. Zenodo. <https://doi.org/10.5281/zenodo.17286923>
+> Fountain, D. (2025). *The Steam Dataset 2025: A Large-Scale, Multi-Modal Dataset of the Steam Gaming Platform* (Version 1.0.0) [Data set]. Zenodo. <https://doi.org/10.5281/zenodo.17266922>
 
 ### Contributions
 
@@ -481,5 +481,5 @@ We welcome contributions from the research community:
 **Dataset Version**: 1.0.0  
 **Last Updated**: October 5, 2025  
 **Documentation Status**: Published  
-**Zenodo DOI**: [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17286923)  
+**Zenodo DOI**: [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17266922)  
 **GitHub Repository**: [vintagedon/steam-dataset-2025](https://github.com/vintagedon/steam-dataset-2025)
