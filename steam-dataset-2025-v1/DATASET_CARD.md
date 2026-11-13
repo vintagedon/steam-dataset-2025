@@ -49,7 +49,7 @@ sentiment_by_genre = db.query("""
 
 ## Languages
 
-**Primary Language**: English (majority of content)
+**Primary Language**: unverified at package grain — the publicly tracked 5K sample measured 51.6% English review records at its grain; packaged composition is unverified pending dump/CSV verification (see [known limitations](../docs/release-1.0.1/known-limitations.md))
 
 **Additional Languages Supported**:
 
@@ -59,7 +59,7 @@ sentiment_by_genre = db.query("""
 - Asian languages (Korean, Thai, Turkish)
 - 100+ languages supported via BGE-M3 multilingual embeddings
 
-**Language Distribution**: Not uniformly distributed; reflects Steam's global marketplace with English dominance and strong Asian game developer presence.
+**Language Distribution**: not measured at package grain. The publicly tracked 5K sample measured 51.6% English, 13.8% Simplified Chinese and 9.9% Russian review records at its grain; the packaged release's language composition is unverified pending dump/CSV verification.
 
 ## Dataset Structure
 
@@ -253,7 +253,7 @@ The Steam Dataset 2025 was created to address critical gaps in existing gaming d
 
 **Language Demographics**:
 
-- English: Dominant language for descriptions and reviews
+- English: composition unverified at package grain; 51.6% of review records in the publicly tracked 5K sample (sample grain only)
 - Chinese: Significant presence from Asian game developers
 - European languages: Strong representation from EU-based developers
 - Demographic details: Not explicitly collected (global Steam users)
@@ -327,12 +327,12 @@ Not applicable - dataset contains only API-sourced data and user-generated revie
 
 1. **Geographic Bias**:
    - Currency: 59.5% USD due to API query origin (North America)
-   - Language: English-dominant descriptions despite global platform
+   - Language: description-language composition unmeasured; treat as unverified
    - Regional pricing variations not captured uniformly
 
 2. **Demographic Bias (Reviews)**:
    - Steam user base skews male, 18-34, Western countries
-   - Review language predominantly English
+   - Review-language composition unverified pending dump/CSV verification (5K sample grain: 51.6% English)
    - AAA titles over-represented in review volume
 
 3. **Temporal Bias**:

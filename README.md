@@ -564,7 +564,9 @@ This dataset follows academic standards for transparency and reproducibility:
 | **Phase 7** | Vector Embeddings | ✅ Complete | [Work Log 07](work-logs/07-vector-embeddings/) |
 | **Phase 8** | Performance Optimization | ✅ Complete | [Work Log 08](work-logs/08-materialization-columns/) |
 | **Phase 9** | Hardware Extraction | ✅ Complete | [Work Log 09](work-logs/09-pc-requirements-materialization/) |
-| **Phase 10** | Dataset Packaging | ✅ Complete | [Work Log 10](work-logs/10-pc-requirements-materialization/) |
+| **Phase 10** | PC Requirements Materialization | ✅ Complete | [Work Log 10](work-logs/10-pc-requirements-materialization/) |
+| **Phase 11** | Dataset Packaging | ✅ Complete | [Work Log 11](work-logs/11-packaging-the-release/) |
+| **Phase 12** | Notebook Generation | ✅ Complete | [Work Log 12](work-logs/12-notebook-generation/) |
 | **Release** | Zenodo Publication | ✅ Published | [DOI: 10.5281/zenodo.17266923](https://doi.org/10.5281/zenodo.17266923) (v1.0.0) |
 | **Release** | Kaggle Publication | ✅ Published | [Steam Dataset 2025 on Kaggle](https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics) |
 

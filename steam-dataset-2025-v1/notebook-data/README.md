@@ -60,7 +60,7 @@ Visual representation of this data package:
 ```markdown
 02-semantic-game-discovery/
 ├── 📊 01_game_embeddings_sample.csv       # 10K game metadata
-├── 🧠 02_embeddings_vectors.npy           # 1024-dim vectors (NumPy)
+├── 🧠 02_embeddings_vectors.npy           # 1024-dim vectors (NumPy; release package only, not tracked here)
 ├── 🔗 02_embeddings_appids.csv            # Vector-to-game mapping
 ├── 🎭 02_genre_representatives.csv        # Balanced genre sampling
 ├── 🔍 02_semantic_search_examples.json    # Pre-computed queries
@@ -70,7 +70,7 @@ Visual representation of this data package:
 ### **Navigation Guide:**
 
 - **[📊 Game Metadata](02-semantic-game-discovery/01_game_embeddings_sample.csv)** - Start here for game names, genres, prices, and review statistics
-- **[🧠 Embedding Vectors](02-semantic-game-discovery/02_embeddings_vectors.npy)** - Load with NumPy for ML/similarity calculations
+- **🧠 Embedding Vectors** — `02_embeddings_vectors.npy` is **not tracked in this repository**; it ships inside the official release packages. Download the package (see [data access](../../docs/data-access.md) and the [artifact reference](../../docs/release-1.0.1/artifact-reference.json)) and extract the `.npy` before loading it with NumPy for ML/similarity calculations
 - **[🎭 Genre Representatives](02-semantic-game-discovery/02_genre_representatives.csv)** - Use for balanced clustering without Action genre dominance
 - **[🔍 Search Examples](02-semantic-game-discovery/02_semantic_search_examples.json)** - Reference implementation of semantic search queries
 
@@ -149,6 +149,11 @@ Sample of Steam's most-reviewed games with metadata (vectors excluded for size m
 
 **File:** `02_embeddings_vectors.npy`  
 **Shape:** (10,000, 1024) | **Type:** float32 | **Memory:** 39.1 MB
+
+**Access prerequisite:** this file is package-only — it is not tracked in this
+repository. Download an official release package (see
+[data access](../../docs/data-access.md)) and extract `02_embeddings_vectors.npy`
+before running any example below that loads it.
 
 Raw 1024-dimensional BGE-M3 embeddings in NumPy binary format.
 

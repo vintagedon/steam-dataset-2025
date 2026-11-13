@@ -112,6 +112,6 @@
     "description": "Review corpus character",
     "state": "corroborated-by-packaging-record; sampling bound from dated 2026-08-03 measurement",
     "loaded_reviews": 1048148,
-    "sampling": "Bounded per-application sample (up to 100 most recent English-language reviews per covered application; 117,311 covered applications per the 2026-08-03 read-only measurement), not a complete historical corpus."
+    "sampling": "Bounded per-application sample (up to 100 most recent reviews per covered application, requested with language=all; 117,311 covered applications per the 2026-08-03 read-only measurement), not a complete historical corpus. language=all is a collection-request fact, not a distribution measurement: the packaged corpus's language composition is unverified pending dump/CSV verification."
   }
 }

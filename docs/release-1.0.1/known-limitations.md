@@ -59,8 +59,11 @@ asserted for the 481-row difference.
 
 Reviews were collected as a bounded per-application sample: up to the 100
 most recent reviews per covered application, covering 117,311 applications
-(dated 2026-08-03 measurement). The corpus is not a complete historical
-review archive, and "complete historical coverage" claims have been removed.
+(dated 2026-08-03 measurement). The retained collector requested
+`language=all`; that request does not measure the packaged corpus's language
+composition, which remains unverified pending dump/CSV verification. The
+corpus is not a complete historical review archive, and "complete historical
+coverage" claims have been removed.
 Review records include author account identifiers (`author_steamid`); the
 reuse decision for unchanged packages is tracked separately and is not
 settled here.

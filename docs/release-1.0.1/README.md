@@ -71,13 +71,16 @@ applications, of which the games run reports 5,000 successful detail
 fetches. This is **not** the 239,664-application release population, and
 nothing below extrapolates to it.
 
-**Reproduce it** (Python 3.9+, stdlib only):
+**Reproduce it** (Python 3.9+, stdlib only). Run both commands from the
+**repository root** — the checkout directory that contains `data/`. The
+decompression writes into `data/01_raw/`, and the Python step reads the
+decompressed file from that same location:
 
 ```bash
 gunzip -k data/01_raw/steam_2025_5k-dataset-reviews_20250901.json.gz
 python3 - <<'EOF'
 import json, collections
-d = json.load(open('steam_2025_5k-dataset-reviews_20250901.json'))
+d = json.load(open('data/01_raw/steam_2025_5k-dataset-reviews_20250901.json'))
 apps_with_reviews = texts = nonempty = 0
 langs = collections.Counter()
 for e in d['reviews']:

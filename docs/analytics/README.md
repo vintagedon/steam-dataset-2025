@@ -168,7 +168,10 @@ Comprehensive analytical coverage across multiple dimensions:
 - Games: 150,039 of 239,341 successful raw records (record grain, measured 2026-11-13)
 - DLC/Add-ons: 53,698 records
 - Demos: 23,520 records
-- Music/other types: 11,084 records combined
+- Music/other types: 12,084 records combined (music 8,684, episode 2,274,
+  video 699, advertising 212, mod 126, series 82, hardware 7 — summed from the
+  measured type distribution in
+  [collection-outcomes.json](../release-1.0.1/collection-outcomes.json))
 
 ### **Genre Ecosystem Insights**
 

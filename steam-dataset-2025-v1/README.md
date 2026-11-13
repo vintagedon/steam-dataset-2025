@@ -46,7 +46,7 @@ The Steam Dataset 2025 is the most comprehensive and methodologically rigorous S
 | **Metric** | **Count** | **Details** |
 |------------|-----------|-------------|
 | **Total Applications** | 239,664 | Games, DLC, software, videos, tools |
-| **User Reviews** | 1,048,148 | English-language reviews with full metadata |
+| **User Reviews** | 1,048,148 | Bounded sample: up to 100 most recent reviews per covered application; package language composition unverified pending dump/CSV verification |
 | **Unique Developers** | 101,226 | Individual and studio developers |
 | **Unique Publishers** | 85,699 | Publishers across all content types |
 | **Genre Classifications** | 154 | Including multilingual variants |
@@ -108,7 +108,8 @@ import numpy as np
 # Load sample game data
 games = pd.read_csv('notebook-data/01-platform-evolution/01_temporal_growth.csv')
 
-# Load semantic embeddings
+# Load semantic embeddings (the .npy ships in the release packages and is not
+# tracked in this repository — download and extract it first; see docs/data-access.md)
 embeddings = np.load('notebook-data/02-semantic-game-discovery/02_embeddings_vectors.npy')
 appids = pd.read_csv('notebook-data/02-semantic-game-discovery/02_embeddings_appids.csv')
 
@@ -197,7 +198,7 @@ Each notebook is self-contained with validation checks, comprehensive visualizat
 |--------------|-------------|----------|
 | **Data Dictionary** | Complete schema reference with all tables, columns, and JSONB structures | [DATA_DICTIONARY.md](DATA_DICTIONARY.md) |
 | **Dataset Card** | Metadata, methodology summary, and citation information | [DATASET_CARD.md](DATASET_CARD.md) |
-| **Database Schema** | Full PostgreSQL DDL with indexes and constraints | [steam-dataset-2025-full-schema.sql](../docs/release-1.0.1/schema-provenance.json) |
+| **Schema Provenance** | Verified `schema.sql` extraction is **deferred** — no full PostgreSQL DDL is published yet; see the deferral record and its unblock conditions | [schema-provenance.json](../docs/release-1.0.1/schema-provenance.json) |
 
 ### **🗃️ Data Packages Available**
 
