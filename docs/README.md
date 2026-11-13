@@ -13,7 +13,7 @@ tags:
 - phase: [phase-1/phase-2/phase-3]
 related_documents:
 - "[Project README](../README.md)"
-- "[Scripts Documentation](../scripts/README.md)"
+- "[Pipeline History](../work-logs/README.md)"
 - "[Data Documentation](../data/README.md)"
 ---
 -->
@@ -35,12 +35,12 @@ The documentation structure is organized into three primary domains: analytics d
 | **Document** | **Purpose** | **Link** |
 |--------------|-------------|----------|
 | **[citation.md](citation.md)** | Official citation format and DOI information | [citation.md](citation.md) |
-| **[data_dictionary.md](data_dictionary.md)** | Comprehensive field definitions and data types | [data_dictionary.md](data_dictionary.md) |
-| **[data-access.md](data-access.md)** | Database connection and data access patterns | [data-access.md](data-access.md) |
+| **[data-access.md](data-access.md)** | Download procedures and data access patterns | [data-access.md](data-access.md) |
 | **[infrastructure.md](infrastructure.md)** | Technical infrastructure specifications | [infrastructure.md](infrastructure.md) |
 | **[limitations.md](limitations.md)** | Dataset limitations and known issues | [limitations.md](limitations.md) |
-| **[postgresql-database-performance.md](postgresql-database-performance.md)** | Database performance benchmarks and optimization | [postgresql-database-performance.md](postgresql-database-performance.md) |
-| **[postgresql-database-schema.md](postgresql-database-schema.md)** | Complete database schema documentation | [postgresql-database-schema.md](postgresql-database-schema.md) |
+| **[release-1.0.1/](release-1.0.1/)** | Corrected v1.0.0 reference: outcomes, artifacts, limitations | [release-1.0.1/README.md](release-1.0.1/README.md) |
+| **[postgesql-database-performance.md](postgesql-database-performance.md)** | Database performance benchmarks and optimization (historical) | [postgesql-database-performance.md](postgesql-database-performance.md) |
+| **[postgresql-database-schema.md](postgresql-database-schema.md)** | Database schema documentation (superseded; see release-1.0.1/) | [postgresql-database-schema.md](postgresql-database-schema.md) |
 | **[README.md](README.md)** | This file - documentation navigation hub | [README.md](README.md) |
 
 ### **Subdirectories**
@@ -49,7 +49,7 @@ The documentation structure is organized into three primary domains: analytics d
 |--------------|-------------|-------------------|
 | **[analytics/](analytics/)** | Exploratory data analysis and findings | [analytics/README.md](analytics/README.md) |
 | **[methodologies/](methodologies/)** | Data collection and processing methodologies | [methodologies/README.md](methodologies/README.md) |
-| **[documentation-standards/](documentation-standards/)** | Documentation templates and standards | [documentation-standards/README.md](documentation-standards/README.md) |
+| **[documentation-standards/](../documentation-standards/)** | Documentation templates and standards | [documentation-standards/README.md](../documentation-standards/README.md) |
 
 ---
 
@@ -64,7 +64,7 @@ docs/
 ├── 🔬 methodologies/                          # Data collection methodologies
 │   ├── README.md                              # Methodologies overview
 │   ├── ai-human-collaboration-methodology.md  # RAVGVR methodology
-│   ├── data-validation-and-qa.md              # Quality assurance procedures
+│   ├── data-validaton-and-qa.md               # Quality assurance procedures
 │   ├── multi-modal-db-architecture.md         # Database architecture design
 │   ├── steam-api-collection.md                # API collection methodology
 │   └── vector-embeddings.md                   # Embedding generation approach
@@ -72,13 +72,18 @@ docs/
 │   ├── README.md                              # Standards overview
 │   ├── kb-general-template.md                 # Knowledge base template
 │   └── worklog-kb-template.md                 # Work log template
+├── 📦 release-1.0.1/                          # Corrected v1.0.0 reference
+│   ├── README.md                              # Reference + text-analysis walkthrough
+│   ├── known-limitations.md                   # Prose limitations
+│   ├── artifact-reference.json                # Official packages, DOIs
+│   ├── collection-outcomes.json               # Measured outcomes
+│   └── schema-provenance.json                 # Schema deferral record
 ├── 📖 citation.md                             # Citation information
-├── 📖 data_dictionary.md                      # Field definitions
 ├── 📖 data-access.md                          # Data access guide
 ├── 📖 infrastructure.md                       # Infrastructure specs
 ├── 📖 limitations.md                          # Dataset limitations
-├── 📖 postgresql-database-performance.md      # Performance benchmarks
-├── 📖 postgresql-database-schema.md           # Schema documentation
+├── 📖 postgesql-database-performance.md       # Performance benchmarks (historical)
+├── 📖 postgresql-database-schema.md           # Schema documentation (superseded)
 └── 📄 README.md                               # This file
 ```
 
@@ -86,9 +91,10 @@ docs/
 
 - **[📊 Analytics](analytics/README.md)** - Exploratory analysis and statistical findings
 - **[🔬 Methodologies](methodologies/README.md)** - Data collection and processing approaches
-- **[📋 Documentation Standards](documentation-standards/README.md)** - Templates and guidelines
-- **[🗄️ Database Schema](postgresql-database-schema.md)** - Complete schema reference
-- **[🚀 Performance](postgresql-database-performance.md)** - Benchmarks and optimization
+- **[📋 Documentation Standards](../documentation-standards/README.md)** - Templates and guidelines
+- **[📦 Release 1.0.1 Reference](release-1.0.1/README.md)** - Measured outcomes, official artifacts, known limitations
+- **[🗄️ Database Schema](postgresql-database-schema.md)** - Schema documentation (superseded; verified schema extraction deferred)
+- **[🚀 Performance](postgesql-database-performance.md)** - Historical benchmarks and optimization
 
 ---
 
@@ -96,7 +102,7 @@ docs/
 
 | **Category** | **Relationship** | **Documentation** |
 |--------------|------------------|-------------------|
-| **[Scripts](../scripts/README.md)** | Implementation code for data collection and processing | [../scripts/README.md](../scripts/README.md) |
+| **[Pipeline History](../work-logs/README.md)** | Collection/processing code and records (12 phase directories) | [../work-logs/README.md](../work-logs/README.md) |
 | **[Data](../data/README.md)** | Raw and processed data files | [../data/README.md](../data/README.md) |
 | **[Assets](../assets/README.md)** | Visualizations and analytical plots | [../assets/README.md](../assets/README.md) |
 | **[Work Logs](../work-logs/README.md)** | Detailed development session documentation | [../work-logs/README.md](../work-logs/README.md) |
@@ -108,7 +114,7 @@ docs/
 For users approaching the documentation:
 
 1. **Dataset Overview:** Start with [Project README](../README.md) for high-level understanding
-2. **Data Structure:** Review [Data Dictionary](data_dictionary.md) for field definitions
+2. **Data Structure:** Review the [Data Dictionary](../steam-dataset-2025-v1/DATA_DICTIONARY.md) for field definitions (superseded; see [release-1.0.1](release-1.0.1/README.md))
 3. **Analysis Examples:** Explore [Analytics Documentation](analytics/README.md) for insights
 4. **Methodology:** Read [Methodologies](methodologies/README.md) for reproducibility details
 5. **Database Access:** Use [Data Access Guide](data-access.md) for connection instructions
@@ -188,14 +194,14 @@ The documentation is structured to serve multiple user personas with different n
 
 **Schema Reference:**
 
-- [PostgreSQL Database Schema](postgresql-database-schema.md) - Complete table definitions
-- [Data Dictionary](data_dictionary.md) - Field-level documentation
+- [PostgreSQL Database Schema](postgresql-database-schema.md) - Table definitions (superseded; verified schema extraction deferred — see [release-1.0.1/schema-provenance.json](release-1.0.1/schema-provenance.json))
+- [Data Dictionary](../steam-dataset-2025-v1/DATA_DICTIONARY.md) - Field-level documentation (superseded)
 - Normalized relational structure with JSONB enrichment
 - pgvector integration for semantic search
 
 **Performance:**
 
-- [Performance Benchmarks](postgresql-database-performance.md) - Tested query performance
+- [Performance Benchmarks](postgesql-database-performance.md) - Historical benchmarks
 - Hardware specifications and optimization
 - Index strategies and query patterns
 - Scaling considerations
@@ -294,7 +300,7 @@ The documentation is structured to serve multiple user personas with different n
 
 **Quality Assurance:**
 
-- [Data Validation](methodologies/data-validation-and-qa.md) - Multi-stage validation
+- [Data Validation](methodologies/data-validaton-and-qa.md) - Multi-stage validation
 - Collection-time checks
 - Post-import validation
 - Analytical validation

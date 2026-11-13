@@ -14,7 +14,7 @@ tags:
 related_documents:
 - "[Parent Directory](../README.md)"
 - "[Analytics Documentation](../analytics/README.md)"
-- "[Scripts](../../scripts/README.md)"
+- "[Scripts](../../work-logs/README.md)"
 ---
 -->
 
@@ -58,15 +58,15 @@ This directory organizes five core methodology documents covering the complete d
 
 | **Component** | **Relationship** | **Integration Points** | **Documentation** |
 |---------------|------------------|------------------------|-------------------|
-| Scripts | Implementation of documented methodologies | All methodology documents have corresponding executable scripts | [../../scripts/README.md](../../scripts/README.md) |
+| Scripts | Implementation of documented methodologies | All methodology documents have corresponding executable scripts | [../../scripts/README.md](../../work-logs/README.md) |
 | Analytics Documentation | Analysis built upon quality-assured data | Validation procedures ensure analytical reliability | [../analytics/README.md](../analytics/README.md) |
 | Work Logs | Session-by-session methodology application | Detailed implementation decisions and discoveries | [../../work-logs/README.md](../../work-logs/README.md) |
-| Database Schema | Implementation of architecture decisions | Schema reflects multi-modal design principles | [../../database/postgresql-database-schema.md](../../database/postgresql-database-schema.md) |
+| Database Schema | Implementation of architecture decisions | Schema reflects multi-modal design principles | [../../database/postgresql-database-schema.md](../postgresql-database-schema.md) |
 
 ### **2.2 External Dependencies**
 
 - **[Steam Web API](https://steamcommunity.com/dev)** - Official Valve API providing all source data; API key required for collection
-- **[PostgreSQL 16.10](https://www.postgresql.org/docs/16/)** - Database engine with JSONB and array support
+- **[PostgreSQL 16](https://www.postgresql.org/docs/16/)** - Database engine with JSONB and array support (collection database measured 16.14, 2026-08-03)
 - **[pgvector v0.8.0](https://github.com/pgvector/pgvector)** - Vector operations extension for semantic search
 - **[sentence-transformers](https://www.sbert.net/)** - Python library for generating text embeddings
 
@@ -80,7 +80,7 @@ This section provides detailed descriptions of each methodology document, helpin
 
 **[steam-api-collection.md](steam-api-collection.md)**
 
-Documents the complete Steam API data collection pipeline including endpoint selection, rate limiting strategies, error handling, and response parsing. Critical for understanding data source characteristics, API success rates (~56%), and limitations inherent in Steam's public API.
+Documents the complete Steam API data collection pipeline including endpoint selection, rate limiting strategies, error handling, and response parsing. Critical for understanding data source characteristics, the measured record-level collection outcomes (239,341 successes across 262,791 retained records; see [collection-outcomes.json](../release-1.0.1/collection-outcomes.json)), and limitations inherent in Steam's public API.
 
 **Use this document when:**
 
@@ -100,7 +100,7 @@ Documents the complete Steam API data collection pipeline including endpoint sel
 
 ### **3.2 Data Validation & Quality Assurance**
 
-**[data-validation-and-qa.md](data-validation-and-qa.md)**
+**[data-validaton-and-qa.md](data-validaton-and-qa.md)**
 
 Details the multi-layered validation framework ensuring data integrity from collection through analysis. Covers collection-time validation, post-import checks, and analytical validation procedures. Essential for researchers evaluating dataset reliability and data quality claims.
 
@@ -146,7 +146,7 @@ Explains the architectural decisions behind combining PostgreSQL, pgvector, and 
 
 **[vector-embeddings.md](vector-embeddings.md)**
 
-Documents the vector embedding generation pipeline enabling semantic search across game descriptions and reviews. Covers model selection (all-MiniLM-L6-v2 vs BGE-M3), embedding generation procedures, HNSW indexing, and semantic search capabilities.
+Documents the vector embedding generation pipeline enabling semantic search across game descriptions and reviews. Covers model selection (an all-MiniLM-L6-v2 prototype stage preceded the final BAAI/bge-m3 choice), embedding generation procedures, HNSW indexing, and semantic search capabilities.
 
 **Use this document when:**
 
@@ -193,31 +193,31 @@ Describes the RAVGVR (Request-Analyze-Verify-Generate-Validate-Reflect) framewor
 **For Dataset Users:**
 
 1. **Start:** [Steam API Collection](steam-api-collection.md) - Understand data source and coverage
-2. **Quality:** [Data Validation](data-validation-and-qa.md) - Assess data reliability for your research
+2. **Quality:** [Data Validation](data-validaton-and-qa.md) - Assess data reliability for your research
 3. **Features:** [Vector Embeddings](vector-embeddings.md) - Leverage semantic search capabilities
 
 **For Data Engineers:**
 
 1. **Start:** [Multi-Modal DB Architecture](multi-modal-db-architecture.md) - Review design decisions
 2. **Collection:** [Steam API Collection](steam-api-collection.md) - Implement API collection pipeline
-3. **Quality:** [Data Validation](data-validation-and-qa.md) - Implement validation framework
+3. **Quality:** [Data Validation](data-validaton-and-qa.md) - Implement validation framework
 
 **For Researchers:**
 
-1. **Start:** [Data Validation](data-validation-and-qa.md) - Evaluate quality for academic use
+1. **Start:** [Data Validation](data-validaton-and-qa.md) - Evaluate quality for academic use
 2. **Process:** [AI Collaboration](ai-human-collaboration-methodology.md) - Understand construction transparency
 3. **Architecture:** [Multi-Modal DB Architecture](multi-modal-db-architecture.md) - Assess technical rigor
 
 ### **4.2 Common Questions
 
 **"How reliable is the data?"**  
-→ See [Data Validation & QA](data-validation-and-qa.md) for complete quality assurance procedures and known limitations
+→ See [Data Validation & QA](data-validaton-and-qa.md) for complete quality assurance procedures and known limitations
 
 **"Can I reproduce this dataset?"**  
-→ Yes - [Steam API Collection](steam-api-collection.md) provides full collection procedures; scripts in `/scripts` directory provide executable implementations
+→ Yes - [Steam API Collection](steam-api-collection.md) provides full collection procedures; the collection/processing code is retained under `work-logs/` (12 phase directories; relocation to `scripts/` is planned maintenance)
 
 **"What's the API success rate?"**  
-→ ~56% due to delisted apps and regional restrictions; see [Steam API Collection](steam-api-collection.md) for detailed analysis
+→ There is no HTTP-attempt success rate in the retained record. The measured record-level outcome is 239,341 successes across 262,791 retained result records (91.0766% at record grain); see [collection-outcomes.json](../release-1.0.1/collection-outcomes.json) for grain and limitations
 
 **"How do vector embeddings work?"**  
 → [Vector Embeddings](vector-embeddings.md) covers model selection, generation procedures, and semantic search capabilities
@@ -234,9 +234,9 @@ Describes the RAVGVR (Request-Analyze-Verify-Generate-Validate-Reflect) framewor
 | **Document Type** | **Title** | **Relationship** | **Link** |
 |-------------------|-----------|------------------|----------|
 | Analytics | Steam 5K Dataset Analysis | Analysis methodology applying validation procedures | [../analytics/steam-5k-dataset-analysis.md](../analytics/steam-5k-dataset-analysis.md) |
-| Scripts | Data Collection Scripts | Executable implementations of methodologies | [../../scripts/README.md](../../scripts/README.md) |
+| Scripts | Data Collection Scripts | Executable implementations of methodologies | [../../scripts/README.md](../../work-logs/README.md) |
 | Work Logs | Session Documentation | Detailed methodology application and discoveries | [../../work-logs/README.md](../../work-logs/README.md) |
-| Database | Schema Documentation | Implementation of architectural decisions | [../../database/postgresql-database-schema.md](../../database/postgresql-database-schema.md) |
+| Database | Schema Documentation | Implementation of architectural decisions | [../../database/postgresql-database-schema.md](../postgresql-database-schema.md) |
 
 ### **5.2 External Resources**
 

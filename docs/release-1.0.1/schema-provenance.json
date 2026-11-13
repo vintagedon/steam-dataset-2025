@@ -1,0 +1,34 @@
+{
+  "$schema_note": "Provenance record for a root schema.sql extraction from the verified published dump. Status: DEFERRED. No schema.sql exists at the repository root and none was fabricated.",
+  "status": "deferred",
+  "recorded": "2026-11-13",
+  "target_artifact": "schema.sql at the repository root only (not inside docs/release-1.0.1/)",
+  "source_package": {
+    "name": "steam_dataset_2025_power_users_dump_v1.zip",
+    "bytes": 7204002678,
+    "provider_checksum": "md5:d1ba45cd4cca280ad3e56ccf463e7e87",
+    "acquired": false,
+    "official_metadata_verified": "2026-11-13 (see artifact-reference.json)"
+  },
+  "deferral": {
+    "reasons": [
+      "The spec's allowed decoder invocations run pg_restore 18.6 inside the existing ml01a-pg18 container via privileged container execution, which the dispatching authorization denies in this run; the deferral lane is explicit for unavailable optional dump decoding.",
+      "No pg_restore client exists on the host PATH (checked 2026-11-13, 'which pg_restore' exit 1) and none can be installed without privileged operations denied in this run.",
+      "Acquiring the 7,204,002,678-byte package without any decoder would verify bytes but could not produce the extraction, so the single 15-minute lane attempt was not spent."
+    ],
+    "unblock_conditions": "A run with an authorized decoder (container path or installed client) acquires the package, verifies bytes against the provider size/checksum, computes SHA-256, and extracts schema-only output with deterministic bytes; the extractor version, arguments, source package member and output hash are then recorded here and the two superseded schema documents are pointed at the extracted root schema.sql."
+  },
+  "affected_public_statements": {
+    "superseded_docs": [
+      "docs/postgresql-database-schema.md — superseded in place; points to docs/release-1.0.1/known-limitations.md for the deferral explanation",
+      "steam-dataset-2025-v1/DATA_DICTIONARY.md — superseded in place; same pointer"
+    ],
+    "no_schema_claims": "No bootstrap or restore guarantee is advertised anywhere in this repository. No SQL in any package has been executed or validated by this maintenance unit."
+  },
+  "extraction_contract_when_unblocked": {
+    "tool": "pg_restore --schema-only (version recorded at execution)",
+    "source_version_note": "Source PostgreSQL/pg_dump versions of the published dump must be distinguished from the extraction tool version and any generated preamble.",
+    "determinism": "Repeated extraction from the same package bytes must produce identical output bytes; the output SHA-256 is recorded here.",
+    "no_execution": "Extracted SQL is never executed by this program; a restore smoke test is later program work."
+  }
+}

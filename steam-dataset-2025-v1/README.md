@@ -6,7 +6,7 @@ author: "Donald Fountain (VintageDon)"
 orcid: "0009-0008-7695-4093"
 date: "2025-10-05"
 version: "1.0.0"
-doi: "10.5281/zenodo.17286923"
+doi: "10.5281/zenodo.17266923" (version); concept: "10.5281/zenodo.17266922"
 license: "CC BY 4.0 (data), MIT (code)"
 status: "Published"
 tags: ["steam", "gaming", "dataset", "machine-learning", "semantic-search", "postgresql", "vector-embeddings"]
@@ -17,12 +17,12 @@ tags: ["steam", "gaming", "dataset", "machine-learning", "semantic-search", "pos
 
 ## The Large-Scale, Multi-Modal Dataset of the Steam Gaming Platform
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17266922)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17266922.svg)](https://doi.org/10.5281/zenodo.17266922)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16.10-blue.svg)](https://www.postgresql.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue.svg)](https://www.postgresql.org/)
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 
-**Version 1.0.0** | **Released October 2025** | **DOI: [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17266922)**
+**Version 1.0.0** | **Released October 2025** | **Version DOI: [10.5281/zenodo.17266923](https://doi.org/10.5281/zenodo.17266923)** · concept DOI: [10.5281/zenodo.17266922](https://doi.org/10.5281/zenodo.17266922)**
 
 ---
 
@@ -46,14 +46,14 @@ The Steam Dataset 2025 is the most comprehensive and methodologically rigorous S
 | **Metric** | **Count** | **Details** |
 |------------|-----------|-------------|
 | **Total Applications** | 239,664 | Games, DLC, software, videos, tools |
-| **User Reviews** | 1,048,148 | English-language reviews with full metadata |
+| **User Reviews** | 1,048,148 | Bounded sample: up to 100 most recent reviews per covered application; package language composition unverified pending dump/CSV verification |
 | **Unique Developers** | 101,226 | Individual and studio developers |
 | **Unique Publishers** | 85,699 | Publishers across all content types |
 | **Genre Classifications** | 154 | Including multilingual variants |
 | **Feature Categories** | 462 | Steam feature tags (achievements, cloud saves, etc.) |
 | **Temporal Coverage** | 1997-2025 | 28 years of platform evolution |
 | **Database Size** | 21 GB | Including 9.8 GB of HNSW vector indexes |
-| **API Success Rate** | 56% | Remaining failures from delisted apps, regional restrictions |
+| **Raw Collection Outcome** | 239,341 successes / 262,791 retained records | Record grain (91.0766%); see [measured outcomes](../docs/release-1.0.1/collection-outcomes.json) |
 
 ---
 
@@ -79,7 +79,7 @@ Current Steam datasets suffer from critical limitations:
 
 **Data Purity:** Exclusive use of official Steam Web API ensures authenticity, with complete JSONB preservation of nested structures for reproducible research
 
-**Multi-Modal Architecture:** PostgreSQL 16.10 with pgvector combines relational integrity, document flexibility (JSONB), and vector search in unified schema—serving beginners (CSV exports), power users (SQL dumps), and ML engineers (embedding packages) equally well
+**Multi-Modal Architecture:** PostgreSQL 16 with pgvector combines relational integrity, document flexibility (JSONB), and vector search in unified schema—serving beginners (CSV exports), power users (SQL dumps), and ML engineers (embedding packages) equally well
 
 ---
 
@@ -108,7 +108,8 @@ import numpy as np
 # Load sample game data
 games = pd.read_csv('notebook-data/01-platform-evolution/01_temporal_growth.csv')
 
-# Load semantic embeddings
+# Load semantic embeddings (the .npy ships in the release packages and is not
+# tracked in this repository — download and extract it first; see docs/data-access.md)
 embeddings = np.load('notebook-data/02-semantic-game-discovery/02_embeddings_vectors.npy')
 appids = pd.read_csv('notebook-data/02-semantic-game-discovery/02_embeddings_appids.csv')
 
@@ -197,7 +198,7 @@ Each notebook is self-contained with validation checks, comprehensive visualizat
 |--------------|-------------|----------|
 | **Data Dictionary** | Complete schema reference with all tables, columns, and JSONB structures | [DATA_DICTIONARY.md](DATA_DICTIONARY.md) |
 | **Dataset Card** | Metadata, methodology summary, and citation information | [DATASET_CARD.md](DATASET_CARD.md) |
-| **Database Schema** | Full PostgreSQL DDL with indexes and constraints | [steam-dataset-2025-full-schema.sql](steam-dataset-2025-full-schema.sql) |
+| **Schema Provenance** | Verified `schema.sql` extraction is **deferred** — no full PostgreSQL DDL is published yet; see the deferral record and its unblock conditions | [schema-provenance.json](../docs/release-1.0.1/schema-provenance.json) |
 
 ### **🗃️ Data Packages Available**
 
@@ -325,9 +326,9 @@ For user convenience, frequently-queried fields are materialized from JSONB:
 
 **Rate Limiting:** Conservative 1.5-second delays (17.3 requests/minute sustainable)
 
-**Success Rate:** 56% (remaining failures from delisted content, regional restrictions)
+**Raw Collection Outcome:** 239,341 successes across 262,791 retained result records (record grain; not an HTTP-attempt or catalog-coverage rate)
 
-**Infrastructure:** Proxmox Astronomy Lab with PostgreSQL 16.10 and NVIDIA A4000 GPU
+**Infrastructure:** Proxmox Astronomy Lab with PostgreSQL (collection database 16.14, measured 2026-08-03; build-time NVIDIA A4000 GPU note)
 
 ### **Quality Assurance**
 
@@ -391,8 +392,8 @@ https://doi.org/10.5281/zenodo.17266922
 
 **Alternative Sources:**
 
-- Kaggle: [Pending publication]
-- GitHub Releases: [Pending large file hosting]
+- Kaggle: [Published](https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics)
+- GitHub Releases: not used for package hosting; packages live on Zenodo
 
 ---
 
@@ -400,7 +401,7 @@ https://doi.org/10.5281/zenodo.17266922
 
 ### **Database**
 
-- **Engine:** PostgreSQL 16.10 (Ubuntu 24.04)
+- **Engine:** PostgreSQL 16 (collection database 16.14, measured 2026-08-03; Ubuntu 24.04)
 - **Extension:** pgvector v0.8.0
 - **Storage:** Samsung PM983 1.92TB NVMe
 - **Performance:** ~205K TPS read-only, ~21K TPS durable writes
@@ -451,7 +452,7 @@ sentence-transformers >= 2.2  # For embedding generation
                    Dataset of the Steam Gaming Platform}},
   year         = 2025,
   publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.17286923},
+  doi          = {10.5281/zenodo.17266923},
   url          = {https://doi.org/10.5281/zenodo.17266922}
 }
 ```
@@ -504,10 +505,10 @@ Data collected from official Steam Web API under [Steam Web API Terms](https://s
 
 ### **Project Links**
 
-- **DOI:** [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17266922)
+- **DOI:** version [10.5281/zenodo.17266923](https://doi.org/10.5281/zenodo.17266923) · concept [10.5281/zenodo.17266922](https://doi.org/10.5281/zenodo.17266922)
 - **Repository:** [github.com/VintageDon/steam-dataset-2025](https://github.com/VintageDon/steam-dataset-2025)
 - **ORCID:** [0009-0008-7695-4093](https://orcid.org/0009-0008-7695-4093)
-- **Kaggle:** [Pending publication]
+- **Kaggle:** [Published](https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics)
 
 ### **Documentation**
 
@@ -547,6 +548,6 @@ Special thanks to Valve Corporation for maintaining the Steam platform and provi
 
 ---
 
-**Version 1.0.0** | **Released October 2025** | **DOI: [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17266922)**
+**Version 1.0.0** | **Released October 2025** | **Version DOI: [10.5281/zenodo.17266923](https://doi.org/10.5281/zenodo.17266923)** · concept DOI: [10.5281/zenodo.17266922](https://doi.org/10.5281/zenodo.17266922)**
 
 This dataset represents the culmination of systematic data engineering practices and transparent AI-human collaboration, demonstrating that sophisticated research infrastructure can be built through methodical approaches and comprehensive documentation.

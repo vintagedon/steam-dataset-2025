@@ -44,7 +44,7 @@ This guide establishes standardized citation formats for academic and profession
 
 ### **1.4 Overview**
 
-The Steam Dataset 2025 is officially published on Zenodo with DOI 10.5281/zenodo.17286923 and available through GitHub. This document provides the citation formats needed for academic papers, clarifies the dual licensing structure (CC BY 4.0 for data, MIT for code), and tracks version information for reproducibility.
+The Steam Dataset 2025 is officially published on Zenodo: version 1.0.0 carries DOI 10.5281/zenodo.17266923 (concept DOI 10.5281/zenodo.17266922 for version-agnostic references) and is also mirrored on Kaggle. This document provides the citation formats needed for academic papers, clarifies the dual licensing structure (CC BY 4.0 for data, MIT for code), and tracks version information for reproducibility.
 
 ---
 
@@ -82,12 +82,12 @@ Gaming Platform." Zenodo, 2025. https://doi.org/10.5281/zenodo.17266922.
 ```bibtex
 @dataset{fountain_2025_steam,
   author       = {Fountain, Donald},
-  title        = {{Steam Dataset 2025: A Large-Scale, Multi-Modal 
-                   Dataset of the Steam Gaming Platform}},
+  title        = {{The Steam Dataset 2025: A Large-Scale, Multi-Modal 
+                    Dataset of the Steam Gaming Platform}},
   year         = 2025,
   publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.17286923},
-  url          = {https://doi.org/10.5281/zenodo.17266922}
+  doi          = {10.5281/zenodo.17266923},
+  url          = {https://doi.org/10.5281/zenodo.17266923}
 }
 ```
 
@@ -113,14 +113,14 @@ For inclusion in presentations, papers, or websites:
 **Markdown Badge:**
 
 ```markdown
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17266922)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17266922.svg)](https://doi.org/10.5281/zenodo.17266922)
 ```
 
 **HTML Badge:**
 
 ```html
 <a href="https://doi.org/10.5281/zenodo.17266922">
-  <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg" alt="DOI">
+  <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17266922.svg" alt="DOI">
 </a>
 ```
 
@@ -179,14 +179,14 @@ Fountain, D. (2025). Steam Dataset 2025: Pre-computed vector embeddings (BGE-M3)
 
 Citation format for the Kaggle-published version of the dataset.
 
-**Status:** Pending publication  
-**Kaggle URL:** [To be added upon publication]
+**Status:** Published
+**Kaggle URL:** https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics
 
-**Future Kaggle Citation Template:**
+**Kaggle Citation:**
 
 ```markdown
 Fountain, D. (2025). Steam Dataset 2025 [Dataset]. Kaggle. 
-[URL to be added]
+https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics
 ```
 
 ---
@@ -272,7 +272,7 @@ Licensed under CC BY 4.0
 ```markdown
 Steam Dataset 2025: A Large-Scale, Multi-Modal Dataset of the Steam Gaming Platform
 Author: Donald Fountain (ORCID: 0009-0008-7695-4093)
-DOI: 10.5281/zenodo.17286923
+DOI: 10.5281/zenodo.17266923 (version) / 10.5281/zenodo.17266922 (concept)
 License: CC BY 4.0 (dataset), MIT (code)
 Repository: https://github.com/VintageDon/steam-dataset-2025
 ```
@@ -285,8 +285,8 @@ The dataset contains data collected from Steam's public APIs under their terms o
 
 - Data collected using official Steam Web API
 - Respects Steam's rate limiting and usage guidelines  
-- Contains only publicly available information
-- No private user data or personally identifiable information included
+- Collected from Steam's public APIs; review records include author account identifiers, and the redistribution scope of Steam-origin content is under review
+- No private user data beyond what Steam's public APIs expose
 - No redistribution of Steam's proprietary assets or copyrighted content
 
 **Recommended Practice:** Users conducting research or building applications on this dataset should familiarize themselves with Steam's current API Terms of Use at <https://steamcommunity.com/dev>.
@@ -306,7 +306,8 @@ This section tracks dataset versions, release dates, and package availability to
 
 **Zenodo Record:**
 
-- **DOI:** 10.5281/zenodo.17286923
+- **Version DOI:** 10.5281/zenodo.17266923 (cite this for v1.0.0)
+- **Concept DOI:** 10.5281/zenodo.17266922 (version-agnostic references)
 - **Status:** ✅ Published and archived
 - **Preservation:** Permanent archival storage
 
@@ -318,37 +319,36 @@ This section tracks dataset versions, release dates, and package availability to
 
 **Kaggle Dataset:**
 
-- **Status:** ⏳ Pending publication
-- **URL:** [To be added upon publication]
+- **Status:** ✅ Published
+- **URL:** https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics
 
 ### **5.2 Data Packages Available**
 
-Current release includes multiple data package formats for different user needs:
+Current release includes four official packages (sizes verified against the Zenodo record, 2026-11-13):
 
-| **Package Type** | **Size** | **Format** | **Use Case** | **Status** |
-|------------------|----------|------------|--------------|------------|
-| **Sample Dataset** | 102 MB | SQL dump | Quick exploration (5K games) | ✅ Available |
-| **Accessibility CSVs** | ~500 MB | ZIP of CSVs | No database setup required | ✅ Available |
-| **Full SQL Dump** | 4.2 GB | Compressed SQL | Complete database restoration | ✅ Available |
-| **Vector Embeddings** | ~900 MB | NPY + CSV | ML/AI applications | ✅ Available |
-| **Kaggle Package** | TBD | Multiple formats | Notebook-ready datasets | ⏳ Pending |
+| **Package** | **Size (bytes)** | **Format** | **Use Case** | **Status** |
+|-------------|------------------|------------|--------------|------------|
+| `steam-dataset-2025-v1.zip` | 40,212,720 | ZIP bundle | Documentation, notebooks, notebook data | ✅ Available |
+| `steam_dataset_2025_csv_package_v1.zip` | 320,368,878 | ZIP of CSVs | No database setup required | ✅ Available |
+| `steam_dataset_2025_power_users_dump_v1.zip` | 7,204,002,678 | PostgreSQL dump | Complete database restoration | ✅ Available |
+| `steam_dataset_2025_embeddings_package_v1.zip` | 4,870,419,373 | Embeddings package | ML/AI applications | ✅ Available |
 
 ### **5.3 Dataset Specifications**
 
 **Coverage Statistics:**
 
-- **Total Applications:** 239,890 Steam applications
-- **Games:** ~147,000 games (excluding DLC/software)
-- **Reviews:** ~2.1 million English reviews
-- **Temporal Coverage:** 1997 - 2025 (28 years)
+- **Total Applications:** 239,664 (packaging-time record)
+- **Games:** ~150,300 games with type=game (measured 2026-08-03)
+- **Reviews:** 1,048,148 reviews in a bounded per-application sample
+- **Temporal Coverage:** release dates as recorded by Steam (1969–9998 incl. sentinel values; filter explicitly)
 - **Vector Embeddings:** 1024-dimensional BGE-M3 embeddings
-- **Database Technology:** PostgreSQL 16.10 with pgvector v0.8.0
+- **Database Technology:** PostgreSQL 16.14 with pgvector 0.8.0 (collection database, measured 2026-08-03)
 
 **Quality Metrics:**
 
-- **API Success Rate:** ~56% (due to delisted apps and regional restrictions)
-- **Data Completeness:** All successfully collected apps have complete metadata
-- **Review Coverage:** English-language reviews with full metadata
+- **Raw collection outcome:** 239,341 successful retrievals across 262,791 retained result records (record-level; see [collection-outcomes.json](release-1.0.1/collection-outcomes.json))
+- **Data Completeness:** metadata fields carry meaningful NULLs (missing values are never defaulted); see the known-limitations reference
+- **Review Coverage:** bounded sample of up to 100 most recent reviews per covered application
 
 ### **5.4 Version Citation Guidelines**
 
@@ -378,9 +378,9 @@ Analysis performed using Steam Dataset 2025 v1.0.0 (database snapshot: 2025-09-2
 | **Document Type** | **Title** | **Relationship** | **Link** |
 |-------------------|-----------|------------------|----------|
 | Repository README | Main Documentation | Complete dataset overview and features | [README.md](https://github.com/VintageDon/steam-dataset-2025/blob/main/README.md) |
-| Data Dictionary | Complete Schema Documentation | Full database schema and field definitions | [DATA_DICTIONARY.md](https://github.com/VintageDon/steam-dataset-2025/blob/main/docs/DATA_DICTIONARY.md) |
+| Data Dictionary | Complete Schema Documentation | Full database schema and field definitions | [DATA_DICTIONARY.md](https://github.com/VintageDon/steam-dataset-2025/blob/main/steam-dataset-2025-v1/DATA_DICTIONARY.md) |
 | Methodology | Steam API Collection | Data collection procedures and quality | [steam-api-collection.md](https://github.com/VintageDon/steam-dataset-2025/blob/main/docs/methodologies/steam-api-collection.md) |
-| Methodology | Data Validation & QA | Quality assurance procedures | [data-validation-and-qa.md](https://github.com/VintageDon/steam-dataset-2025/blob/main/docs/methodologies/data-validation-and-qa.md) |
+| Methodology | Data Validation & QA | Quality assurance procedures | [data-validaton-and-qa.md](https://github.com/VintageDon/steam-dataset-2025/blob/main/docs/methodologies/data-validaton-and-qa.md) |
 | Analytics | Platform Evolution Analysis | Comprehensive dataset analysis | [steam-5k-dataset-analysis.md](https://github.com/VintageDon/steam-dataset-2025/blob/main/docs/analytics/steam-5k-dataset-analysis.md) |
 
 ### **6.2 External Resources**
@@ -404,6 +404,7 @@ Analysis performed using Steam Dataset 2025 v1.0.0 (database snapshot: 2025-09-2
 |------------|----------|-------------|------------|
 | 1.0 | 2025-09-07 | Initial citation guide creation with ORCID and Zenodo integration | VintageDon |
 | 2.0 | 2025-10-06 | Updated with official Zenodo DOI, dual licensing clarification, version 1.0.0 release info | VintageDon |
+| 2.1 | 2026-11-13 | Truth patch: DOI typo corrected (version/concept classes distinguished), Kaggle citation filled in, official package table with verified bytes, population figures corrected to packaging-time records | VintageDon |
 
 ### **7.2 Authorship & Collaboration**
 
@@ -415,7 +416,7 @@ Analysis performed using Steam Dataset 2025 v1.0.0 (database snapshot: 2025-09-2
 
 ---
 
-*Document Version: 2.0 | Last Updated: 2025-10-06 | Status: Active*
+*Document Version: 2.1 | Last Updated: 2026-11-13 | Status: Active*
 
 ---
 

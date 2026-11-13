@@ -23,7 +23,7 @@ This document provides comprehensive documentation of the vector embedding gener
 
 ### **1.1 Purpose**
 
-This methodology establishes the technical foundation for semantic search capabilities within Steam Dataset 2025, documenting model selection criteria, generation procedures, and quality assurance measures to ensure reproducible research and enable advanced machine learning applications across 134,189 game descriptions.
+This methodology establishes the technical foundation for semantic search capabilities within Steam Dataset 2025, documenting model selection criteria, generation procedures, and quality assurance measures to ensure reproducible research and enable advanced machine learning applications. The packaged database carries BGE-M3 vectors for 239,664 applications and 1,048,148 reviews (100% non-null, measured 2026-08-03).
 
 ### **1.2 Scope**
 
@@ -118,7 +118,7 @@ BGE-M3 (BAAI General Embedding, Multilingual, Multifunctional, Multi-Granularity
 
 ## ⚙️ **3. Embedding Generation Pipeline**
 
-This section details the technical implementation of embedding generation for 134,189 successfully retrieved Steam games.
+This section details the technical implementation of embedding generation across the successfully retrieved Steam corpus (239,341 success records at raw grain; 239,664 packaged application rows).
 
 ### **3.1 Infrastructure Architecture**
 
@@ -301,14 +301,17 @@ Comprehensive validation ensures embedding quality and semantic coherence.
 
 ### **4.1 Coverage Statistics**
 
-| **Metric** | **Value** | **Percentage** |
-|------------|-----------|----------------|
-| **Total Games** | 239,664 | 100% |
-| **Successful Retrievals** | 134,212 | 56.0% |
-| **Embeddings Generated** | 134,189 | 99.98% of successful |
-| **Failed Generations** | 23 | 0.02% |
+| **Metric** | **Value** | **Grain** |
+|------------|-----------|-----------|
+| **Total Applications (packaged)** | 239,664 | database rows |
+| **Successful Retrievals (raw)** | 239,341 | 91.0766% of 262,791 retained result records |
+| **Embedding Coverage (packaged)** | 239,664 applications + 1,048,148 reviews | 100% non-null (measured 2026-08-03) |
 
-#### **Failure Analysis**
+The embedding-generation failure table below is retained from the original
+generation run's records for applications; per-row failure attribution for
+the final packaged population is not independently re-verified here.
+
+#### **Failure Analysis (historical generation-run record)**
 
 | **Failure Reason** | **Count** | **Resolution** |
 |-------------------|-----------|----------------|
@@ -341,11 +344,11 @@ def validate_embeddings(embeddings: np.ndarray) -> dict:
 #### **Validation Results**
 
 ```markdown
-Shape Consistency:       ✓ 134,189/134,189 (100%)
+Shape Consistency:       ✓ pass (1024-dim, all rows)
 NaN Detection:           ✓ 0 vectors with NaN
 Inf Detection:           ✓ 0 vectors with Inf
-L2 Normalization:        ✓ 134,189/134,189 (100%)
-Vector Variance:         ✓ 0.0234 (healthy)
+L2 Normalization:        ✓ 100% normalized
+Vector Variance:         ✓ 0.0234 (healthy, generation-run record)
 Zero Vector Check:       ✓ 0 zero vectors
 ```
 
@@ -659,7 +662,7 @@ def find_cross_genre_similarities(target_app_id, conn, exclude_genre=True):
 **ORCID:** [0009-0008-7695-4093](https://orcid.org/0009-0008-7695-4093)  
 **AI Collaboration:** Claude 3.7 Sonnet (Anthropic) - Documentation structure and technical writing assistance  
 
-**Human Responsibility:** All technical specifications, implementation details, and validation procedures are human-verified against actual production deployment. AI assistance was used for documentation organization and clarity enhancement.
+**Human Responsibility:** Technical specifications, implementation details, and validation procedures were exercised against the deployed database during development (population measurements dated 2026-08-03). AI assistance was used for documentation organization and clarity enhancement.
 
 ---
 
@@ -683,4 +686,4 @@ def find_cross_genre_similarities(target_app_id, conn, exclude_genre=True):
 
 **Document Version:** 2.0 | **Last Updated:** January 6, 2025 | **Status:** Published
 
-*Complete embedding coverage: 134,189 games with 1024-dimensional BGE-M3 vectors*
+*Embedding coverage in the packaged database: 239,664 applications and 1,048,148 reviews with 1024-dimensional BGE-M3 vectors, 100% non-null (measured 2026-08-03)*

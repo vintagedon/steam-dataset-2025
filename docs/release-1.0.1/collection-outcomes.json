@@ -1,0 +1,117 @@
+{
+  "$schema_note": "Public outcomes record for the Steam Dataset 2025 v1.0.0 collection, measured 2026-11-13 from the retained raw batches. Every metric states its cohort, grain, numerator, denominator, state and limitations. Record success is never HTTP request success and never catalog coverage.",
+  "measured_at": "2026-11-13",
+  "raw_corpus": {
+    "description": "Retained application batch files (unpublished raw corpus, read at its actual grain)",
+    "state": "measured",
+    "evidence": "Recount of 526 batch files on ml01a, 2026-11-13; private receipt sha256 5e44a850052aac951d1e4d468500faa536f0dbd65d8bbdf2852aa8811d5f1f1b",
+    "metrics": {
+      "files": {
+        "value": 526,
+        "grain": "batch files",
+        "cohort": "retained application batches"
+      },
+      "result_records": {
+        "value": 262791,
+        "grain": "one record per retained appdetails result",
+        "cohort": "all records in all batch files",
+        "numerator": 262791,
+        "denominator": 262791
+      },
+      "success_records": {
+        "value": 239341,
+        "grain": "records with success=true carrying a data payload",
+        "cohort": "result records",
+        "numerator": 239341,
+        "denominator": 262791,
+        "fraction_percent": 91.0766
+      },
+      "failure_records": {
+        "value": 23450,
+        "grain": "records with success=false and no data payload",
+        "cohort": "result records",
+        "numerator": 23450,
+        "denominator": 262791
+      },
+      "unique_successful_appids": {
+        "value": 239183,
+        "grain": "distinct integer steam_appid among success records",
+        "cohort": "success records"
+      },
+      "duplicate_success_records": {
+        "value": 158,
+        "grain": "success records repeating an already-seen appid",
+        "cohort": "success records"
+      },
+      "success_records_missing_appid": {
+        "value": 0,
+        "grain": "success records without steam_appid",
+        "cohort": "success records"
+      }
+    },
+    "limitations": [
+      "A record-level success fraction (91.0766% here) is neither HTTP request success nor unique-app catalog coverage; the denominator is retained result records, not attempts reconstructable as HTTP requests.",
+      "All failure records lack the requested AppID, so no per-application failure manifest exists and HTTP-attempt completeness cannot be measured from the retained corpus.",
+      "158 success records repeat an AppID already collected; unique successful AppIDs, not success records, are the raw-corpus population grain."
+    ],
+    "success_record_type_distribution": {
+      "game": 150039,
+      "dlc": 53698,
+      "demo": 23520,
+      "music": 8684,
+      "episode": 2274,
+      "video": 699,
+      "advertising": 212,
+      "mod": 126,
+      "series": 82,
+      "hardware": 7
+    }
+  },
+  "packaged_population": {
+    "description": "Population of the packaged v1.0.0 database as recorded at packaging time",
+    "state": "corroborated-by-packaging-record; dump-level re-verification deferred",
+    "metrics": {
+      "applications_rows": {
+        "value": 239664,
+        "source": "work-logs/11-packaging-the-release/schema_analysis_report.md (tracked packaging-time record)",
+        "measured": "2026-08-03 era packaging analysis"
+      },
+      "reviews_rows": {
+        "value": 1048148,
+        "source": "same packaging-time record"
+      },
+      "developers_rows": {
+        "value": 101226,
+        "source": "same packaging-time record"
+      },
+      "publishers_rows": {
+        "value": 85699,
+        "source": "same packaging-time record"
+      }
+    },
+    "limitations": [
+      "These are packaging-time records, not a fresh verification of the released dump; the dump lane in this maintenance unit was deferred (see schema-provenance.json).",
+      "Raw unique successful AppIDs (239,183) and packaged applications rows (239,664) differ by 481; with the released dump unavailable this difference is unresolved and is NOT an established released-artifact join. No cause is asserted."
+    ]
+  },
+  "released_population": {
+    "description": "Actual AppID population of the released packages (dump/CSV)",
+    "state": "deferred",
+    "raw_only_appids": null,
+    "release_only_appids": null,
+    "overlap_appids": null,
+    "duplicate_release_ids": null,
+    "reason": "Verified-dump acquisition/decoding was unavailable in this maintenance unit (decoder path denied; no host client). Released-population facts are unverified with null measured values until a verified dump is decoded.",
+    "dependent_claims_removed_or_qualified": [
+      "90.8% catalog coverage claim (removed; no authoritative denominator)",
+      "56%/134,212 success-rate family (replaced by raw-corpus record-level outcomes above)",
+      "Any raw-vs-released reconciliation or lineage claim (qualified as unresolved 481 difference)"
+    ]
+  },
+  "review_corpus": {
+    "description": "Review corpus character",
+    "state": "corroborated-by-packaging-record; sampling bound from dated 2026-08-03 measurement",
+    "loaded_reviews": 1048148,
+    "sampling": "Bounded per-application sample (up to 100 most recent reviews per covered application, requested with language=all; 117,311 covered applications per the 2026-08-03 read-only measurement), not a complete historical corpus. language=all is a collection-request fact, not a distribution measurement: the packaged corpus's language composition is unverified pending dump/CSV verification."
+  }
+}

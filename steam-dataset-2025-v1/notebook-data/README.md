@@ -14,7 +14,7 @@ tags:
 - phase: phase-4
 related_documents:
 - "[Parent: Notebook Data](../README.md)"
-- "[Notebook 2: Semantic Game Discovery](../../notebooks/02-semantic-game-discovery/README.md)"
+- "[Notebook 2: Semantic Game Discovery](../notebooks/02-semantic-game-discovery/)"
 - "[Vector Embeddings Methodology](../../docs/methodologies/vector-embeddings.md)"
 ---
 -->
@@ -39,11 +39,11 @@ The package includes metadata for 10,000 games (Steam's most-reviewed titles), r
 
 | **File** | **Purpose** | **Size** |
 |----------|-------------|----------|
-| **[01_game_embeddings_sample.csv](01_game_embeddings_sample.csv)** | Metadata for 10,000 games sampled by review count (excludes vectors) | 3.4 MB |
-| **[02_embeddings_vectors.npy](02_embeddings_vectors.npy)** | Raw 1024-dimensional BGE-M3 embeddings in NumPy binary format | 40 MB |
-| **[02_embeddings_appids.csv](02_embeddings_appids.csv)** | AppID mapping ensuring alignment between CSV and .npy files | 75 KB |
-| **[02_genre_representatives.csv](02_genre_representatives.csv)** | Balanced sample of top 100 games per genre for clustering | 115 KB |
-| **[02_semantic_search_examples.json](02_semantic_search_examples.json)** | Pre-computed semantic search results for 6 test queries | 25 KB |
+| **[01_game_embeddings_sample.csv](02-semantic-game-discovery/01_game_embeddings_sample.csv)** | Metadata for 10,000 games sampled by review count (excludes vectors) | 3.4 MB |
+| **`02_embeddings_vectors.npy` (inside the release package; not tracked in this repository)** | Raw 1024-dimensional BGE-M3 embeddings in NumPy binary format | 40 MB |
+| **[02_embeddings_appids.csv](02-semantic-game-discovery/02_embeddings_appids.csv)** | AppID mapping ensuring alignment between CSV and .npy files | 75 KB |
+| **[02_genre_representatives.csv](02-semantic-game-discovery/02_genre_representatives.csv)** | Balanced sample of top 100 games per genre for clustering | 115 KB |
+| **[02_semantic_search_examples.json](02-semantic-game-discovery/02_semantic_search_examples.json)** | Pre-computed semantic search results for 6 test queries | 25 KB |
 
 ### **Documentation**
 
@@ -60,7 +60,7 @@ Visual representation of this data package:
 ```markdown
 02-semantic-game-discovery/
 ├── 📊 01_game_embeddings_sample.csv       # 10K game metadata
-├── 🧠 02_embeddings_vectors.npy           # 1024-dim vectors (NumPy)
+├── 🧠 02_embeddings_vectors.npy           # 1024-dim vectors (NumPy; release package only, not tracked here)
 ├── 🔗 02_embeddings_appids.csv            # Vector-to-game mapping
 ├── 🎭 02_genre_representatives.csv        # Balanced genre sampling
 ├── 🔍 02_semantic_search_examples.json    # Pre-computed queries
@@ -69,10 +69,10 @@ Visual representation of this data package:
 
 ### **Navigation Guide:**
 
-- **[📊 Game Metadata](01_game_embeddings_sample.csv)** - Start here for game names, genres, prices, and review statistics
-- **[🧠 Embedding Vectors](02_embeddings_vectors.npy)** - Load with NumPy for ML/similarity calculations
-- **[🎭 Genre Representatives](02_genre_representatives.csv)** - Use for balanced clustering without Action genre dominance
-- **[🔍 Search Examples](02_semantic_search_examples.json)** - Reference implementation of semantic search queries
+- **[📊 Game Metadata](02-semantic-game-discovery/01_game_embeddings_sample.csv)** - Start here for game names, genres, prices, and review statistics
+- **🧠 Embedding Vectors** — `02_embeddings_vectors.npy` is **not tracked in this repository**; it ships inside the official release packages. Download the package (see [data access](../../docs/data-access.md) and the [artifact reference](../../docs/release-1.0.1/artifact-reference.json)) and extract the `.npy` before loading it with NumPy for ML/similarity calculations
+- **[🎭 Genre Representatives](02-semantic-game-discovery/02_genre_representatives.csv)** - Use for balanced clustering without Action genre dominance
+- **[🔍 Search Examples](02-semantic-game-discovery/02_semantic_search_examples.json)** - Reference implementation of semantic search queries
 
 ---
 
@@ -80,9 +80,9 @@ Visual representation of this data package:
 
 | **Category** | **Relationship** | **Documentation** |
 |--------------|------------------|-------------------|
-| **[Notebook 2: Semantic Discovery](../../notebooks/02-semantic-game-discovery/README.md)** | This data package powers the semantic search notebook | [Notebook README](../../notebooks/02-semantic-game-discovery/README.md) |
+| **[Notebook 2: Semantic Discovery](../notebooks/02-semantic-game-discovery/)** | This data package powers the semantic search notebook | [Notebook README](../notebooks/02-semantic-game-discovery/) |
 | **[Vector Embeddings Methodology](../../docs/methodologies/vector-embeddings.md)** | Technical documentation on BGE-M3 model and embedding generation | [Methodology](../../docs/methodologies/vector-embeddings.md) |
-| **[Data Dictionary](../../DATA_DICTIONARY.md)** | Complete schema reference for column definitions | [DATA_DICTIONARY.md](../../DATA_DICTIONARY.md) |
+| **[Data Dictionary](../DATA_DICTIONARY.md)** | Complete schema reference for column definitions | [DATA_DICTIONARY.md](../DATA_DICTIONARY.md) |
 | **[Notebook Data (Parent)](../README.md)** | Overview of all notebook data packages | [Parent README](../README.md) |
 
 ---
@@ -91,15 +91,22 @@ Visual representation of this data package:
 
 For new users approaching this data package:
 
-1. **Start Here:** Load [01_game_embeddings_sample.csv](01_game_embeddings_sample.csv) to explore game metadata
-2. **Load Vectors:** Import [02_embeddings_vectors.npy](02_embeddings_vectors.npy) with NumPy for similarity calculations
-3. **Try Semantic Search:** Review [02_semantic_search_examples.json](02_semantic_search_examples.json) for query patterns
-4. **Balanced Analysis:** Use [02_genre_representatives.csv](02_genre_representatives.csv) to avoid sampling bias
-5. **Run Notebook:** Execute [Notebook 2](../../notebooks/02-semantic-game-discovery/) for complete analysis
+1. **Start Here:** Load [01_game_embeddings_sample.csv](02-semantic-game-discovery/01_game_embeddings_sample.csv) to explore game metadata
+2. **Load Vectors:** Import `02_embeddings_vectors.npy` (inside the release package; not tracked in this repository) with NumPy for similarity calculations
+3. **Try Semantic Search:** Review [02_semantic_search_examples.json](02-semantic-game-discovery/02_semantic_search_examples.json) for query patterns
+4. **Balanced Analysis:** Use [02_genre_representatives.csv](02-semantic-game-discovery/02_genre_representatives.csv) to avoid sampling bias
+5. **Run Notebook:** Execute [Notebook 2](../notebooks/02-semantic-game-discovery/) for complete analysis
 
 ---
 
 ## 📊 **File Specifications**
+
+Verification status (2026-11-13): `01_game_embeddings_sample.csv` was acquired
+via its tracked Git LFS pointer and verified — exactly 10,000 rows, 16
+columns, 3,400,952 bytes, SHA-256
+`a43e1718056bdec12a3ee9942f2ba036648db23b2e4d8a1d75b6f8561bd1c914`. The
+`.npy` and remaining files were not re-acquired in that pass; their listed
+sizes come from the packaging records.
 
 ### **1. Game Embeddings Sample (CSV)**
 
@@ -142,6 +149,11 @@ Sample of Steam's most-reviewed games with metadata (vectors excluded for size m
 
 **File:** `02_embeddings_vectors.npy`  
 **Shape:** (10,000, 1024) | **Type:** float32 | **Memory:** 39.1 MB
+
+**Access prerequisite:** this file is package-only — it is not tracked in this
+repository. Download an official release package (see
+[data access](../../docs/data-access.md)) and extract `02_embeddings_vectors.npy`
+before running any example below that loads it.
 
 Raw 1024-dimensional BGE-M3 embeddings in NumPy binary format.
 
