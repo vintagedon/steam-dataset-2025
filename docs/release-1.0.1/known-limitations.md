@@ -16,7 +16,9 @@ tags:
 This page states, at the grain each number was measured, what the published
 v1.0.0 release does and does not support. Machine-readable values live in
 [collection-outcomes.json](collection-outcomes.json); package facts live in
-[artifact-reference.json](artifact-reference.json). Database-grain figures are
+[artifact-reference.json](artifact-reference.json). The per-finding record of
+the corrections applied to these claims sits in
+[pr-review-corrections.md](pr-review-corrections.md). Database-grain figures are
 dated measurements from a read-only session on 2026-08-03 unless marked
 otherwise; re-verification against the released dump is deferred (see
 [schema-provenance.json](schema-provenance.json)).
