@@ -25,8 +25,8 @@ This section provides systematic navigation to all data files and subdirectories
 
 | Directory | Content | Size | Access |
 |---------------|-------------|----------|------------|
-| [01_raw/](01_raw/) | Original Steam API responses (sample) | 102MB | ✅ GitHub Available |
-| [02_processed/](02_processed/) | Cleaned and enriched sample data | 85MB | ✅ GitHub Available |
+| [01_raw/](01_raw/) | Publicly tracked 5K-run samples (Git LFS) | 14,089,513 + 11,202,479 B | ✅ GitHub Available |
+| [02_processed/](02_processed/) | Documentation of the processed/enriched sample stage | README only | 📄 Not tracked in repo |
 
 ### Key Data Files
 
@@ -40,24 +40,23 @@ This section provides systematic navigation to all data files and subdirectories
 
 ## 🗂️ Data Structure Overview
 
-Visual representation of the complete Steam Dataset 2025 data organization across both GitHub and planned Zenodo releases:
+Visual representation of the Steam Dataset 2025 data organization across GitHub and the published Zenodo release:
 
 ```markdown
 data/
-├── 📁 01_raw/                    # Original API responses
+├── 📁 01_raw/                    # Publicly tracked API-response samples (Git LFS objects)
 │   ├── README.md                 # Raw data documentation
-│   ├── steam_2025_5k-dataset-games_20250831.json.gz     # 5K sample (102MB)
-│   └── steam_2025_5k-dataset-reviews_20250901.json.gz   # Sample reviews (45MB)
-├── 📁 02_processed/              # Cleaned and enriched data
-│   ├── README.md                 # Processed data documentation
-│   └── steam_2025_5k-dataset-enriched_20250901.json     # Enhanced sample (85MB)
+│   ├── steam_2025_5k-dataset-games_20250831.json.gz     # 5K-run games (14,089,513 B)
+│   └── steam_2025_5k-dataset-reviews_20250901.json.gz   # 5K-run reviews (11,202,479 B)
+├── 📁 02_processed/              # Documentation of processed outputs (not tracked)
+│   └── README.md                 # Processed data documentation
 └── 📋 README.md                  # This file
 
-FUTURE: Zenodo Full Dataset (4.2GB total)
-├── 🎮 steam_games_master.json           # Complete games catalog (2.8GB)
-├── 📝 steam_reviews_master.json         # Complete review collection (1.4GB)
-├── 🧠 steam_embeddings_master.json      # Vector embeddings (600MB)
-└── 📊 steam_sample_5k.json              # Sample subset for reference
+PUBLISHED: Zenodo v1.0.0 record (verified 2026-11-13)
+├── 📦 steam-dataset-2025-v1.zip                       # 40,212,720 B
+├── 📦 steam_dataset_2025_csv_package_v1.zip           # 320,368,878 B
+├── 📦 steam_dataset_2025_power_users_dump_v1.zip      # 7,204,002,678 B
+└── 📦 steam_dataset_2025_embeddings_package_v1.zip    # 4,870,419,373 B
 ```
 
 ### Navigation Guide
@@ -73,37 +72,39 @@ FUTURE: Zenodo Full Dataset (4.2GB total)
 
 Sample Dataset - Ready for Download:
 
-- 🎮 Games Sample: [steam_2025_5k-dataset-games_20250831.json.gz](01_raw/steam_2025_5k-dataset-games_20250831.json.gz) (102MB)
-- 📝 Reviews Sample: [steam_2025_5k-dataset-reviews_20250901.json.gz](01_raw/steam_2025_5k-dataset-reviews_20250901.json.gz) (45MB)
-- 📊 Enhanced Sample: [steam_2025_5k-dataset-enriched_20250901.json](02_processed/steam_2025_5k-dataset-enriched_20250901.json) (85MB)
+- 🎮 Games Sample: [steam_2025_5k-dataset-games_20250831.json.gz](01_raw/steam_2025_5k-dataset-games_20250831.json.gz) (14,089,513 B LFS object; sha256 3b46222510ad64b87e8a0c63c92dba8f5788e0b8abdd4a1f3471ca0d7a70f2af)
+- 📝 Reviews Sample: [steam_2025_5k-dataset-reviews_20250901.json.gz](01_raw/steam_2025_5k-dataset-reviews_20250901.json.gz) (11,202,479 B LFS object; sha256 2be129e154505381c77800ca96ea11f09b8db96ddbd2db935c8421cbb4c35a8c)
+- 📊 An enriched/processed sample file is documented in 02_processed/README.md but is not tracked in the repository
 
 Quick Start:
 
 ```bash
-# Download sample dataset
-wget https://github.com/VintageDon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-games_20250831.json.gz
+# Download the sample object (LFS content is served by the media endpoint)
+wget -O steam_2025_5k-dataset-games_20250831.json.gz \
+  https://media.githubusercontent.com/media/vintagedon/steam-dataset-2025/main/data/01_raw/steam_2025_5k-dataset-games_20250831.json.gz
 
-# Decompress for analysis
-gunzip steam_2025_5k-dataset-games_20250831.json.gz
+# Verify, then decompress for analysis
+sha256sum steam_2025_5k-dataset-games_20250831.json.gz  # 3b46222510ad64b87e8a0c63c92dba8f5788e0b8abdd4a1f3471ca0d7a70f2af
+gunzip -k steam_2025_5k-dataset-games_20250831.json.gz
 
 # Ready for analysis!
 ```
 
-### For Complete Research (Zenodo - Planned)
+### For Complete Research (Zenodo - Published)
 
 Full Dataset Specifications:
 
-- 📊 Total Size: 4.2GB (complete Steam ecosystem)
+- 📊 Packages: 40,212,720 + 320,368,878 + 7,204,002,678 + 4,870,419,373 bytes (four official ZIPs)
 - 🎮 Applications: 239,664 complete catalog entries
 - 📝 Reviews: 1,048,148 user reviews  
 - 🧠 Embeddings: 1024-dimensional semantic vectors
-- 📅 Release: Pending completion of documentation and embedding generation
+- 📅 Release: v1.0.0 published 2025-10-05
 
 Access Information:
 
-- 🏛️ Archive: Zenodo academic repository (planned)
-- 🔗 DOI: Persistent identifier for academic citation (pending)
-- 📋 Notification: GitHub repository updates when available
+- 🏛️ Archive: [Zenodo](https://doi.org/10.5281/zenodo.17266923) academic repository
+- 🔗 DOI: version [10.5281/zenodo.17266923](https://doi.org/10.5281/zenodo.17266923) · concept [10.5281/zenodo.17266922](https://doi.org/10.5281/zenodo.17266922)
+- 📊 Kaggle mirror: [published](https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics)
 
 ---
 
@@ -113,26 +114,28 @@ Access Information:
 
 | Component | Records | Compressed Size | Uncompressed | Content |
 |---------------|-------------|-------------------|------------------|-------------|
-| Games Sample | 5,000 applications | 102MB | ~250MB | Complete metadata, JSONB fields |
-| Reviews Sample | ~50,000 reviews | 45MB | ~120MB | User reviews for sample games |
-| Enhanced Sample | 5,000 applications | N/A | 85MB | Processed with analytics features |
+| Games Sample | 8,711-record run (5,000 successes) | 14,089,513 B | tracked LFS object | Collection-run artifact with JSONB payloads |
+| Reviews Sample | 37,778 review records (5K run) | 11,202,479 B | tracked LFS object | Review sample for the 5K run |
+| Enhanced Sample | 5,000 applications | not tracked | N/A | Processed with analytics features (documented in 02_processed/README.md) |
 
 ### Full Dataset (Zenodo Release)
 
-| Component | Records | Estimated Size | Content |
-|---------------|-------------|-------------------|-------------|
-| Complete Games | 239,664 applications | 2.8GB | Full Steam catalog metadata |
-| Complete Reviews | 1,048,148 reviews | 1.4GB | User reviews across all collected games |
-| Vector Embeddings | 239,664 vectors | 600MB | 1024-dimensional semantic embeddings |
-| Total Dataset | Complete ecosystem | 4.2GB | Comprehensive Steam analytics platform |
+| Official package | Bytes | Content |
+|------------------|------:|---------|
+| steam-dataset-2025-v1.zip | 40,212,720 | Release bundle: docs, notebooks, notebook data |
+| steam_dataset_2025_csv_package_v1.zip | 320,368,878 | Accessibility CSV exports |
+| steam_dataset_2025_power_users_dump_v1.zip | 7,204,002,678 | Full PostgreSQL dump (239,664 applications; 1,048,148 reviews) |
+| steam_dataset_2025_embeddings_package_v1.zip | 4,870,419,373 | 239,664 + 1,048,148 BGE-M3 vectors |
+
+Packaged rows (packaging-time record): 239,664 applications; 1,048,148 reviews; 101,226 developers; 85,699 publishers.
 
 ### Data Quality Metrics
 
 | Quality Measure | Sample Dataset | Full Dataset | Notes |
 |---------------------|-------------------|------------------|-----------|
-| API Success Rate | 56% (demonstration) | 90.6% (systematic) | Sample designed for variety, full optimized for coverage |
-| Metadata Completeness | 100% basic fields | 100% basic fields | All records include core identification |
-| Pricing Information | ~60% coverage | ~60% coverage | Free games have no pricing data |
+| Collection Outcome (record grain) | 5,000/8,711 in the 5K demo run | 239,341/262,791 in the retained raw corpus | Measured from run metadata and raw batches; no HTTP-attempt rate exists in the retained record |
+| Metadata Completeness | not measured at sample grain | 59.4874% carry a materialized price currency (USD), dated 2026-08-03 | Missing values stay meaningful NULLs |
+| Pricing Information | see packaging records | 59.4874% price-currency coverage | Free games carry no price_overview |
 | Review Availability | ~45% of games | ~50% of games | Based on game popularity and user engagement |
 
 ---
@@ -225,7 +228,8 @@ Games Data Structure:
   "metadata": {
     "collection_date": "2025-08-31T15:13:05Z",
     "total_records": 5000,
-    "api_success_rate": "56%",
+    "successful_games_found": 5000,
+    "total_records_processed": 8711,
     "collection_method": "steam_web_api"
   },
   "games": [
@@ -319,16 +323,16 @@ Known Constraints:
 |--------------|-------------|---------------|
 | [Data Access Guide](../docs/data-access.md) | Comprehensive download and usage procedures | Essential for all users |
 | [Known Limitations](../docs/limitations.md) | Complete constraint and bias documentation | Critical for research applications |
-| [Quick Start Guide](../docs/quick-start.md) | 30-minute setup to first analysis | Perfect for new users |
-| [Dataset Card](../paper/dataset-card.md) | Complete academic datasheet | Required for academic applications |
+| [Quick Start Guide](../docs/data-access.md) | 30-minute setup to first analysis | Perfect for new users |
+| [Dataset Card](../steam-dataset-2025-v1/DATASET_CARD.md) | Complete academic datasheet | Required for academic applications |
 
 ### Technical Resources
 
 | Resource | Content | Audience |
 |--------------|-------------|--------------|
-| [Multi-Modal Architecture](../docs/methodologies/multi-modal-architecture.md) | Database schema and design rationale | Technical implementers |
+| [Multi-Modal Architecture](../docs/methodologies/multi-modal-db-architecture.md) | Database schema and design rationale | Technical implementers |
 | [Vector Embeddings](../docs/methodologies/vector-embeddings.md) | Semantic search implementation | ML engineers |
-| [ETL Pipeline](../docs/methodologies/etl-pipeline.md) | Complete processing methodology | Data engineers |
+| [ETL Pipeline](../work-logs/README.md) | Complete processing methodology | Data engineers |
 
 ---
 
@@ -338,7 +342,7 @@ Known Constraints:
 
 - 🐛 Data Issues: [GitHub Issues](https://github.com/VintageDon/steam-dataset-2025/issues) with specific file and error information
 - 📧 General Questions: Check [Documentation Hub](../docs/README.md) first for existing answers
-- 🎓 Academic Inquiries: Reference [Dataset Card](../paper/dataset-card.md) for comprehensive information
+- 🎓 Academic Inquiries: Reference [Dataset Card](../steam-dataset-2025-v1/DATASET_CARD.md) for comprehensive information
 
 ### Data Quality Reports
 

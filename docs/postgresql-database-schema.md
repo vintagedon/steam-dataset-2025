@@ -6,7 +6,7 @@ author: "VintageDon - https://github.com/vintagedon"
 ai_contributor: "Claude Sonnet 4"
 date: "2025-09-02"
 version: "1.0" 
-status: "Published"
+status: "superseded"
 tags:
 - type: [kb-article/schema-documentation/database-design]
 - domain: [database-design/postgresql/schema-architecture]
@@ -20,6 +20,18 @@ related_documents:
 -->
 
 # 🗄️ PostgreSQL Database Schema Documentation
+
+> **SUPERSEDED (2026-11-13).** This document describes the **5K-era
+> prototype** database (8,711 applications / 36,265 reviews) and predates the
+> packaged v1.0.0 release. Its object inventory does not match the packaged
+> database: the live release has 58-column `applications` (with 16
+> materialized `mat_*` columns), `date`/`text` release-date semantics,
+> `vector(1024)` embeddings from BAAI/bge-m3, and B-tree plus HNSW indexing
+> only — no GIN. A verified schema extraction from the published dump
+> (`schema.sql` at the repository root) is deferred; see
+> [docs/release-1.0.1/known-limitations.md](release-1.0.1/known-limitations.md)
+> and [docs/release-1.0.1/schema-provenance.json](release-1.0.1/schema-provenance.json).
+> Retained as a historical design record.
 
 This document provides comprehensive schema documentation for the Steam Dataset 2025 database implementation, covering normalized table structures, field definitions, relationships, and JSONB optimization strategies. The schema supports 8,711 applications, 36,265 reviews, and complex metadata relationships with pgvector support for semantic search capabilities.
 

@@ -93,7 +93,13 @@ Empirical testing with full Steam catalog demonstrates measurable improvements.
 | **Semantic Search** | Not possible | ~0.04s (HNSW index) | **New capability** |
 | **Cross-Genre Discovery** | ~45s (nested loops) | ~0.21s (optimized join) | **214x faster** |
 
-*Benchmarks conducted on PostgreSQL 16.10 with optimized indexes, full 239,664 application dataset*
+*Benchmarks conducted on PostgreSQL 16.10 with optimized indexes, full 239,664 application dataset (historical benchmark record; the collection database measured 16.14 on 2026-08-03, and figures are not re-verified here)*
+
+> **Implementation note (2026-11-13):** the SQL DDL in sections 3 and 4 is
+> the *design proposal* from development, kept for methodology transparency.
+> The packaged v1.0.0 database implements B-tree plus two HNSW vector
+> indexes only — no GIN and no RUM on any public table. Lexical or hybrid
+> search is not implemented in v1.0.0.
 
 ---
 
@@ -116,8 +122,9 @@ Empirical testing with full Steam catalog demonstrates measurable improvements.
 │ • Normalized   │   │ • JSONB columns    │   │ • pgvector         │
 │   entities     │   │ • Raw API          │   │ • BGE-M3 embeddings│
 │ • Foreign keys │   │   responses        │   │ • HNSW indexes     │
-│ • B-tree       │   │ • GIN indexes      │   │ • Cosine similarity│
-│   indexes      │   │ • Schema-on-read   │   │ • 1024 dimensions  │
+│ • B-tree       │   │ • Schema-on-read   │   │ • Cosine similarity│
+│   indexes      │   │   (no GIN in the   │   │ • 1024 dimensions  │
+│                │   │   packaged DB)     │   │                    │
 └────────────────┘   └────────────────────┘   └────────────────────┘
 ```
 
@@ -170,7 +177,7 @@ ALTER TABLE games ADD COLUMN price_overview JSONB;  -- Pricing structure
 ALTER TABLE games ADD COLUMN platforms JSONB;  -- Platform support
 ALTER TABLE games ADD COLUMN pc_requirements JSONB;  -- System requirements
 
--- GIN indexes for efficient JSONB queries
+-- GIN indexes for efficient JSONB queries (ILLUSTRATIVE PROPOSAL — not created in the packaged database)
 CREATE INDEX idx_games_raw_data_gin ON games USING GIN (raw_data);
 CREATE INDEX idx_games_price_gin ON games USING GIN (price_overview);
 
@@ -184,7 +191,7 @@ CREATE INDEX idx_games_final_price ON games
 
 - Preserves complete API responses without lossy transformation
 - Schema-on-read enables flexible querying
-- GIN indexes optimize JSON path queries
+- JSON path queries served by sequential scans/B-tree where materialized (GIN was proposed but not created in the packaged database)
 - Backward compatible with API changes
 
 #### **Layer 3: Vector Intelligence**
@@ -213,7 +220,7 @@ LIMIT 10;
 
 **Advantages:**
 
-- Sub-50ms semantic search across 134K games
+- Sub-50ms semantic search measured during development across the 134K-game stage (historical benchmark; not re-verified for the packaged 239,664-application database)
 - Content-based recommendations without keyword matching
 - Cross-language semantic discovery
 - Integration with modern ML workflows
@@ -283,7 +290,7 @@ CREATE INDEX idx_games_type_free ON games (type, is_free);
 CREATE INDEX idx_games_release_year ON games (release_year) WHERE release_year IS NOT NULL;
 CREATE INDEX idx_games_success ON games (success);
 
--- 3. GIN indexes for JSONB full-object queries
+-- 3. GIN indexes for JSONB full-object queries (ILLUSTRATIVE PROPOSAL — not created in the packaged database)
 CREATE INDEX idx_games_raw_data_gin ON games USING GIN (raw_data);
 CREATE INDEX idx_games_platforms_gin ON games USING GIN (platforms);
 
@@ -309,7 +316,7 @@ CREATE INDEX idx_game_developers_composite ON game_developers (game_id, develope
 **Index Selection Rationale:**
 
 - **B-tree:** Fast equality and range queries on scalar values
-- **GIN:** Full-text and JSONB containment queries
+- **GIN:** Full-text and JSONB containment queries (proposed only; not present in the packaged database)
 - **HNSW:** Approximate nearest neighbor for vector similarity
 - **Partial:** Optimize for filtered subsets (e.g., paid games only)
 
@@ -493,7 +500,7 @@ JOIN genres genre ON gg.genre_id = genre.id
 JOIN game_developers gd ON g.id = gd.game_id
 JOIN developers d ON gd.developer_id = d.id
 WHERE g.description_embedding IS NOT NULL
-    AND g.is_free = FALSE
+    AND g.is_free = FALSE  -- restrict priced analyses to non-free rows (is_free = FALSE); free rows carry NULL prices by design
     AND g.price_overview IS NOT NULL
     AND genre.name IN ('Action', 'Adventure', 'RPG')
 ORDER BY g.description_embedding <=> %s::vector
@@ -611,8 +618,8 @@ benchmark.benchmark_query('semantic_search', """
 
 - **[PostgreSQL Schema](../postgresql-database-schema.md)** - Complete schema DDL
 - **[Vector Embeddings](vector-embeddings.md)** - BGE-M3 implementation
-- **[Data Validation](data-validation-and-qa.md)** - Quality assurance procedures
-- **[Performance Guide](../postgresql-database-performance.md)** - Optimization strategies
+- **[Data Validation](data-validaton-and-qa.md)** - Quality assurance procedures
+- **[Performance Guide](../postgesql-database-performance.md)** - Optimization strategies
 
 ---
 
@@ -633,10 +640,10 @@ benchmark.benchmark_query('semantic_search', """
 **ORCID:** [0009-0008-7695-4093](https://orcid.org/0009-0008-7695-4093)  
 **AI Collaboration:** Claude 3.7 Sonnet - Documentation structure assistance  
 
-All architectural decisions, performance benchmarks, and query patterns are human-verified against actual production deployment with 239,664 Steam applications.
+All architectural decisions and query patterns were exercised against the actual deployed database during development (measurements dated 2026-08-03 for population facts); performance figures reproduced in this document are historical benchmark records, not re-verified claims about the packaged release.
 
 ---
 
 **Document Version:** 2.0 | **Last Updated:** January 6, 2025 | **Status:** Published
 
-Multi-modal architecture proven with 239,664 applications, 134,189 vector embeddings, and sub-second query performance
+Multi-modal architecture implemented for 239,664 applications with full embedding coverage (239,664 application and 1,048,148 review vectors, measured 2026-08-03); query-performance claims beyond historical benchmarks are not made here

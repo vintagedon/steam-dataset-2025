@@ -6,10 +6,10 @@ The **Steam Dataset 2025** is a large-scale, multi-modal dataset capturing the c
 
 **Key Differentiators:**
 
-- **Scale Supremacy**: 239,664 applications across 28 years (1997-2025) vs. competitors' 27K-85K
+- **Scale Supremacy**: 239,664 applications across the platform's recorded history (release dates as recorded, 1969–9998; filter explicitly) vs. competitors' 27K-85K
 - **API Purity**: Exclusive use of official Steam Web API with zero third-party dependencies
 - **Architectural Innovation**: First Steam dataset with native pgvector integration for semantic search
-- **Multi-Modal Design**: PostgreSQL 16.10 + JSONB + 1024-dim BGE-M3 embeddings + HNSW indexing
+- **Multi-Modal Design**: PostgreSQL 16 + JSONB + 1024-dim BGE-M3 embeddings + HNSW indexing
 
 ## Supported Tasks
 
@@ -18,7 +18,7 @@ The **Steam Dataset 2025** is a large-scale, multi-modal dataset capturing the c
 - **Recommendation Systems**: Collaborative filtering using 1M+ reviews and semantic embeddings
 - **Sentiment Analysis**: Large-scale opinion mining on gaming content
 - **Semantic Search**: Vector similarity queries on game descriptions (sub-second performance)
-- **Market Analysis**: Pricing strategies across 30+ currencies and 28-year history
+- **Market Analysis**: USD pricing from a US collection point across recorded platform history
 - **NLP Research**: Multilingual text analysis (100+ languages supported by BGE-M3)
 - **Graph Analysis**: Publisher/developer relationship networks (101K developers, 86K publishers)
 
@@ -219,7 +219,7 @@ The Steam Dataset 2025 was created to address critical gaps in existing gaming d
 **Collection Infrastructure**:
 
 - Platform: Proxmox Astronomy Lab enterprise virtualization
-- Database: PostgreSQL 16.10 on proj-pgsql01 (Intel i9-13900H, 32GB RAM, Samsung PM983 NVMe)
+- Database: PostgreSQL (collection database 16.14, measured 2026-08-03) on proj-pgsql01 (Intel i9-13900H, 32GB RAM, Samsung PM983 NVMe)
 - GPU: NVIDIA A4000 on proj-gpu01 for embedding generation
 - Storage: 21GB total (data + HNSW indexes)
 
@@ -227,7 +227,7 @@ The Steam Dataset 2025 was created to address critical gaps in existing gaming d
 
 1. **Master List Retrieval**: Fetch complete app list (263,890 total Steam IDs)
 2. **Rate-Limited Detail Collection**: Conservative 1.5s delays (17.3 requests/minute sustainable)
-3. **Success Rate**: 56% successful detail retrieval (remainder delisted/region-locked)
+3. **Collection Outcome**: 239,341 successful retrievals across 262,791 retained result records at record grain (91.0766%); failure causes are not attributable per application
 4. **Review Sampling**: 10 reviews per application for initial release
 5. **Data Validation**: Multi-phase integrity checks (RAVGV methodology)
 
@@ -361,7 +361,7 @@ Not applicable - dataset contains only API-sourced data and user-generated revie
 
 **Technical Limitations**:
 
-1. **API Success Rate**: 56% success rate means ~44% of Steam IDs are incomplete (delisted, region-locked, or removed content)
+1. **Collection Coverage**: the raw corpus covers 239,183 unique AppIDs; the packaged database records 239,664 application rows, an unresolved 481-row difference (see known limitations)
 2. **Review Sampling**: Only 10 reviews per app in initial collection (not comprehensive review corpus)
 3. **PC Requirements Parsing**: ~85-90% accuracy due to inconsistent HTML formatting
 4. **Embedding Coverage**: Review embeddings prioritized for top 10K most-reviewed games
@@ -371,7 +371,7 @@ Not applicable - dataset contains only API-sourced data and user-generated revie
 
 1. **No Ground Truth Labels**: No expert-labeled genres, quality scores, or categorizations
 2. **Review Authenticity**: Cannot verify review authenticity (potential fake reviews included)
-3. **Metadata Gaps**: Not all applications provide complete metadata (e.g., Metacritic scores only 4.1% coverage)
+3. **Metadata Gaps**: Not all applications provide complete metadata (e.g., Metacritic score coverage is 2.21%, measured 2026-08-03)
 4. **Language Detection**: No explicit language tagging (inferred from content)
 
 **Recommended Validation**:
@@ -423,7 +423,7 @@ Not applicable - dataset contains only API-sourced data and user-generated revie
   year         = 2025,
   publisher    = {Zenodo},
   version      = {1.0.0},
-  doi          = {10.5281/zenodo.17286923},
+  doi          = {10.5281/zenodo.17266923},
   url          = {https://doi.org/10.5281/zenodo.17266922}
 }
 ```
@@ -453,7 +453,7 @@ We welcome contributions from the research community:
 
 **Technology Stack**:
 
-- PostgreSQL Development Team (PostgreSQL 16.10)
+- PostgreSQL Development Team (PostgreSQL 16)
 - pgvector Contributors (vector search capability)
 - BAAI Research (BGE-M3 embedding model)
 - Anthropic (Claude AI collaboration framework)
@@ -481,5 +481,5 @@ We welcome contributions from the research community:
 **Dataset Version**: 1.0.0  
 **Last Updated**: October 5, 2025  
 **Documentation Status**: Published  
-**Zenodo DOI**: [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17266922)  
+**Zenodo DOI**: version [10.5281/zenodo.17266923](https://doi.org/10.5281/zenodo.17266923) · concept [10.5281/zenodo.17266922](https://doi.org/10.5281/zenodo.17266922)  
 **GitHub Repository**: [vintagedon/steam-dataset-2025](https://github.com/vintagedon/steam-dataset-2025)

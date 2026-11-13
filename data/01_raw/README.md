@@ -14,7 +14,7 @@ tags:
 related_documents:
 - "[Data Overview](../README.md)"
 - "[02_processed](../02_processed/README.md)"
-- "[Collection Scripts](../../scripts/02-get_steam_data_sample/README.md)"
+- "[Pipeline History](../../work-logs/02-steam-data-sample/README.md)"
 ---
 -->
 
@@ -38,8 +38,8 @@ This section provides systematic access to all raw data files with detailed meta
 
 | File | Content Type | Collection Date | Records | Size |
 |----------|------------------|-------------------|-------------|----------|
-| [steam_2025_5k-dataset-games_20250831.json](steam_2025_5k-dataset-games_20250831.json) | Steam applications (games, DLC, software) | 2025-08-31 | ~5,000 | ~106 MB |
-| [steam_2025_5k-dataset-reviews_20250901.json](steam_2025_5k-dataset-reviews_20250901.json) | User reviews and ratings | 2025-09-01 | ~36,000+ | Variable |
+| [steam_2025_5k-dataset-games_20250831.json](steam_2025_5k-dataset-games_20250831.json.gz) | Steam applications (games, DLC, software) | 2025-08-31 | ~5,000 | ~106 MB |
+| [steam_2025_5k-dataset-reviews_20250901.json](steam_2025_5k-dataset-reviews_20250901.json.gz) | User reviews and ratings | 2025-09-01 | ~36,000+ | Variable |
 
 ### Collection Methodology
 
@@ -95,9 +95,9 @@ This section establishes data flow relationships within the project pipeline arc
 | Category | Relationship | Documentation |
 |--------------|------------------|-------------------|
 | [Processed Data](../02_processed/README.md) | Downstream enrichment and transformation target | [../02_processed/README.md](../02_processed/README.md) |
-| [Collection Scripts](../../scripts/02-get_steam_data_sample/README.md) | Source automation and collection methodology | [../../scripts/02-get_steam_data_sample/README.md](../../scripts/02-get_steam_data_sample/README.md) |
+| [Pipeline History](../../work-logs/02-steam-data-sample/README.md) | Source automation and collection methodology | [../../work-logs/02-steam-data-sample/README.md](../../work-logs/02-steam-data-sample/README.md) |
 | [Data Overview](../README.md) | Parent data architecture and pipeline context | [../README.md](../README.md) |
-| [Database Schema](../../scripts/04-postgres_schema_design/README.md) | Relational transformation and storage target | [../../scripts/04-postgres_schema_design/README.md](../../scripts/04-postgres_schema_design/README.md) |
+| [Database Schema](../../work-logs/04-postgresql-schema-analysis/README.md) | Relational transformation and storage target | [../../work-logs/04-postgresql-schema-analysis/README.md](../../work-logs/04-postgresql-schema-analysis/README.md) |
 
 ---
 

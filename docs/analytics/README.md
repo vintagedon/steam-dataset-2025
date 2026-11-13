@@ -62,7 +62,7 @@ analytics/
 |--------------|------------------|-------------------|
 | **[Visualizations](../../assets/README.md)** | Visual representations of analytical findings | [../../assets/README.md](../../assets/README.md) |
 | **[Methodologies](../methodologies/README.md)** | Analytical methodologies and validation procedures | [../methodologies/README.md](../methodologies/README.md) |
-| **[Analysis Scripts](../../scripts/05-5000-steam-game-dataset-analysis/)** | Code generating these analytical reports | [../../scripts/05-5000-steam-game-dataset-analysis/README.md](../../scripts/05-5000-steam-game-dataset-analysis/README.md) |
+| **[Analysis Scripts](../../work-logs/05-5000-steam-game-dataset-analysis/)** | Code generating these analytical reports | [../../scripts/05-5000-steam-game-dataset-analysis/README.md](../../work-logs/05-5000-steam-game-dataset-analysis/README.md) |
 
 ---
 
@@ -73,7 +73,7 @@ For users approaching the analytics documentation:
 1. **Start Here:** [Steam 5K Dataset Analysis](steam-5k-dataset-analysis.md) - Comprehensive overview and key findings
 2. **Data Structure:** [Steam API Schema Analysis](steam-api-schema-analysis.md) - Field definitions and data types
 3. **Visualizations:** [Assets Directory](../../assets/steam5k-dataset-plots/) - Visual analytical outputs
-4. **Reproduction:** [Analysis Scripts](../../scripts/05-5000-steam-game-dataset-analysis/) - SQL queries and Python code
+4. **Reproduction:** [Analysis Scripts](../../work-logs/05-5000-steam-game-dataset-analysis/) - SQL queries and Python code
 
 ---
 
@@ -165,10 +165,10 @@ Comprehensive analytical coverage across multiple dimensions:
 
 **Content Type Distribution:**
 
-- Games: ~56% of total catalog
-- DLC/Add-ons: ~20%
-- Software/Tools: ~15%
-- Demos/Videos: ~9%
+- Games: 150,039 of 239,341 successful raw records (record grain, measured 2026-11-13)
+- DLC/Add-ons: 53,698 records
+- Demos: 23,520 records
+- Music/other types: 11,084 records combined
 
 ### **Genre Ecosystem Insights**
 

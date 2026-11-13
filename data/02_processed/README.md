@@ -14,7 +14,7 @@ tags:
 related_documents:
 - "[Raw Data](../01_raw/README.md)"
 - "[Data Overview](../README.md)"
-- "[Processing Scripts](../../scripts/04-postgres_schema_design/README.md)"
+- "[Pipeline History](../../work-logs/04-postgresql-schema-analysis/README.md)"
 ---
 -->
 
@@ -104,7 +104,7 @@ This section establishes data transformation relationships within the project pi
 | Category | Relationship | Documentation |
 |--------------|------------------|-------------------|
 | [Raw Data](../01_raw/README.md) | Source data and transformation input | [../01_raw/README.md](../01_raw/README.md) |
-| [Database Schema](../../scripts/04-postgres_schema_design/README.md) | Relational loading and storage target | [../../scripts/04-postgres_schema_design/README.md](../../scripts/04-postgres_schema_design/README.md) |
+| [Pipeline History](../../work-logs/04-postgresql-schema-analysis/README.md) | Relational loading and storage target | [../../work-logs/04-postgresql-schema-analysis/README.md](../../work-logs/04-postgresql-schema-analysis/README.md) |
 | [Analytics Documentation](../../docs/analytics/README.md) | Analysis applications and methodologies | [../../docs/analytics/README.md](../../docs/analytics/README.md) |
 | [Data Overview](../README.md) | Parent data architecture and pipeline context | [../README.md](../README.md) |
 
