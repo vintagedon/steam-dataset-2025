@@ -35,7 +35,7 @@ retained raw batches, or the publicly tracked 5K sample.
 | [artifact-reference.json](artifact-reference.json) | Official v1.0.0 packages (names, bytes, provider checksums), DOI classes, access channels, observation date |
 | [known-limitations.md](known-limitations.md) | Prose limitations: sampling bounds, temporal outliers, language caveats, index facts, schema deferral, successor status |
 | [schema-provenance.json](schema-provenance.json) | Deferral record for root `schema.sql` extraction (no file fabricated; unblock conditions stated) |
-| [pr-review-corrections.md](pr-review-corrections.md) | Per-finding record of the seven PR #6 review corrections (DS-2), walkthrough proof, and maintainer review questions |
+| [pr-review-corrections.md](pr-review-corrections.md) | Per-finding record of the PR #6 review corrections (DS-2): the seven November 13 corrections, the November 22 sample-outcome correction (F25-01), walkthrough proof, and maintainer review questions |
 
 ## Headline facts (with sources)
 

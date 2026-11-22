@@ -1,6 +1,6 @@
 ---
 title: "Steam Dataset 2025 — Release 1.0.1 PR review corrections"
-description: "Per-finding record of the seven verified corrections applied to PR #6 (DS-2), their public verification, and the two open review questions for the maintainer"
+description: "Per-finding record of the verified corrections applied to PR #6 (DS-2) — the seven November 13 review corrections and the November 22 sample-outcome correction — their public verification, and the open review questions for the maintainer"
 author: "VintageDon (https://github.com/vintagedon/)"
 date: "2026-11-13"
 version: "1.0.1-docs"
@@ -178,6 +178,58 @@ working-directory workaround was used, and the frozen source and sample bytes
 hash-identical before and after the runs (tracked LFS pointers and retained
 sample unchanged).
 
+## Sample outcome consistency — F25-01 (2026-11-22, amendment Spec 01b)
+
+**Finding.** The `data/README.md` summary published the sample's collection
+outcome at the wrong grain: the sample table described the games file as an
+"8,711-record run (5,000 successes)" and the quality table listed
+"5,000/8,711" as the record-grain collection outcome. 5,000 is the game-only
+subset, not the count of successful fetches, so both cells divided game-only
+successes by all sampled applications. The prior repair had fixed
+`data/01_raw/README.md` but missed this summary.
+
+**Change.** Both cells in `data/README.md` now publish the measured outcome at
+record grain and name the game-only subset as a subset, matching the
+`data/01_raw/README.md` phrasing already in place: the sample table reads
+"8,711-record run (7,967 successful appdetails records, of which 5,000 are
+type `game`)" and the quality table reads "7,967/8,711 (91.4591%) successful
+appdetails records in the 5K run; 5,000 of those successes are type `game`".
+Gate commit `043f5735eb4f7f01d2b651a45f46e9107ac7ac2b` on the DS-2 branch;
+no historical log or original evidence file changed.
+
+**Verification (reproduction from the repository alone).** Download the
+tracked games sample, verify it against the pinned digest, and count each
+grain separately:
+
+```bash
+wget -O steam_2025_5k-dataset-games_20250831.json.gz \
+  https://media.githubusercontent.com/media/vintagedon/steam-dataset-2025/main/data/01_raw/steam_2025_5k-dataset-games_20250831.json.gz
+sha256sum steam_2025_5k-dataset-games_20250831.json.gz
+# 3b46222510ad64b87e8a0c63c92dba8f5788e0b8abdd4a1f3471ca0d7a70f2af
+python3 - <<'EOF'
+import gzip, json
+doc = json.load(gzip.open('steam_2025_5k-dataset-games_20250831.json.gz', 'rt'))
+recs = doc['games']
+ok = [r for r in recs if r.get('app_details', {}).get('success') is True]
+games = [r for r in ok if r['app_details'].get('data', {}).get('type') == 'game']
+print(len(recs), len(ok), len(games), f'{len(ok)/len(recs)*100:.4f}%')
+EOF
+# 8711 7967 5000 91.4591%
+```
+
+Any published rate must use the successful-fetch grain (7,967/8,711), never
+game-only successes over all applications (5,000/8,711). Checked the other
+public sample summaries for the same confusion: the 57.4% in
+`docs/analytics/steam-5k-dataset-analysis.md` is the games share of all
+8,711 records (5,000 + 1,792 DLC + 1,919 other = 8,711, where "other"
+reconciles as 1,175 successful non-game/DLC types plus 744 failed fetches) —
+a composition share, not a retrieval rate — and stays; the 5K game-subset
+naming elsewhere is legitimate and unchanged. An adversarial validator that
+re-derives these counts from the hash-verified sample and checks both cells
+fails against reviewed head `ab90945ea2811e85dd727e19f85d23c117e88da4`
+(exit 1, citing the old "5,000/8,711" cell) and passes against this repair
+(exit 0).
+
 ## Deferred lane (unchanged by these corrections)
 
 The dump/schema deferrals recorded by the parent change remain: verified dump
@@ -196,3 +248,5 @@ verifications above.
 
 - **D25-01:** Accept these corrections on PR #6?
 - **D25-02:** Accept retaining the existing dump/schema deferrals?
+- **D25-03:** Accept the sample-outcome correction (F25-01), aligning
+  `data/README.md` with the measured 7,967/8,711 record-grain outcome?
