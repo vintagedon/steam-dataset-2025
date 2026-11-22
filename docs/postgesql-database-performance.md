@@ -250,7 +250,7 @@ The NVMe device specifications (480K/42K IOPS, 3.0 GiB/s) provide substantial he
 
 Query Performance Optimization:
 
-- Index Strategy: BTREE for exact matches, GIN for JSONB containment, HNSW for vector similarity
+- Index Strategy: B-tree for exact matches, HNSW for vector similarity (no GIN in the packaged database; JSONB containment served by materialized columns)
 - Parallel Query: Utilize max_parallel_workers = 8 for analytical queries
 - Work Memory: Increase work_mem to 512MB for complex aggregations
 - Connection Pooling: Maintain 16-32 connections for optimal throughput

@@ -36,7 +36,7 @@ This data package represents the "Accessibility Tier" of the Steam Dataset 2025 
 | **Document** | **Purpose** | **Link** |
 |--------------|-------------|----------|
 | **[README.md](README.md)** | This file - directory overview and usage guide | [README.md](README.md) |
-| **[README-pending.md](README-pending.md)** | Placeholder for future notebook data packages | [README-pending.md](README-pending.md) |
+| **documentation pending (see ../../../docs/release-1.0.1/README.md)** | Placeholder for future notebook data packages | documentation pending (see ../../../docs/release-1.0.1/README.md) |
 
 ### **CSV Datasets**
 
@@ -82,7 +82,7 @@ This data package represents the "Accessibility Tier" of the Steam Dataset 2025 
 |--------------|------------------|-------------------|
 | **[Notebook 1: Platform Evolution](../../notebooks/01-steam-platform-evolution-and-marketplace/README.md)** | Primary consumer of these datasets - visualization and analysis notebook | [README.md](../../notebooks/01-steam-platform-evolution-and-marketplace/README.md) |
 | **[Data Dictionary](../../DATA_DICTIONARY.md)** | Source schema documentation for these extracted datasets | [DATA_DICTIONARY.md](../../DATA_DICTIONARY.md) |
-| **[PostgreSQL Database Schema](../../docs/postgresql-database-schema.md)** | Full relational database these CSVs are derived from | [postgresql-database-schema.md](../../docs/postgresql-database-schema.md) |
+| **[PostgreSQL Database Schema](../../../docs/postgresql-database-schema.md)** | Full relational database these CSVs are derived from | [postgresql-database-schema.md](../../../docs/postgresql-database-schema.md) |
 | **[Main Dataset](../../README.md)** | Parent dataset overview and complete documentation | [README.md](../../README.md) |
 
 ---
@@ -103,12 +103,12 @@ For users approaching this data package:
 ### **Data Collection Period**
 
 - **Raw Data Collection:** August-September 2025
-- **Temporal Coverage:** 1997-2025 (28 years of platform history)
+- **Temporal Coverage:** release years 1997–2025 as recorded (outlier/sentinel dates exist in the parent corpus; these curated CSVs cover 1997–2025)
 - **Aggregation Date:** September 29, 2025
 
 ### **Data Quality Notes**
 
-- All datasets derived from validated PostgreSQL database (56% API success rate)
+- All datasets derived from the packaged PostgreSQL database (measured collection outcome: 239,341 successes / 262,791 retained records at record grain)
 - Pricing data reflects USD values (59.5% of applications use USD in source data)
 - Genre evolution filtered to top 10 genres for visualization clarity
 - Publisher portfolios limited to top 30 by game volume to prevent overcrowding

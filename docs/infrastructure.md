@@ -31,7 +31,7 @@ This section establishes the infrastructure context for the Steam Dataset 2025 p
 
 ## 1.1 Purpose
 
-This documentation serves as the definitive reference for the computational infrastructure supporting Steam Dataset 2025 development and validation. It provides performance baselines, configuration specifications, and optimization strategies discovered through systematic testing and real-world application with 8,711+ applications and 36,265+ user reviews.
+This documentation serves as the definitive reference for the computational infrastructure supporting Steam Dataset 2025 development and validation. It provides performance baselines, configuration specifications, and optimization strategies discovered through systematic testing and real-world application during the 5K development phase (a corpus of 8,711 applications and 36,265 user reviews — historical benchmarks, not claims about the 239,664-application packaged release).
 
 ## 1.2 Scope
 
@@ -112,7 +112,7 @@ This section documents the complete software stack configuration, emphasizing Po
 |---------------|-------------|------------------------|
 | Operating System | Ubuntu 24.04 LTS | Long-term support for stability |
 | Kernel | 6.8+ (Ubuntu default) | Modern io_uring support |
-| PostgreSQL | 16.10 | Latest stable with vector extension support |
+| PostgreSQL | 16.14 | Collection database version (measured 2026-08-03); any 16.x environment suffices for analysis |
 | Python Environment | 3.9+ | Data processing and analytics |
 
 ## 3.2 PostgreSQL Configuration
@@ -220,7 +220,7 @@ Real-world performance with Steam dataset operations demonstrates practical capa
 
 ### Bulk Data Ingestion
 
-- 8,711 applications + 36,265 reviews: Ingested in 12 seconds using COPY with local synchronous_commit disabled
+- Historical 5K-phase benchmark: 8,711 applications + 36,265 reviews ingested in 12 seconds using COPY with local synchronous_commit disabled
 - Sustained write rate: ~707 records per second during transactional inserts
 - Vector index creation: HNSW indexes built in <3 seconds for 8k applications
 

@@ -227,7 +227,7 @@ Advanced Statistical Methods:
 
 Statistical Validity:
 
-- Coverage Bias: Steam API success rate (~56%) may introduce selection bias toward more successful titles
+- Coverage Bias: record-level success in retained raw batches (91.0766% of 262,791 records, measured 2026-11-13) may introduce selection bias; see collection-outcomes.json for grain
 - Temporal Representation: Dataset captures current market state; historical analysis requires longitudinal collection
 - Regional Limitations: Analysis reflects global Steam catalog; regional pricing variations require additional analysis
 

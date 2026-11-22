@@ -2,7 +2,7 @@
 
 > The first analytically-native Steam dataset employing multi-modal database architecture for advanced data science workflows. 239,664 applications with semantic search, graph analysis, and comprehensive metadata.
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17266922)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17266922.svg)](https://doi.org/10.5281/zenodo.17266922)
 [![Dataset](https://img.shields.io/badge/Dataset-239%2C664%20Applications-blue.svg)](https://github.com/VintageDon/steam-dataset-2025)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
@@ -17,16 +17,16 @@ Steam Dataset 2025 moves beyond traditional CSV exports to enable semantic searc
 
 ### **For Researchers**
 
-- **[📥 Download Dataset (Zenodo)](https://doi.org/10.5281/zenodo.17266922)** - Complete dataset with DOI citation
-- **[📊 Explore on Kaggle](#)** - Interactive notebooks and community discussions *(Coming Soon)*
+- **[📥 Download Dataset (Zenodo)](https://doi.org/10.5281/zenodo.17266923)** - Version 1.0.0 release packages with DOI citation
+- **[📊 Explore on Kaggle](https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics)** - Published mirror with interactive notebooks
 - **[📖 Dataset Card](steam-dataset-2025-v1/DATASET_CARD.md)** - Complete methodology and academic documentation
 - **[📚 Data Dictionary](steam-dataset-2025-v1/DATA_DICTIONARY.md)** - Comprehensive field specifications
 
 ### **For Data Scientists**
 
-- **[🚀 Jupyter Notebooks](notebooks/)** - 3 production-ready analysis examples with PDF exports
+- **[🚀 Jupyter Notebooks](steam-dataset-2025-v1/notebooks/)** - 3 analysis examples with PDF exports
 - **[📈 Sample Visualizations](assets/steam-fulldataset-dataset-plots-initial/)** - Production analytics gallery
-- **[💻 Python Scripts](scripts/)** - Complete ETL pipeline and processing code
+- **[💻 Development Pipeline](work-logs/)** - Phase-by-phase collection and processing history (12 phase directories)
 - **[🔍 Getting Started Guide](docs/data-access.md)** - From download to first analysis
 
 ### **For Developers**
@@ -41,14 +41,14 @@ Steam Dataset 2025 moves beyond traditional CSV exports to enable semantic searc
 
 ### **Scale & Completeness**
 
-| **Metric** | **Value** | **Coverage** |
+| **Metric** | **Value** | **Notes** |
 |------------|-----------|--------------|
-| **Total Applications** | 239,664 | Complete accessible Steam catalog |
-| **User Reviews** | 1,048,148 | Full review corpus with metadata |
-| **Developers** | 54,321 | Complete developer ecosystem |
-| **Publishers** | 39,876 | Full publisher network |
-| **Temporal Range** | 1997-2025 | 28 years of platform evolution |
-| **Success Rate** | 56% | Transparent quality metrics |
+| **Total Applications** | 239,664 | Packaged database rows (packaging-time record) |
+| **User Reviews** | 1,048,148 | Bounded sample: up to 100 most recent reviews per covered application |
+| **Developers** | 101,226 | Distinct developer entities (packaging-time record) |
+| **Publishers** | 85,699 | Distinct publisher entities (packaging-time record) |
+| **Release Dates** | 1969–9998 as recorded | Includes Steam sentinel/outlier values; filter explicitly for temporal analysis |
+| **Raw Collection** | 239,341 successes / 262,791 records | Record-level outcome at retained raw-batch grain; see [measured outcomes](docs/release-1.0.1/collection-outcomes.json) |
 
 ### **Unique Capabilities**
 
@@ -57,7 +57,7 @@ Steam Dataset 2025 moves beyond traditional CSV exports to enable semantic searc
 ✅ **Multi-Modal Database** - PostgreSQL + JSONB + vector embeddings in unified architecture  
 ✅ **Graph Analysis Ready** - Publisher/developer relationships and collaboration networks  
 ✅ **Academic Standards** - Complete transparency, reproducibility, and peer-review documentation  
-✅ **Production Tested** - 134,000+ successful retrievals with comprehensive validation
+✅ **Production Tested** - 239,341 successful retrievals across 262,791 retained result records, with measured outcomes documented
 
 ---
 
@@ -122,7 +122,7 @@ graph TD
 - **Relational Layer**: Normalized entities with referential integrity for traditional SQL queries
 - **Document Layer**: JSONB preserves complete API responses without information loss
 - **Vector Layer**: Semantic embeddings enable content-based search and similarity analysis
-- **Analytics Layer**: Materialized columns and optimized indexes for sub-second query performance
+- **Analytics Layer**: Materialized columns and B-tree plus HNSW vector indexes for analytical workloads
 
 **[📖 Read Full Architecture Guide](docs/methodologies/multi-modal-db-architecture.md)**
 
@@ -136,31 +136,17 @@ steam-dataset-2025/
 │   ├── sponsors/                   # Sponsor logos and acknowledgments
 │   └── steam-fulldataset-dataset-plots-initial/  # Production charts
 ├── 💾 data/                        # Dataset access and samples
-│   ├── 01_raw/                     # Original API responses (5K sample)
-│   ├── 02_processed/               # Cleaned and validated data
-│   ├── 03_enriched/                # Vector embeddings and features
-│   └── 04_analytics/               # Final export packages
+│   ├── 01_raw/                     # Publicly tracked 5K samples (Git LFS)
+│   └── 02_processed/               # Documentation of processed outputs
 ├── 📚 docs/                        # Technical documentation
 │   ├── analytics/                  # Analysis reports and methodologies
 │   ├── methodologies/              # Data collection and processing guides
+│   ├── release-1.0.1/              # Corrected v1.0.0 reference: outcomes, artifacts, limitations
 │   └── citation.md                 # Citation guide
 ├── 🗂️ documentation-standards/    # Template and style guides
-├── 💻 scripts/                     # Complete ETL pipeline (12 phases)
-│   ├── 01-dataset-foundations/
-│   ├── 02-steam-data-sample/
-│   ├── 03-analyze-steam-data-sample/
-│   ├── 04-postgresql-schema-analysis/
-│   ├── 05-5000-steam-game-dataset-analysis/
-│   ├── 06-full-data-set-import/
-│   ├── 07-vector-embeddings/
-│   ├── 08-materialization-columns/
-│   ├── 09-pc-requirements-materialization/
-│   ├── 10-pc-requirements-validation/
-│   ├── 11-packaging-the-release/
-│   └── 12-notebook-generation/
 ├── 📦 steam-dataset-2025-v1/      # Dataset release package
 │   ├── DATASET_CARD.md             # Academic documentation
-│   ├── DATA_DICTIONARY.md          # Complete field specifications
+│   ├── DATA_DICTIONARY.md          # Field specifications (superseded; see docs/release-1.0.1/)
 │   ├── notebook-data/              # Pre-exported notebook datasets
 │   │   ├── 01-platform-evolution/
 │   │   ├── 02-semantic-game-discovery/
@@ -179,7 +165,9 @@ steam-dataset-2025/
     ├── 07-vector-embeddings/
     ├── 08-materialization-columns/
     ├── 09-pc-requirements-materialization/
-    └── 10-dataset-accessibility-packages/
+    ├── 10-pc-requirements-materialization/
+    ├── 11-packaging-the-release/
+    └── 12-notebook-generation/
 ```
 
 ### **Navigation Guide**
@@ -187,7 +175,7 @@ steam-dataset-2025/
 - **[📥 Data Access](data/)** - Download datasets and access documentation
 - **[📓 Notebooks](steam-dataset-2025-v1/notebooks/)** - Interactive analysis examples with full PDF exports
 - **[📖 Documentation](docs/)** - Complete technical specifications
-- **[💻 Scripts](scripts/)** - Full ETL pipeline and processing code
+- **[💻 Pipeline History](work-logs/)** - Collection and processing code, phase by phase
 - **[📝 Work Logs](work-logs/)** - Development journey and methodology decisions
 - **[📦 Dataset Package](steam-dataset-2025-v1/)** - Official release with academic documentation
 
@@ -204,8 +192,8 @@ steam-dataset-2025/
 
 ### **Database & Storage**
 
-- **PostgreSQL 16.10** - Production database with advanced features
-- **pgvector 0.5.0** - Vector similarity search with HNSW indexes
+- **PostgreSQL 16** - Production database (collection database measured at 16.14, 2026-08-03)
+- **pgvector 0.8.0** - Vector similarity search with HNSW indexes (measured 2026-08-03)
 - **JSONB** - Flexible semi-structured data storage preserving API responses
 - **Materialized Views** - Performance optimization for common query patterns
 
@@ -226,7 +214,7 @@ Three production-ready Jupyter notebooks demonstrate dataset capabilities with c
 
 **Research Questions:**
 
-- How has Steam's catalog evolved across 28 years (1997-2025)?
+- How has Steam's catalog evolved across its recorded history (release dates as recorded, 1969–9998; filter explicitly)?
 - Which genres drive platform growth and pricing strategy changes?
 - What patterns emerge in cross-platform support (Windows/Mac/Linux)?
 
@@ -313,14 +301,14 @@ pip install -r requirements.txt
 # See data/README.md for download instructions
 
 # 4. Explore notebooks
-jupyter notebook notebooks/
+jupyter notebook steam-dataset-2025-v1/notebooks/
 ```
 
 ### **Quick Start for Researchers**
 
 1. **Download Dataset**: Access via [Zenodo](https://doi.org/10.5281/zenodo.17266922) or Kaggle
 2. **Read Documentation**: Start with [Dataset Card](steam-dataset-2025-v1/DATASET_CARD.md)
-3. **Explore Examples**: Review [Jupyter notebooks](notebooks/) with PDF exports
+3. **Explore Examples**: Review [Jupyter notebooks](steam-dataset-2025-v1/notebooks/) with PDF exports
 4. **Cite Properly**: Follow [Citation Guide](docs/citation.md) for academic use
 
 ### **Quick Start for Developers**
@@ -344,22 +332,21 @@ jupyter notebook notebooks/
 ### **Technical Documentation**
 
 - **[🏗️ PostgreSQL Schema](docs/postgresql-database-schema.md)** - Complete database implementation
-- **[⚡ Performance Guide](docs/postgresql-database-performance.md)** - Query optimization strategies
+- **[⚡ Performance Guide](docs/postgesql-database-performance.md)** - Query optimization strategies
 - **[🔧 Multi-Modal Architecture](docs/methodologies/multi-modal-db-architecture.md)** - Hybrid design patterns
 - **[🧠 Vector Embeddings](docs/methodologies/vector-embeddings.md)** - BGE-M3 implementation
 
 ### **Methodology Documentation**
 
 - **[🔬 Steam API Collection](docs/methodologies/steam-api-collection.md)** - Data acquisition methodology
-- **[✅ Data Validation](docs/methodologies/data-validation-and-qa.md)** - Quality assurance processes
+- **[✅ Data Validation](docs/methodologies/data-validaton-and-qa.md)** - Quality assurance processes
 - **[🤝 AI-Human Collaboration](docs/methodologies/ai-human-collaboration-methodology.md)** - RAVGV framework
 - **[📊 Analytics Studies](docs/analytics/)** - Analytical methodologies and findings
 
 ### **Development History**
 
-- **[📝 Work Logs](work-logs/)** - Complete 10-phase development journey
-- **[💻 Scripts Documentation](scripts/)** - Full ETL pipeline implementation
-- **[📓 Notebook Development](notebooks/)** - Analysis workflow documentation
+- **[📝 Work Logs](work-logs/)** - Complete 12-phase development journey
+- **[📓 Notebook Development](steam-dataset-2025-v1/notebooks/)** - Analysis workflow documentation
 
 ---
 
@@ -369,15 +356,18 @@ jupyter notebook notebooks/
 
 #### **Zenodo (Recommended for Research)**
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17266922)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17266922.svg)](https://doi.org/10.5281/zenodo.17266922)
 
-**Complete Dataset Package:**
+**Official v1.0.0 Packages (verified against the Zenodo record, 2026-11-13):**
 
-- Full PostgreSQL database dump (2.8GB compressed)
-- CSV export package (85MB core data)
-- Parquet files for big data workflows (45MB compressed)
-- Vector embeddings (520MB)
-- Complete documentation and notebooks
+| Package | Bytes | Contents |
+|---------|------:|----------|
+| `steam-dataset-2025-v1.zip` | 40,212,720 | Release bundle: documentation, notebooks, notebook data |
+| `steam_dataset_2025_csv_package_v1.zip` | 320,368,878 | Accessibility CSV exports (no database required) |
+| `steam_dataset_2025_embeddings_package_v1.zip` | 4,870,419,373 | Pre-computed BGE-M3 1024-dim embeddings |
+| `steam_dataset_2025_power_users_dump_v1.zip` | 7,204,002,678 | Full PostgreSQL database dump |
+
+Exact provider checksums and DOI classes: [artifact reference](docs/release-1.0.1/artifact-reference.json)
 
 **Advantages:**
 
@@ -386,11 +376,11 @@ jupyter notebook notebooks/
 - Academic hosting
 - Long-term preservation
 
-**[📥 Download from Zenodo](https://doi.org/10.5281/zenodo.17266922)**
+**[📥 Download from Zenodo](https://doi.org/10.5281/zenodo.17266923)** (version 1.0.0) · [concept DOI](https://doi.org/10.5281/zenodo.17266922) for version-agnostic references
 
 ---
 
-#### **Kaggle (Coming Soon)**
+#### **Kaggle (Published)**
 
 **Interactive Dataset with Community:**
 
@@ -406,20 +396,20 @@ jupyter notebook notebooks/
 - Community engagement
 - GPU acceleration available
 
-**[📊 Explore on Kaggle](#)** *(Release Pending)*
+**[📊 Explore on Kaggle](https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics)**
 
 ---
 
 ### **Sample Dataset (Immediate Access)**
 
-**5K Game Sample** - Available directly in repository:
+**5K Game and Review Samples** - Available directly in repository:
 
-- 5,000 games with complete metadata
-- Representative sample across genres and eras
+- 5,000-game collection run artifacts with review samples
+- JSON gzip objects tracked via Git LFS (games 14,089,513 B; reviews 11,202,479 B; SHA-256 pinned in the walkthrough)
 - Immediate download (no external hosting)
 - Perfect for testing and development
 
-**[📥 Access Sample Data](data/01_raw/)** (102MB compressed)
+**[📥 Access Sample Data](data/01_raw/)** · [Offline text-analysis walkthrough](docs/release-1.0.1/README.md#small-text-analysis-walkthrough)
 
 ---
 
@@ -482,23 +472,23 @@ Support open data science research and gain visibility in the analytics communit
 ```bibtex
 @dataset{fountain_2025_steam,
   author       = {Fountain, Donald},
-  title        = {{Steam Dataset 2025: Multi-Modal Gaming 
-                   Analytics Platform}},
-  month        = jan,
+  title        = {{The Steam Dataset 2025: A Large-Scale, Multi-Modal 
+                    Dataset of the Steam Gaming Platform}},
+  month        = oct,
   year         = 2025,
   publisher    = {Zenodo},
   version      = {1.0.0},
-  doi          = {10.5281/zenodo.17286923},
-  url          = {https://doi.org/10.5281/zenodo.17266922}
+  doi          = {10.5281/zenodo.17266923},
+  url          = {https://doi.org/10.5281/zenodo.17266923}
 }
 ```
 
 ### **APA Citation**
 
 ```
-Fountain, D. (2025). Steam Dataset 2025: Multi-Modal Gaming Analytics 
-Platform (Version 1.0.0) [Data set]. Zenodo. 
-https://doi.org/10.5281/zenodo.17266922
+Fountain, D. (2025). The Steam Dataset 2025: A large-scale, multi-modal dataset 
+of the Steam gaming platform (Version 1.0.0) [Data set]. Zenodo. 
+https://doi.org/10.5281/zenodo.17266923
 ```
 
 **[📖 Complete Citation Guide](docs/citation.md)** - Additional formats and attribution guidelines
@@ -509,7 +499,7 @@ https://doi.org/10.5281/zenodo.17266922
 
 ### **Dataset License**
 
-This dataset is licensed under **[Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)**
+This dataset is licensed under **[Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)**, applied to the compiler's compilation and derived work. Steam-origin content remains subject to Steam's terms of service.
 
 **You are free to:**
 
@@ -553,7 +543,7 @@ Repository code and scripts are licensed under **[MIT License](LICENSE)**
 This dataset follows academic standards for transparency and reproducibility:
 
 ✅ **Complete Methodology Documentation** - Every collection and processing decision documented  
-✅ **Reproducible Pipeline** - All code and scripts provided for validation  
+✅ **Pipeline Source Retained** - Collection/processing code retained under `work-logs/` (12 phase directories); relocation and repair are planned maintenance  
 ✅ **Quality Assurance** - Systematic validation with transparent success metrics  
 ✅ **Limitation Disclosure** - Known constraints and biases fully documented  
 ✅ **Version Control** - Complete development history preserved  
@@ -574,9 +564,11 @@ This dataset follows academic standards for transparency and reproducibility:
 | **Phase 7** | Vector Embeddings | ✅ Complete | [Work Log 07](work-logs/07-vector-embeddings/) |
 | **Phase 8** | Performance Optimization | ✅ Complete | [Work Log 08](work-logs/08-materialization-columns/) |
 | **Phase 9** | Hardware Extraction | ✅ Complete | [Work Log 09](work-logs/09-pc-requirements-materialization/) |
-| **Phase 10** | Dataset Packaging | ✅ Complete | [Work Log 10](work-logs/10-dataset-accessibility-packages/) |
-| **Release** | Zenodo Publication | ✅ Published | [DOI: 10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17266922) |
-| **Release** | Kaggle Publication | 🔄 Pending | Coming Soon |
+| **Phase 10** | PC Requirements Materialization | ✅ Complete | [Work Log 10](work-logs/10-pc-requirements-materialization/) |
+| **Phase 11** | Dataset Packaging | ✅ Complete | [Work Log 11](work-logs/11-packaging-the-release/) |
+| **Phase 12** | Notebook Generation | ✅ Complete | [Work Log 12](work-logs/12-notebook-generation/) |
+| **Release** | Zenodo Publication | ✅ Published | [DOI: 10.5281/zenodo.17266923](https://doi.org/10.5281/zenodo.17266923) (v1.0.0) |
+| **Release** | Kaggle Publication | ✅ Published | [Steam Dataset 2025 on Kaggle](https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics) |
 
 ---
 
@@ -585,34 +577,33 @@ This dataset follows academic standards for transparency and reproducibility:
 ### **Largest Public Steam Dataset**
 
 - **239,664 applications** vs typical datasets of 6K-11K
-- **1,048,148 reviews** with complete metadata
-- **28 years** of platform evolution (1997-2025)
-- **90.8% coverage** of accessible Steam catalog
+- **1,048,148 reviews** in a bounded per-application sample (up to 100 most recent per covered app)
+- **Recorded platform history** with release dates as Steam reports them (explicit filtering required; see [known limitations](docs/release-1.0.1/known-limitations.md))
 
 ### **First Multi-Modal Architecture**
 
 - **PostgreSQL + JSONB + pgvector** in unified database
-- **Semantic search** using BGE-M3 embeddings
+- **Semantic search** using BGE-M3 embeddings (B-tree plus HNSW indexes)
 - **Graph analysis ready** with relationship networks
 - **Performance optimized** with materialized columns
 
 ### **Academic Standards**
 
 - **Complete transparency** in methodology and limitations
-- **Reproducible pipeline** with all code provided
-- **Quality metrics** documented for all processing stages
+- **Pipeline source retained** under `work-logs/` (12 phase directories)
+- **Measured outcomes** documented for the collection stages ([collection-outcomes.json](docs/release-1.0.1/collection-outcomes.json))
 - **Peer review ready** following Gebru et al. datasheet standards
 
 ### **Production Tested**
 
-- **134,000+ successful** game metadata retrievals
-- **Sub-second queries** on 239K application database
+- **239,341 successful retrievals** across 262,791 retained result records
+- **B-tree + HNSW indexed** 239K-application database
 - **Validated** across multiple analytical use cases
 - **Published notebooks** demonstrating capabilities
 
 ---
 
-**Last Updated:** January 6, 2025 | **Project Status:** Production Complete | **Current Phase:** Public Release
+**Last Updated:** November 13, 2026 | **Project Status:** Published v1.0.0; maintenance in progress | A 2026 successor collection is in progress and not yet published.
 
 *Dataset developed using systematic AI-human collaboration following RAVGV methodology*
 

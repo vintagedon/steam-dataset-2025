@@ -4,8 +4,8 @@ description: "Comprehensive documentation of API constraints, missing data patte
 author: "VintageDon"
 orcid: "0009-0008-7695-4093"
 created: "2025-09-07"
-last_updated: "2025-01-06"
-version: "2.0"
+last_updated: "2026-11-13"
+version: "2.1"
 tags: ["limitations", "data-quality", "api-constraints", "academic-transparency", "reproducibility"]
 category: "documentation"
 status: "published"
@@ -47,7 +47,7 @@ Ensure academic transparency by documenting all known limitations, data gaps, an
 
 ### **1.4 Overview**
 
-Steam Dataset 2025 achieves 56% successful metadata retrieval across 239,664 attempted collections. The 44% "failure" rate represents expected patterns (delisted games, regional restrictions, content type variations) rather than collection deficiencies. This documentation quantifies these limitations with empirical metrics to support informed research decisions.
+Steam Dataset 2025's retained raw corpus holds 262,791 collection result records, of which 239,341 (91.0766% at record grain) are successes covering 239,183 unique applications; the packaged database records 239,664 application rows. Failure records do not retain the requested AppID, so failure causes cannot be attributed per application. This documentation states what is measured, at which grain, and what remains unverified; machine-readable values live in [release-1.0.1/collection-outcomes.json](release-1.0.1/collection-outcomes.json).
 
 ---
 
@@ -59,130 +59,81 @@ This section documents empirically observed API performance patterns from large-
 
 Comprehensive statistics from full dataset collection demonstrate API reliability patterns and identify primary failure sources.
 
-#### **Primary Collection Results**
+#### **Primary Collection Results (measured 2026-11-13)**
 
-| **Metric** | **Value** | **Percentage** | **Context** |
-|------------|-----------|----------------|-------------|
-| **Total Applications Processed** | 239,664 | 100% | Complete accessible Steam catalog |
-| **Successful Metadata Retrieval** | 134,212 | 56.0% | Complete application details |
-| **Failed API Calls** | 105,452 | 44.0% | Various expected failure reasons |
-| **Review Data Coverage** | 1,048,148 reviews | N/A | Across successfully retrieved games |
-| **Vector Embeddings Generated** | 134,189 | 99.98% of successful | BGE-M3 semantic vectors |
+| **Metric** | **Value** | **Grain** |
+|------------|-----------|-----------|
+| **Retained result records** | 262,791 | records across 526 batch files (unpublished raw corpus) |
+| **Successful retrievals** | 239,341 | 91.0766% of result records (record grain) |
+| **Failed records** | 23,450 | record grain; requested AppID not retained |
+| **Unique successful AppIDs** | 239,183 | distinct applications in the raw corpus |
+| **Duplicate success records** | 158 | repeated AppIDs among successes |
+| **Review rows (packaged)** | 1,048,148 | bounded sample, up to 100 most recent per covered application |
+| **Vector embeddings (packaged)** | 239,664 applications + 1,048,148 reviews | 100% non-null (measured 2026-08-03) |
 
-#### **Success Rate Context**
+#### **Success Metric Context**
 
-The 56% success rate represents **expected collection patterns**, not quality issues:
+The 91.0766% figure is a **record-level** fraction over retained result
+records. It is not HTTP request success (attempts are not reconstructable as
+requests) and not unique-app catalog coverage (the denominator is records,
+not applications). The packaged database's `success` column is `true` for all
+loaded rows because failed retrievals were never loaded — it is a selection
+artifact and must never be published as a "100% success rate."
 
-- **Active Games:** ~95% success for currently available titles
-- **DLC Content:** ~70% success due to parent game dependencies
-- **Legacy Content:** ~40% success for discontinued or delisted items
-- **Content Type Variation:** Success rates differ significantly by application type
+### 2.2 API Failure Records
 
-### **2.2 API Failure Categories**
+All 23,450 failure records omit the requested AppID. There is no
+per-application failure manifest, and failure-cause attribution (delisted,
+region-locked, invalid ID, API error) is not reconstructable from the
+retained corpus. Previously published failure-cause breakdowns had no
+retained source and have been removed. The raw corpus is not published.
 
-Detailed analysis of the 44% failure rate reveals distinct categories with different research implications.
+### 2.3 Collection Timeline
 
-#### **Delisted Content (Primary Factor)**
-
-| **Category** | **Estimated Count** | **% of Failures** | **Description** |
-|--------------|---------------------|-------------------|-----------------|
-| **Permanently Delisted** | ~45,000 | 42.7% | Games removed from Steam store |
-| **Regional Restrictions** | ~28,000 | 26.6% | Content unavailable in collection region (US) |
-| **Invalid App IDs** | ~19,000 | 18.0% | Deprecated, placeholder, or test IDs |
-| **API Errors** | ~13,000 | 12.3% | Temporary failures, server errors |
-
-#### **Failure Pattern Analysis**
-
-```markdown
-Delisted Games:
-- Early Access abandonware: ~15,000
-- Copyright/trademark disputes: ~8,000
-- Publisher-initiated removal: ~12,000
-- Licensing expiration: ~10,000
-
-Regional Restrictions:
-- China-specific content: ~12,000
-- Japan-only releases: ~8,000
-- EU-only content: ~5,000
-- Other regional exclusives: ~3,000
-
-Invalid App IDs:
-- Deprecated test entries: ~8,000
-- Beta/internal builds: ~6,000
-- Placeholder IDs: ~5,000
-```
-
-### **2.3 Temporal Collection Patterns**
-
-Success rates vary by collection phase, demonstrating API stability and retry effectiveness.
-
-#### **Collection Timeline**
-
-| **Phase** | **Duration** | **Apps Processed** | **Success Rate** |
-|-----------|--------------|-------------------|------------------|
-| **Initial Collection** | 110 hours | 239,664 | 55.8% |
-| **Retry Pass 1** | 12 hours | 23,445 | 2.1% recovery |
-| **Retry Pass 2** | 8 hours | 14,892 | 0.8% recovery |
-| **Final Statistics** | 130 hours total | 239,664 complete | 56.0% final |
-
-*Multiple retry passes recovered ~2.9% additional successful retrievals*
+The collection ran as an initial pass with retries during August–September
+2025 (5K-run metadata records 14,471 seconds for its own 8,711-record pass).
+Overall campaign durations and per-pass recovery rates were not retained in
+the published record and are not restated here.
 
 ---
 
 ## 🌍 **3. Geographic & Regional Constraints**
 
-Geographic collection location (United States) introduces systematic biases toward Western content and creates regional coverage gaps.
+The collection was performed from a United States network position. Regional
+availability therefore shaped what the API returned for some applications.
 
-### **3.1 Collection Region Impact**
+### 3.1 Collection Region Impact
 
-Data collection from US-based infrastructure creates inherent biases in content availability and language representation.
+**What is measured:** nothing per-region. Regional coverage estimates
+previously published here (per-continent percentage tables) had no retained
+source and have been removed. What is known:
 
-#### **Regional Coverage Estimates**
-
-| **Region** | **Estimated Coverage** | **Primary Limitations** |
-|------------|------------------------|-------------------------|
-| **North America** | ~95% | Minimal restrictions |
-| **Western Europe** | ~90% | Some country-specific exclusions |
-| **Eastern Europe** | ~75% | Language and regional restrictions |
-| **Asia-Pacific** | ~60% | Significant regional restrictions |
-| **China** | ~20% | Steam China is separate platform |
-| **Other Regions** | ~50% | Varying local regulations |
-
-#### **Language Distribution Bias**
-
-Geographic collection point creates inherent skew toward English-language content.
-
-**Observed Patterns:**
-
-- **English Primary:** ~68% of successfully collected applications
-- **Multi-language:** ~27% with English + other language support
-- **Non-English Only:** ~5% (primarily Asian and European exclusives)
+- Collection requests originated from a US position, so region-gated store
+  content could fail or return restricted payloads.
+- Language distribution in the publicly tracked 5K sample is 51.6% English,
+  13.8% Simplified Chinese and 9.9% Russian at that sample's grain — see the
+  [walkthrough](release-1.0.1/README.md#small-text-analysis-walkthrough).
+  The packaged release's language composition is unverified pending
+  dump/CSV verification.
 
 **Research Implications:**
 
 - Analysis of non-English gaming markets may be incomplete
-- Asian market representation (Japan, Korea, China) significantly underrepresented
-- Western gaming industry overrepresented relative to global market
+- Regional availability effects are confounded with other failure causes and cannot be separated post hoc
+- Treat any per-region extrapolation from this dataset as unverified
 
-### **3.2 Pricing Data Limitations**
+### 3.2 Pricing Data Limitations
 
-Currency and pricing information reflects US market perspective with incomplete international coverage.
+Pricing was collected through a US collection point; `price_overview`
+carries the currency the API returned for that point (USD).
 
-#### **Currency Coverage**
-
-| **Currency** | **Data Availability** | **Accuracy** | **Notes** |
-|--------------|----------------------|--------------|-----------|
-| **USD** | 100% | High | Primary collection currency |
-| **EUR** | ~85% | Good | European market pricing available |
-| **GBP** | ~80% | Good | UK market pricing |
-| **JPY** | ~40% | Limited | Japanese market gaps |
-| **CNY** | ~10% | Poor | China region limitations |
-| **Other** | ~30% | Variable | Inconsistent availability |
+**What is measured (dated 2026-08-03):** 59.4874% of applications carry a
+materialized price currency; collected values are USD. Multi-currency
+coverage is not present in the dataset.
 
 **Research Implications:**
 
-- Cross-regional pricing analysis incomplete
-- Economic studies limited to Western markets
+- Cross-regional pricing analysis is not supported
 - Currency conversion analysis requires external data
 
 ---
@@ -207,7 +158,7 @@ Dataset represents point-in-time snapshot with implications for longitudinal ana
 
 #### **✅ Supports These Research Applications:**
 
-- Historical game development trends (1997-2025)
+- Historical game development trends (release dates as recorded, with explicit filtering)
 - Genre evolution analysis across platform history
 - Developer/publisher relationship networks
 - Cross-sectional analysis of Steam ecosystem
@@ -229,17 +180,16 @@ Review collection represents sample of available reviews at collection time, not
 
 | **Parameter** | **Setting** | **Impact** |
 |---------------|-------------|------------|
-| **Reviews per Game** | Full available corpus | Comprehensive but point-in-time |
+| **Reviews per Application** | Up to 100 most recent | Bounded, point-in-time |
 | **Review Count** | 1,048,148 total | Large but not exhaustive |
-| **Language Priority** | English first | May miss non-English sentiment |
-| **Temporal Coverage** | All historical reviews | Complete historical coverage |
+| **Coverage** | 117,311 applications with ≥1 review (measured 2026-08-03) | Not all applications have reviews |
+| **Temporal Coverage** | Sample of available reviews at collection time | Not a complete historical corpus |
 
 **Research Implications:**
 
-- Sentiment analysis reflects cumulative historical sentiment
-- Recent review bombing or controversies fully captured
-- Long-term sentiment trends analyzable
-- Real-time sentiment monitoring not supported
+- Sentiment analysis reflects the sampled, point-in-time corpus
+- Long-term sentiment trends are analyzable within the sample's bounds
+- Claims of complete review history or exhaustive coverage are not supported
 
 ---
 
@@ -249,20 +199,26 @@ Systematic documentation of coverage patterns and exclusions affecting dataset r
 
 ### **5.1 Content Type Distribution**
 
-Successful retrieval varies significantly by content type, affecting analysis focus areas.
+Measured distribution of successful raw records (2026-11-13 recount, record
+grain — see [collection-outcomes.json](release-1.0.1/collection-outcomes.json)):
 
-#### **Content Type Breakdown**
+| **Content Type** | **Successful Records** |
+|------------------|-----------------------:|
+| game | 150,039 |
+| dlc | 53,698 |
+| demo | 23,520 |
+| music | 8,684 |
+| episode | 2,274 |
+| video | 699 |
+| advertising | 212 |
+| mod | 126 |
+| series | 82 |
+| hardware | 7 |
 
-| **Content Type** | **Estimated Count** | **Success Rate** | **Completeness** |
-|------------------|---------------------|------------------|------------------|
-| **Games** | ~75,000 | 65% | High core game coverage |
-| **DLC** | ~35,000 | 45% | Lower due to dependencies |
-| **Software** | ~12,000 | 55% | Moderate tool coverage |
-| **Demos** | ~6,000 | 70% | High demo availability |
-| **Videos/Media** | ~4,000 | 30% | Limited media coverage |
-| **Other** | ~2,000 | 40% | Miscellaneous content |
-
-**Total Successful:** 134,212 applications across all types
+**Total: 239,341 success records covering 239,183 unique AppIDs.**
+The packaged database's type distribution (dated 2026-08-03) is similar but
+not identical (e.g., 150,279 rows typed `game`). Previously published
+per-type success-rate estimates had no retained source and have been removed.
 
 #### **Content Type Research Implications**
 
@@ -293,28 +249,17 @@ Certain content types are systematically excluded or underrepresented due to API
 
 ### **5.3 Metadata Completeness Variations**
 
-Different application types provide varying metadata completeness levels.
+Field completeness varies by field and application type. Missing values are
+stored as meaningful NULLs and are never defaulted. Notable measured examples
+(dated 2026-08-03): Metacritic coverage is 2.21% of applications (5,299 of
+239,664); release_date coverage is 84.62%; the materialized price currency
+covers 59.4874% of applications (collected values are USD).
 
-#### **Field Availability Analysis**
-
-| **Field Category** | **Overall Completeness** | **Notes** |
-|-------------------|-------------------------|-----------|
-| **Basic Info** (name, type, app_id) | 99.8% | Nearly universal |
-| **Descriptions** | 94.2% | High description availability |
-| **Media Assets** | 87.5% | Good image/video coverage |
-| **Pricing** | 78.1% | Free games lack price_overview |
-| **PC Requirements** | 65.3% | Parsed when available |
-| **Release Date** | 98.6% | Highly reliable |
-| **Reviews** | 89.4% | Strong review coverage |
-| **Achievements** | 71.2% | Many games lack achievements |
-
-**For Successfully Retrieved Games (134,212):**
-
-```markdown
-Complete Metadata (90%+ fields): 89,341 games (66.6%)
-Mostly Complete (70-90%):        31,478 games (23.5%)
-Partial Data (<70%):             13,393 games (9.9%)
-```
+The per-category completeness percentage table and the "complete metadata
+tiers" breakdown previously shown here had no retained source or defined
+field-set basis and have been removed. Field-level verification against the
+released packages is deferred with the dump lane (see
+[release-1.0.1/known-limitations.md](release-1.0.1/known-limitations.md)).
 
 ---
 
@@ -385,7 +330,7 @@ Guidance on dataset strengths and limitations for specific research domains.
 
 **Temporal Market Analysis:**
 
-- Genre evolution 1997-2025
+- Genre evolution across recorded platform history (filter release dates explicitly)
 - Platform growth patterns
 - Historical pricing trends
 - Publisher portfolio changes
@@ -484,18 +429,12 @@ core_games = games[
 
 #### **Coverage Bias Adjustment**
 
-When extrapolating to full Steam catalog, account for 56% success rate:
-
-```python
-# Adjust estimates for missing data
-observed_games = 134,212
-estimated_total = 239,664
-coverage_rate = 0.56
-
-# Extrapolation with confidence interval
-estimated_complete_catalog = observed_games / coverage_rate
-# ≈ 239,664 (matches actual catalog size)
-```
+No dataset-verified catalog coverage rate exists (the raw corpus cannot
+measure HTTP attempts or catalog completeness), so no coverage extrapolation
+coefficient is offered. When extrapolating beyond the dataset, state the
+population you actually observe (e.g., the 239,664 packaged application rows
+or a filtered subset), document your filter, and avoid dividing by any
+"success rate" published for earlier collection stages.
 
 ### **8.3 Transparency Requirements**
 
@@ -515,9 +454,9 @@ Contextualizing limitations relative to other Steam datasets.
 
 ### **9.1 Competitive Analysis**
 
-| **Dataset** | **Size** | **Success Rate** | **Limitations Documented** |
-|-------------|----------|------------------|---------------------------|
-| **Steam Dataset 2025** | 239,664 | 56% | ✅ Comprehensive transparency |
+| **Dataset** | **Size** | **Collection outcome basis** | **Limitations Documented** |
+|-------------|----------|------------------------------|---------------------------|
+| **Steam Dataset 2025** | 239,664 packaged rows | 239,341 successes / 262,791 retained records (record grain) | ✅ Comprehensive transparency |
 | **SteamSpy (2019)** | ~27,000 | N/A | ⚠️ Third-party estimates |
 | **Alternative 2024** | ~120,000 | Unknown | ❌ Limited documentation |
 
@@ -541,6 +480,7 @@ Contextualizing limitations relative to other Steam datasets.
 |------------|----------|-------------|------------|
 | 1.0 | 2025-09-07 | Initial limitations documentation | VintageDon |
 | 2.0 | 2025-01-06 | Complete rewrite with final statistics and comprehensive analysis | VintageDon |
+| 2.1 | 2026-11-13 | Truth patch: measured record-level outcomes replace the 56% narrative; unsourced failure-cause, regional, currency, per-type success-rate and completeness tables removed or replaced with dated measurements; review corpus stated as bounded sample | VintageDon |
 
 ### **10.2 Authorship & Collaboration**
 
@@ -559,10 +499,10 @@ Contextualizing limitations relative to other Steam datasets.
 - **[Dataset Card](../steam-dataset-2025-v1/DATASET_CARD.md)** - Complete academic documentation
 - **[Data Dictionary](../steam-dataset-2025-v1/DATA_DICTIONARY.md)** - Field definitions and schema
 - **[Steam API Collection](methodologies/steam-api-collection.md)** - Collection methodology
-- **[Data Validation](methodologies/data-validation-and-qa.md)** - Quality assurance procedures
+- **[Data Validation](methodologies/data-validaton-and-qa.md)** - Quality assurance procedures
 
 ---
 
-**Document Version:** 2.0 | **Last Updated:** January 6, 2025 | **Status:** Published
+**Document Version:** 2.1 | **Last Updated:** 2026-11-13 | **Status:** Published
 
 This document supports academic transparency and reproducible research practices

@@ -6,20 +6,32 @@ author: "VintageDon - https://github.com/vintagedon"
 ai_contributor: "Claude 3.5 Sonnet (claude-sonnet-4-20250514)"
 date: "2025-10-05"
 version: "1.0"
-status: "Published"
+status: "superseded"
 tags:
 - type: [data-dictionary/reference-documentation]
 - domain: [data-engineering/database-schema/steam-api]
 - tech: [postgresql/pgvector/jsonb/sql]
 - audience: [data-scientists/analysts/researchers/developers]
 related_documents:
-- "[PostgreSQL Database Schema](postgresql-database-schema.md)"
-- "[Data Access Guide](data-access.md)"
-- "[Infrastructure Overview](infrastructure.md)"
+- "[PostgreSQL Database Schema](../docs/postgresql-database-schema.md)"
+- "[Data Access Guide](../docs/data-access.md)"
+- "[Infrastructure Overview](../docs/infrastructure.md)"
 ---
 -->
 
 # 📚 **Steam Dataset 2025 - Data Dictionary**
+
+> **SUPERSEDED (2026-11-13).** This dictionary was authored against a
+> pre-release database and does not match the packaged v1.0.0 release in
+> several object details (lookup-table key columns, embedding-run columns,
+> platforms table shape, release-date type, embedding dimensionality, index
+> inventory). Headline counts it records (239,664 applications; 1,048,148
+> reviews) are corroborated by the tracked packaging-time schema analysis,
+> but field-level detail here must not be relied on. A verified schema
+> extraction from the published dump is deferred; see
+> [docs/release-1.0.1/known-limitations.md](../docs/release-1.0.1/known-limitations.md)
+> and [docs/release-1.0.1/schema-provenance.json](../docs/release-1.0.1/schema-provenance.json).
+> Retained as a historical reference; regeneration is planned program work.
 
 This document provides authoritative reference documentation for the complete Steam Dataset 2025 database schema. It defines every table, column, data type, relationship, and nested structure within the multi-modal PostgreSQL architecture, serving as the essential reference for data scientists, analysts, and researchers working with the dataset.
 

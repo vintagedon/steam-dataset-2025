@@ -15,7 +15,7 @@ status: "published"
 
 # 📥 Steam Dataset 2025: Data Access Guide
 
-This guide provides comprehensive information for accessing Steam Dataset 2025 across multiple platforms. The complete dataset (239,664 applications, 1M+ reviews) is now available through Zenodo (with persistent DOI), Kaggle (with interactive notebooks), and GitHub (with sample data for testing).
+This guide provides comprehensive information for accessing Steam Dataset 2025 across multiple platforms. The complete dataset (239,664 applications, 1,048,148 reviews in a bounded per-application sample) is available through Zenodo (with persistent DOI) and Kaggle (published mirror with interactive notebooks). GitHub hosts documentation, the publicly tracked 5K samples and the development history — not the release packages.
 
 ---
 
@@ -43,7 +43,7 @@ Enable researchers, data scientists, and developers to access Steam Dataset 2025
 
 ### **1.4 Overview**
 
-Steam Dataset 2025 is available through three complementary channels: **Zenodo** for permanent academic hosting with DOI citation (recommended for research), **Kaggle** for interactive notebooks and community engagement (coming soon), and **GitHub** for 5K sample data and code repository access (perfect for testing).
+Steam Dataset 2025 is available through three complementary channels: **Zenodo** for permanent academic hosting with DOI citation (recommended for research), **Kaggle** for interactive notebooks and community engagement (published), and **GitHub** for 5K sample data and the development history (perfect for testing).
 
 ---
 
@@ -53,25 +53,23 @@ This section outlines all available access methods, helping you choose the right
 
 ### **2.1 Zenodo: Official Academic Release (Recommended for Research)**
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17286923.svg)](https://doi.org/10.5281/zenodo.17266922)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17266922.svg)](https://doi.org/10.5281/zenodo.17266922)
 
 **Best For:** Academic research, publications, permanent archival access  
 **Status:** ✅ Published and Available
 
-#### **Dataset Package Contents**
+#### **Official v1.0.0 Record Packages**
 
-| **File** | **Format** | **Size** | **Description** |
-|----------|------------|----------|-----------------|
-| **steam_games.csv** | CSV | ~85MB | Core game metadata with materialized columns |
-| **steam_reviews.csv** | CSV | ~320MB | 1,048,148 user reviews with metadata |
-| **steam_genres.csv** | CSV | ~450KB | Genre classifications and mappings |
-| **steam_categories.csv** | CSV | ~380KB | Category assignments |
-| **steam_developers.csv** | CSV | ~1.2MB | Developer portfolio data |
-| **steam_publishers.csv** | CSV | ~950KB | Publisher portfolio data |
-| **steam_games.parquet** | Parquet | ~45MB | Columnar format for big data workflows |
-| **steam_embeddings.npy** | NumPy | ~520MB | BGE-M3 vector embeddings (1024-dim) |
-| **steam_dataset_2025.sql.gz** | SQL | ~2.8GB | Complete PostgreSQL database dump |
-| **documentation/** | Various | ~15MB | Data dictionary, dataset card, notebooks |
+The Zenodo record exposes four ZIP packages (names, bytes and provider checksums verified 2026-11-13; see [artifact reference](release-1.0.1/artifact-reference.json)):
+
+| **Package** | **Format** | **Bytes** | **Description** |
+|-------------|------------|----------:|-----------------|
+| **steam-dataset-2025-v1.zip** | ZIP | 40,212,720 | Release bundle: documentation, dataset card, notebooks, notebook data |
+| **steam_dataset_2025_csv_package_v1.zip** | ZIP of CSVs | 320,368,878 | Accessibility CSV exports (core tables, no database required) |
+| **steam_dataset_2025_power_users_dump_v1.zip** | PostgreSQL dump | 7,204,002,678 | Complete database dump for full restoration |
+| **steam_dataset_2025_embeddings_package_v1.zip** | Embeddings package | 4,870,419,373 | Pre-computed BGE-M3 1024-dim vectors |
+
+The individual CSV, Parquet and NPY files previously listed here are members inside these packages, not separately downloadable record files; their exact member list is available after downloading the package.
 
 #### **Download Procedure**
 
@@ -82,11 +80,11 @@ This section outlines all available access methods, helping you choose the right
 
 # Option 2: Command line download (requires zenodo_get)
 pip install zenodo-get
-zenodo_get 10.5281/zenodo.17286923
+zenodo_get 10.5281/zenodo.17266923
 
 # Option 3: wget download (replace with actual file URLs from Zenodo)
-wget https://zenodo.org/record/17286923/files/steam_games.csv
-wget https://zenodo.org/record/17286923/files/steam_reviews.csv
+wget https://zenodo.org/record/17266923/files/steam_dataset_2025_csv_package_v1.zip
+wget https://zenodo.org/record/17266923/files/steam_dataset_2025_power_users_dump_v1.zip
 ```
 
 #### **Advantages**
@@ -101,10 +99,10 @@ wget https://zenodo.org/record/17286923/files/steam_reviews.csv
 
 ---
 
-### **2.2 Kaggle: Interactive Analysis Platform (Coming Soon)**
+### **2.2 Kaggle: Interactive Analysis Platform (Published)**
 
 **Best For:** Interactive exploration, community discussions, GPU-accelerated notebooks  
-**Status:** 🔄 Publication Pending
+**Status:** ✅ Published
 
 #### **Kaggle Features**
 
@@ -123,9 +121,9 @@ wget https://zenodo.org/record/17286923/files/steam_reviews.csv
 | **Sample Notebooks** | Platform evolution, semantic search, ML prediction |
 | **Discussion Forum** | Community Q&A and collaboration space |
 
-#### **Access Procedure (When Available)**
+#### **Access Procedure**
 
-1. Visit Kaggle dataset page: `https://kaggle.com/datasets/vintagedon/steam-dataset-2025`
+1. Visit the Kaggle dataset page: `https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics`
 2. Click "New Notebook" for instant Jupyter environment
 3. Or download CSV files directly from dataset page
 4. Join discussions and competitions
@@ -137,7 +135,7 @@ wget https://zenodo.org/record/17286923/files/steam_reviews.csv
 - ✅ **Community Features** - Discussions, competitions, forking
 - ✅ **Free Resources** - GPU access and storage included
 
-**[📊 Explore on Kaggle](#)** *(Link available upon publication)*
+**[📊 Explore on Kaggle](https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics)**
 
 ---
 
@@ -150,34 +148,37 @@ wget https://zenodo.org/record/17286923/files/steam_reviews.csv
 
 | **Component** | **Location** | **Size** | **Description** |
 |---------------|--------------|----------|-----------------|
-| **5K Sample Games** | `data/01_raw/` | ~102MB | Representative sample across genres/eras |
-| **5K Sample Reviews** | `data/01_raw/` | ~45MB | User reviews for sample games |
-| **ETL Scripts** | `scripts/` | N/A | Complete pipeline code (12 phases) |
+| **5K Sample Games** | `data/01_raw/` | 14,089,513 B | 5K-run collection artifact (Git LFS object) |
+| **5K Sample Reviews** | `data/01_raw/` | 11,202,479 B | Review sample from the 5K run (Git LFS object) |
+| **Pipeline History** | `work-logs/` | N/A | Collection/processing code and records (12 phase directories; relocation to `scripts/` is planned maintenance) |
 | **Documentation** | `docs/` | N/A | Technical specifications and guides |
 | **Notebooks** | `steam-dataset-2025-v1/notebooks/` | N/A | 3 analysis examples with PDFs |
-| **Work Logs** | `work-logs/` | N/A | Development history (10 phases) |
+| **Work Logs** | `work-logs/` | N/A | Development history (12 phases) |
 
 #### **Access Procedure**
 
 ```bash
-# Option 1: Clone complete repository
+# Option 1: Clone complete repository (sample files are Git LFS objects)
 git clone https://github.com/vintagedon/steam-dataset-2025.git
 cd steam-dataset-2025
+git lfs pull --include "data/01_raw/*.json.gz"
 
-# Option 2: Download specific sample files
-wget https://github.com/vintagedon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-games_20250831.json.gz
-wget https://github.com/vintagedon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-reviews_20250901.json.gz
+# Option 2: Download the two tracked sample objects directly
+wget -O steam_2025_5k-dataset-games_20250831.json.gz \
+  https://media.githubusercontent.com/media/vintagedon/steam-dataset-2025/main/data/01_raw/steam_2025_5k-dataset-games_20250831.json.gz
+wget -O steam_2025_5k-dataset-reviews_20250901.json.gz \
+  https://media.githubusercontent.com/media/vintagedon/steam-dataset-2025/main/data/01_raw/steam_2025_5k-dataset-reviews_20250901.json.gz
 
-# Decompress sample data
-gunzip data/01_raw/*.gz
-
-# Or use GitHub's "Download ZIP" for easy access
+# Verify against the pinned SHA-256, then decompress
+sha256sum steam_2025_5k-dataset-games_20250831.json.gz   # 3b46222510ad64b87e8a0c63c92dba8f5788e0b8abdd4a1f3471ca0d7a70f2af
+sha256sum steam_2025_5k-dataset-reviews_20250901.json.gz # 2be129e154505381c77800ca96ea11f09b8db96ddbd2db935c8421cbb4c35a8c
+gunzip -k steam_2025_5k-dataset-*.json.gz
 ```
 
 #### **Advantages**
 
 - ✅ **Immediate Access** - No registration required
-- ✅ **Code Repository** - All ETL and processing scripts
+- ✅ **Pipeline History** - Collection and processing code retained in `work-logs/`
 - ✅ **Quick Testing** - 5K sample perfect for workflow validation
 - ✅ **Development History** - Complete work logs and methodology
 - ✅ **Version Control** - Full git history and branching
@@ -205,7 +206,7 @@ This section provides technical details about file formats, structures, and hand
 
 #### **Primary CSV Files**
 
-**steam_games.csv** (134,212 games, ~85MB)
+**steam_games.csv** (member of `steam_dataset_2025_csv_package_v1.zip`; the whole ZIP is 320,368,878 bytes; member row counts are stated after package download, not invented here)
 
 ```python
 import pandas as pd
@@ -223,7 +224,7 @@ print(games.columns)
 #  'min_ram_mb', 'rec_ram_mb', ...]
 ```
 
-**steam_reviews.csv** (1,048,148 reviews, ~320MB)
+**steam_reviews.csv** (member of the CSV package; the packaged database holds 1,048,148 review rows; the 320,368,878-byte figure is the whole ZIP, not this member file)
 
 ```python
 # Load review data
@@ -283,7 +284,7 @@ df.filter(df.release_year > 2020).groupBy('primary_genre').count().show()
 - **Dimensions:** 1024 per game
 - **Model:** BAAI/bge-m3 (multilingual)
 - **Normalization:** L2 normalized for cosine similarity
-- **Coverage:** 134,189 games with embeddings
+- **Coverage:** 239,664 applications with embeddings in the packaged database (100% non-null, measured 2026-08-03)
 
 #### **Usage Example**
 
@@ -323,27 +324,25 @@ print(recommendations)
 - ✅ **Schema DDL** - All table definitions with constraints
 - ✅ **Complete Data** - All 239,664 applications and 1M+ reviews
 - ✅ **Vector Extension** - pgvector setup for semantic search
-- ✅ **Indexes** - Optimized B-tree, GiST, and GIN indexes
+- ✅ **Indexes** - B-tree indexes plus two HNSW vector indexes (no GIN/GiST in the packaged database)
 - ✅ **Views** - Analytical views and materialized views
 
 #### **Restoration Procedure**
 
+A verified schema reference for the packaged dump is deferred (see
+[schema-provenance.json](release-1.0.1/schema-provenance.json)); the command
+shape below is indicative and no restore guarantee is advertised. The dump
+itself is `steam_dataset_2025_power_users_dump_v1.zip` (7,204,002,678 bytes).
+
 ```bash
 # Prerequisites: PostgreSQL 16+ with pgvector extension
 
-# Create database
-createdb steam_dataset_2025
+# Restore the power-user dump package contents per the package's own README
 
-# Restore from compressed dump
-gunzip -c steam_dataset_2025.sql.gz | psql steam_dataset_2025
-
-# Verify restoration
-psql steam_dataset_2025 -c "SELECT COUNT(*) FROM games;"
-# Should return: 239664
-
-# Test vector search capability
-psql steam_dataset_2025 -c "SELECT COUNT(*) FROM games WHERE description_embedding IS NOT NULL;"
-# Should return: 134189
+# Verify against the packaging-time record:
+# applications: 239,664 rows (58 columns)
+# reviews:      1,048,148 rows (25 columns)
+# description_embedding / review_embedding: vector(1024), 100% non-null (2026-08-03 measurement)
 ```
 
 ---
@@ -352,50 +351,47 @@ psql steam_dataset_2025 -c "SELECT COUNT(*) FROM games WHERE description_embeddi
 
 Understanding data completeness and quality characteristics for proper analysis planning.
 
-### **4.1 Collection Statistics**
+### **4.1 Collection Outcomes (measured)**
 
-| **Metric** | **Value** | **Percentage** |
-|------------|-----------|----------------|
-| **Total Applications Processed** | 239,664 | 100% |
-| **Successful Metadata Retrieval** | 134,212 | 56.0% |
-| **Failed Retrievals** | 105,452 | 44.0% |
-| **Vector Embeddings Generated** | 134,189 | 99.98% of successful |
-| **User Reviews Collected** | 1,048,148 | N/A |
+Measured 2026-11-13 from the retained raw batches; machine-readable values with
+grain and denominators live in [collection-outcomes.json](release-1.0.1/collection-outcomes.json).
 
-### **4.2 Success Rate Context**
+| **Metric** | **Value** | **Grain** |
+|------------|-----------|-----------|
+| **Retained result records** | 262,791 | records across 526 batch files |
+| **Successful retrievals** | 239,341 | record-level (91.0766% of result records) |
+| **Failed records** | 23,450 | record-level; requested AppID not retained in failure records |
+| **Unique successful AppIDs** | 239,183 | distinct applications in the raw corpus |
+| **User Reviews (packaged)** | 1,048,148 | bounded sample, up to 100 most recent per covered application |
 
-**Why 56% Success Rate?**
+The record-level fraction is not HTTP request success and not catalog coverage.
 
-The 44% "failure" rate represents expected patterns, not data quality issues:
+### **4.2 Failure Records Context**
 
-- **Delisted Games** (19.0%) - Games removed from Steam store
-- **Regional Restrictions** (11.7%) - Content not available in collection region
-- **Invalid App IDs** (7.9%) - Deprecated or placeholder IDs
-- **API Errors** (5.5%) - Temporary Steam API issues
+The 23,450 failure records do not retain the requested AppID, so failure
+causes cannot be attributed per application and HTTP-attempt completeness is
+not measurable from the retained corpus. Earlier published failure-cause
+breakdowns (delisted/regional/invalid/API-error percentages) had no retained
+source and have been removed.
 
 **Filtering Guidance:**
 
 ```python
-# Most analyses should filter to successful records
-games_complete = games[games['success'] == True]
-
-# Or equivalently, filter out NULL critical fields
+# Filter out NULL critical fields for clean analyses
 games_complete = games[games['name'].notna()]
+
+# Note: the packaged database's success flag is true for all loaded rows
+# (failed retrievals were never loaded); it cannot select "complete" records.
 ```
 
 ### **4.3 Field Completeness**
 
-For successfully retrieved games (134,212 records):
-
-| **Field Category** | **Completeness** | **Notes** |
-|-------------------|------------------|-----------|
-| **Basic Metadata** | 99.8% | name, type, app_id nearly universal |
-| **Descriptions** | 94.2% | detailed_description most complete |
-| **Media Assets** | 87.5% | header_image highly available |
-| **Pricing** | 78.1% | Free games lack price_overview |
-| **PC Requirements** | 65.3% | Parsed from HTML when available |
-| **Release Date** | 98.6% | Highly reliable field |
-| **Vector Embeddings** | 99.98% | Generated from descriptions |
+Field-level completeness varies by application type and field; missing values
+are stored as meaningful NULLs and are never defaulted. A dated field-coverage
+measurement (2026-08-03) is summarized in the
+[known limitations](limitations.md) and [release 1.0.1 reference](release-1.0.1/known-limitations.md);
+the per-category percentage table previously shown here had no retained
+source and has been removed.
 
 ---
 
@@ -410,14 +406,14 @@ Proper attribution for academic publications and research applications.
 ```bibtex
 @dataset{fountain_2025_steam,
   author       = {Fountain, Donald},
-  title        = {{Steam Dataset 2025: Multi-Modal Gaming 
-                   Analytics Platform}},
-  month        = jan,
+  title        = {{The Steam Dataset 2025: A Large-Scale, Multi-Modal 
+                   Dataset of the Steam Gaming Platform}},
+  month        = oct,
   year         = 2025,
   publisher    = {Zenodo},
   version      = {1.0.0},
-  doi          = {10.5281/zenodo.17286923},
-  url          = {https://doi.org/10.5281/zenodo.17266922}
+  doi          = {10.5281/zenodo.17266923},
+  url          = {https://doi.org/10.5281/zenodo.17266923}
 }
 ```
 
@@ -522,6 +518,10 @@ print(similar)
 
 ### **6.3 Database Queries (PostgreSQL)**
 
+Illustrative queries against a simplified `games`-shaped view of the data;
+the packaged schema's verified reference is deferred (see
+[schema-provenance.json](release-1.0.1/schema-provenance.json)).
+
 ```sql
 -- Top publishers by game count
 SELECT 
@@ -593,6 +593,7 @@ LIMIT 10;
 |------------|----------|-------------|------------|
 | 1.0 | 2025-09-07 | Initial data access guide | VintageDon |
 | 2.0 | 2025-01-06 | Complete rewrite for published dataset with Zenodo DOI | VintageDon |
+| 2.1 | 2026-11-13 | Truth patch: official package table with verified bytes, Kaggle published, LFS-correct sample access, measured collection outcomes, removed unsourced failure breakdowns | VintageDon |
 
 ### **8.2 Authorship & Collaboration**
 
@@ -605,6 +606,6 @@ LIMIT 10;
 
 ---
 
-**Document Version:** 2.0 | **Last Updated:** January 6, 2025 | **Status:** Published
+**Document Version:** 2.1 | **Last Updated:** 2026-11-13 | **Status:** Published
 
 *Access the complete dataset at: [https://doi.org/10.5281/zenodo.17266922](https://doi.org/10.5281/zenodo.17266922)*

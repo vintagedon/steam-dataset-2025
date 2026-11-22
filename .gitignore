@@ -217,3 +217,14 @@ processed_*.txt
 collected_*.txt
 batch_*.json
 reviews_batch_*.json
+
+# ---- Private evidence and unpublished work (visibility-toggled, public repo)
+# Minimal rules for the 2026-10-20 truth patch: private staging evidence,
+# internal program inputs, retired files, and the unpublished raw corpora.
+staging/
+internal-files/
+spec/
+recycle/
+recycle-bin/
+data/03_*/
+data/04_*/

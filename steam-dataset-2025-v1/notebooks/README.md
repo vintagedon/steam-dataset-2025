@@ -48,7 +48,7 @@ This directory contains three publication-ready Jupyter notebooks that demonstra
 
 ### **1.4 Overview**
 
-The three notebooks progress from beginner-friendly market analysis through intermediate semantic search to advanced machine learning applications. Each notebook is self-contained with its own data package, includes extensive validation procedures, and provides detailed commentary on methodology and findings. All notebooks are tested for nbviewer and Kaggle compatibility.
+The three notebooks progress from beginner-friendly market analysis through intermediate semantic search to advanced machine learning applications. Each notebook is self-contained with its own data package, includes extensive validation procedures, and provides detailed commentary on methodology and findings. Notebooks were authored for nbviewer and Kaggle; clean-environment re-execution has not been performed, and one notebook-1 chart-label defect (issue #5) was corrected in the 2026-11-13 truth patch with the affected output regenerated and verified.
 
 ---
 
@@ -88,7 +88,7 @@ This section provides detailed descriptions of each notebook, helping you identi
 
 **[01-steam-platform-evolution-and-marketplace](01-steam-platform-evolution-and-marketplace/)**
 
-Comprehensive analysis of Steam's 28-year evolution from 2,400 applications in 1997 to 239,000+ in 2025. Examines market dynamics, pricing strategies, genre trends, publisher portfolios, and platform adoption patterns using materialized analytical columns for efficient querying.
+Comprehensive analysis of Steam's recorded growth, from early-catalog applications to a 239,664-application corpus (aggregates derived from the notebook's curated CSVs; filter release dates explicitly). Examines market dynamics, pricing strategies, genre trends, publisher portfolios, and platform adoption patterns using materialized analytical columns for efficient querying.
 
 **Difficulty:** Beginner  
 **Runtime:** ~5 minutes  
@@ -116,7 +116,7 @@ Comprehensive analysis of Steam's 28-year evolution from 2,400 applications in 1
 
 **Research Questions Answered:**
 
-1. How has Steam's content volume evolved from 1997-2025?
+1. How has Steam's content volume evolved across its recorded history?
 2. What pricing strategies dominate different market segments?
 3. Which genres show sustained popularity vs. emerging trends?
 4. How do platform support choices correlate with pricing?
@@ -124,7 +124,7 @@ Comprehensive analysis of Steam's 28-year evolution from 2,400 applications in 1
 
 **Dataset Features Showcased:**
 
-- ✅ 28-year historical depth (1997-2025)
+- ✅ Recorded historical depth (release dates as recorded; filter explicitly)
 - ✅ Materialized analytical columns for query performance
 - ✅ 239K+ application scale vs. competitors' 27K-85K
 - ✅ Complete content type diversity (games, DLC, software, media)
@@ -224,7 +224,7 @@ Advanced machine learning analysis predicting game genres and minimum RAM requir
 
 - ✅ Vector embeddings as ML features (dimension reduction from 1024-dim)
 - ✅ JSONB structured data extraction (PC requirements parsing)
-- ✅ 111K+ games with complete metadata for training
+- ✅ A curated games sample with metadata for training (verify row counts from the package itself)
 - ✅ Multi-language content handling
 
 **Technical Highlights:**
@@ -308,7 +308,7 @@ All notebooks tested for nbviewer compatibility. View rendered notebooks without
 → Notebook 1: ~5 minutes | Notebook 2: ~10 minutes | Notebook 3: ~15 minutes (on standard laptop)
 
 **"Are these suitable for academic papers?"**  
-→ Yes - All notebooks include proper citations, methodology transparency, and reproducible workflows. Use official Zenodo DOI: [10.5281/zenodo.17286923](https://doi.org/10.5281/zenodo.17266922)
+→ Yes - All notebooks include proper citations, methodology transparency, and reproducible workflows. Use official version DOI: [10.5281/zenodo.17266923](https://doi.org/10.5281/zenodo.17266923) (concept DOI for version-agnostic references: [10.5281/zenodo.17266922](https://doi.org/10.5281/zenodo.17266922))
 
 ---
 
@@ -363,7 +363,7 @@ All notebooks tested for nbviewer compatibility. View rendered notebooks without
 
 - ✅ All notebooks tested for nbviewer compatibility
 - ✅ PDF exports generated for archival reference
-- ⏳ Kaggle publication pending (notebook data package upload in progress)
+- ✅ Kaggle dataset published: https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics
 - ✅ Individual notebook READMEs complete for Notebooks 1 and 3
 
 ---

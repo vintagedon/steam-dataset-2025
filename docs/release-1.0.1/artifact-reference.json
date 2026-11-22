@@ -1,0 +1,54 @@
+{
+  "$schema_note": "Official artifact reference for Steam Dataset 2025 v1.0.0, re-verified against the Zenodo record API on 2026-11-13. All file names, byte sizes and provider checksums are read from the official record metadata (https://zenodo.org/api/records/17266923). No package bytes were downloaded for this reference.",
+  "observed_date": "2026-11-13",
+  "record": {
+    "record_id": 17266923,
+    "concept_record_id": 17266922,
+    "version_doi": "10.5281/zenodo.17266923",
+    "concept_doi": "10.5281/zenodo.17266922",
+    "doi_usage": "Cite the version DOI for version-specific work; use the concept DOI for version-agnostic references and badges. The token 10.5281/zenodo.17286923 that appears in older repository documentation is an invalid typo for 17266923 and resolves to nothing.",
+    "title": "The Steam Dataset 2025: A Large-Scale, Multi-Modal Dataset of the Steam Gaming Platform",
+    "version": "1.0.0",
+    "publication_date": "2025-10-05",
+    "license": "cc-by-4.0",
+    "api_response_sha256": "4c6db77faa01e1989e26d1270a43bda77fba7f04613034eff34e5595cbaa7738"
+  },
+  "packages": [
+    {
+      "name": "steam-dataset-2025-v1.zip",
+      "bytes": 40212720,
+      "provider_checksum": "md5:6ec219b7b5666b8a1a120986afb78ca3",
+      "role": "Release bundle: documentation, dataset card, data dictionary, notebooks and notebook data"
+    },
+    {
+      "name": "steam_dataset_2025_csv_package_v1.zip",
+      "bytes": 320368878,
+      "provider_checksum": "md5:d56d18cc77e08b4ffc8ce84952b7319b",
+      "role": "Accessibility CSV package: CSV exports usable without a database"
+    },
+    {
+      "name": "steam_dataset_2025_embeddings_package_v1.zip",
+      "bytes": 4870419373,
+      "provider_checksum": "md5:f9b81728a8aa9cdc726647c94df8e84b",
+      "role": "Pre-computed BGE-M3 1024-dimensional vector embeddings"
+    },
+    {
+      "name": "steam_dataset_2025_power_users_dump_v1.zip",
+      "bytes": 7204002678,
+      "provider_checksum": "md5:d1ba45cd4cca280ad3e56ccf463e7e87",
+      "role": "Power-user PostgreSQL database dump for full restoration"
+    }
+  ],
+  "access_channels": {
+    "zenodo": "https://doi.org/10.5281/zenodo.17266923 (version) / https://doi.org/10.5281/zenodo.17266922 (concept)",
+    "kaggle": {
+      "url": "https://www.kaggle.com/datasets/crainbramp/steam-dataset-2025-multi-modal-gaming-analytics",
+      "status": "published (HTTP 200 verified 2026-11-13)"
+    },
+    "github": {
+      "url": "https://github.com/vintagedon/steam-dataset-2025",
+      "role": "Documentation, 5K samples (Git LFS), development pipeline history under work-logs/"
+    }
+  },
+  "verification_note": "Provider checksums are MD5 values published by Zenodo. Local SHA-256 values exist only for artifacts actually acquired and verified; none of the four packages was downloaded for this reference, so no local verification is claimed for them."
+}

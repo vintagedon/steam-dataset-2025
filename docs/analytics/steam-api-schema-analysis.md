@@ -178,10 +178,10 @@ JSONB vs. Relational Trade-offs:
 - Extract to Columns: Frequently queried simple values (is_free, price_overview.final)
 - Hybrid Approach: JSONB storage with materialized columns for common queries
 
-Indexing Recommendations:
+Indexing Recommendations (proposal-era DDL; the packaged v1.0.0 database created B-tree plus HNSW indexes only — no GIN on any public table):
 
 ```sql
--- GIN indexes for JSONB containment queries
+-- GIN indexes for JSONB containment queries (PROPOSED; not created in the packaged database)
 CREATE INDEX ON applications USING gin (app_details jsonb_path_ops);
 
 -- Partial indexes for common filters
