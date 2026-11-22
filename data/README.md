@@ -114,7 +114,7 @@ Access Information:
 
 | Component | Records | Compressed Size | Uncompressed | Content |
 |---------------|-------------|-------------------|------------------|-------------|
-| Games Sample | 8,711-record run (5,000 successes) | 14,089,513 B | tracked LFS object | Collection-run artifact with JSONB payloads |
+| Games Sample | 8,711-record run (7,967 successful appdetails records, of which 5,000 are type `game`) | 14,089,513 B | tracked LFS object | Collection-run artifact with JSONB payloads |
 | Reviews Sample | 37,778 review records (5K run) | 11,202,479 B | tracked LFS object | Review sample for the 5K run |
 | Enhanced Sample | 5,000 applications | not tracked | N/A | Processed with analytics features (documented in 02_processed/README.md) |
 
@@ -133,7 +133,7 @@ Packaged rows (packaging-time record): 239,664 applications; 1,048,148 reviews; 
 
 | Quality Measure | Sample Dataset | Full Dataset | Notes |
 |---------------------|-------------------|------------------|-----------|
-| Collection Outcome (record grain) | 5,000/8,711 in the 5K demo run | 239,341/262,791 in the retained raw corpus | Measured from run metadata and raw batches; no HTTP-attempt rate exists in the retained record |
+| Collection Outcome (record grain) | 7,967/8,711 (91.4591%) successful appdetails records in the 5K run; 5,000 of those successes are type `game` | 239,341/262,791 in the retained raw corpus | Measured from the retained sample records and raw batches; no HTTP-attempt rate exists in the retained record |
 | Metadata Completeness | not measured at sample grain | 59.4874% carry a materialized price currency (USD), dated 2026-08-03 | Missing values stay meaningful NULLs |
 | Pricing Information | see packaging records | 59.4874% price-currency coverage | Free games carry no price_overview |
 | Review Availability | ~45% of games | ~50% of games | Based on game popularity and user engagement |
